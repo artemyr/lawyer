@@ -9,6 +9,7 @@ class PostController extends Controller implements DynamicUrlInterface
 {
     public function show(UrlValidator $validator) {
         return view('post', [
+            'breadcrumbs' => $validator->getBreadcrumbs(),
             'post' => $validator->getPost()
         ]);
     }

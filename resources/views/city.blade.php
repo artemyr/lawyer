@@ -3,6 +3,11 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
+            <p>
+                @foreach($breadcrumbs as $breadcrumb)
+                    -><a href="{{ $breadcrumb['link'] }}">{{ $breadcrumb['name'] }}</a>
+                @endforeach
+            </p>
             <div class="col-md-8">
                 <p>{{$city}}</p>
                 <p>Категории</p>

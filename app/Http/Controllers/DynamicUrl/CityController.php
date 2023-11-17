@@ -17,7 +17,8 @@ class CityController extends Controller implements DynamicUrlInterface
         return view('city', [
             'categories' => Cache::get('categoryRouteList'),
             'instans' => Cache::get('instansRouteList'),
-            'city' => $validator->getCity()
+            'city' => $validator->getCity(),
+            'breadcrumbs' => $validator->getBreadcrumbs()
         ]);
     }
 }

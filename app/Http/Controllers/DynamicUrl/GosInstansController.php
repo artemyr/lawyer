@@ -13,6 +13,7 @@ class GosInstansController extends Controller implements DynamicUrlInterface
         if (!Cache::has('postsRouteList'))
             Cache::put('postsRouteList', ["detal1", "detal2", "detal3"], 60);
         return view('instans', [
+            'breadcrumbs' => $validator->getBreadcrumbs(),
             'posts' => Cache::get('postsRouteList'),
             'instance' => $validator->getGosInstanse()
         ]);

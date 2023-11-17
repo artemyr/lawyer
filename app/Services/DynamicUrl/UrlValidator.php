@@ -118,4 +118,30 @@ class UrlValidator
     public function getPost() {
         return $this->post;
     }
+    public function getParts() {
+        return $this->parts;
+    }
+    public function getBreadcrumbs() {
+        $parts = [];
+        foreach ($this->parts as $key => $part) {
+            if ($key > 0) {
+                $parts[$key] = $parts[$key - 1] . "/" . $this->parts[$key];
+            } else {
+                $parts[$key] = $part;
+            }
+        }
+        $crumbs = [];
+        foreach ($this->parts as $key => $part) {
+            $crumbs[] = [
+                'name' => $part,
+                'link' => "/" . $parts[$key] . "/",
+            ];
+        }
+        return array_merge([
+            [
+                'link' => '/',
+                'name' => 'home'
+            ]
+        ], $crumbs);
+    }
 }
