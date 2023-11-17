@@ -8,6 +8,6 @@ class DefaultController extends Controller implements DynamicUrlInterface
 {
     public function show()
     {
-        return 'DefaultController';
+        abort(404);
     }
 }

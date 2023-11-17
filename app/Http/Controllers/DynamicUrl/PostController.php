@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\DynamicUrl;
 
 use App\Http\Controllers\Controller;
+use App\Services\DynamicUrl\UrlValidator;
 
 class PostController extends Controller implements DynamicUrlInterface
 {
-    public function show() {
-        return 'PostController';
+    public function show(UrlValidator $validator) {
+        return view('post', [
+            'post' => $validator->getPost()
+        ]);
     }
 }

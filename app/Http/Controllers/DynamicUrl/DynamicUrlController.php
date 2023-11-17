@@ -11,7 +11,7 @@ class DynamicUrlController extends Controller
         try {
             $validator = new UrlValidator($page);
             $class = $validator->validate();
-            return $class->show();
+            return $class->show($validator);
         } catch (\Exception $e) {
             abort(404);
         }

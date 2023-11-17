@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,12 +15,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/', [Controllers\MainController::class, 'show']);
+Route::get('/blog/', function () {
+    return 'blog';
+});
+Route::get('/uslugi/', function () {
+    return 'uslugi';
+});
+Route::get('/kontakty/', function () {
+    return 'kontakty';
+});
+Route::get('/politica/', function () {
+    return 'politica';
+});
 
 /**
  * динамический урл
