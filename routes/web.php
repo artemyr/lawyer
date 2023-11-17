@@ -24,4 +24,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 /**
  * динамический урл
  */
-Route::get('{page}', [App\Http\Controllers\DynamicUrlController::class, 'execute'])->where('page','.*');
+Route::get('{page}', [\App\Http\Controllers\DynamicUrl\DynamicUrlController::class, 'execute'])->where('page','.*');

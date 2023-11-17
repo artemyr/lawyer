@@ -2,39 +2,94 @@
 
 namespace App\Services\DynamicUrl;
 
-use App\Http\Controllers\CityController;
-use App\Http\Controllers\PostController;
+use App\Http\Controllers\DynamicUrl\CategoryController;
+use App\Http\Controllers\DynamicUrl\CityController;
+use App\Http\Controllers\DynamicUrl\DefaultController;
+use App\Http\Controllers\DynamicUrl\GosInstansController;
+use App\Http\Controllers\DynamicUrl\PostController;
 use Illuminate\Support\Facades\Cache;
 
 class UrlValidator
 {
     private $page;
-    private $cities;
     private $parts;
     private $slagsCount;
-    public function __construct($page)
-    {
-        if (!Cache::has('cityRouteList'))
-            Cache::put('cityRouteList', ["moskow", "piter", "a"], 60);
-
+    public function __construct($page) {
         $this->page = $page;
         $this->parts = explode('/', $page);
         $this->slagsCount = count($this->parts);
-        $this->cities = Cache::get('cityRouteList');
     }
     public function validate()
     {
         switch ($this->slagsCount) {
             case 1:
-                if (in_array($this->page, $this->cities)) {
+                /**
+                 * 1 слаг - либо город | категория
+                 */
+                if (in_array($this->page, self::getCities())) {
                     return new CityController;
+                } else {
+                    if (in_array($this->page, self::getCategories())) {
+                        return new CategoryController;
+                    }
+                }
+                break;
+            case 2:
+                /**
+                 * 2 слага - категория города | гос инстанция
+                 */
+                if (in_array($this->parts[0], self::getCities())) {
+                    if (in_array($this->parts[1], self::getCategories())) {
+                        return new CategoryController;
+                    } else {
+                        if (in_array($this->parts[1], self::getGosInstans())) {
+                            return new GosInstansController;
+                        }
+                    }
                 }
                 break;
             case 3:
-                return new PostController;
+                /**
+                 * 3 слага - гос инстанция детальная
+                 */
+                if (in_array($this->parts[0], self::getCities())) {
+                    if (in_array($this->parts[1], self::getCategories())) {
+                        return new CategoryController;
+                    } else {
+                        if (in_array($this->parts[1], self::getGosInstans())) {
+                            if (in_array($this->parts[2], self::getPosts())) {
+                                return new PostController;
+                            }
+                        }
+                    }
+                }
                 break;
             default:
                 throw new \Exception("обработчик не найден");
         }
+        return new DefaultController;
+    }
+    private static function getCities() : array {
+        if (!Cache::has('cityRouteList'))
+            Cache::put('cityRouteList', ["moskow", "piter", "krasnodar"], 60);
+        return Cache::get('cityRouteList');
+    }
+    private static function getCategories() : array
+    {
+        if (!Cache::has('categoryRouteList'))
+            Cache::put('categoryRouteList', ["autojurist", "bankrotstvo", "kredity"], 60);
+        return Cache::get('categoryRouteList');
+    }
+    private static function getGosInstans() : array
+    {
+        if (!Cache::has('instansRouteList'))
+            Cache::put('instansRouteList', ["gibdd", "prokuratura", "sudy"], 60);
+        return Cache::get('instansRouteList');
+    }
+    private static function getPosts() : array
+    {
+        if (!Cache::has('postsRouteList'))
+            Cache::put('postsRouteList', ["detal1", "detal2", "detal3"], 60);
+        return Cache::get('postsRouteList');
     }
 }

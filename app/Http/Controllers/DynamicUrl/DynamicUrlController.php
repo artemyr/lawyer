@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\DynamicUrl;
 
+use App\Http\Controllers\Controller;
 use App\Services\DynamicUrl\UrlValidator;
-use Illuminate\Http\Request;
 
 class DynamicUrlController extends Controller
 {
