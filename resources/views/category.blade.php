@@ -9,7 +9,7 @@
         </p>
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <p>Категори {{$category}}</p>
+                <p>Категория {{$category}}</p>
             </div>
         </div>
     </div>

@@ -18,7 +18,8 @@ use App\Http\Controllers;
 Auth::routes();
 Route::get('/home', [Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/', [Controllers\MainController::class, 'show']);
+Route::get('/', [Controllers\MainController::class, 'show'])->name('main');
+
 Route::get('/blog/', function () {
     return 'blog';
 });
@@ -33,6 +34,18 @@ Route::get('/politica/', function () {
 });
 
 /**
+ * admin
+ */
+Route::group([
+    'middleware' => [
+//        'auth:sanctum',
+        'admin'
+    ],
+], function() {
+    Route::get('/admin{page}', [Controllers\Admin\AdminController::class, 'index'])->name('admin')->where('page', '.*');
+});
+
+/**
  * динамический урл
  */
-Route::get('{page}', [\App\Http\Controllers\DynamicUrl\DynamicUrlController::class, 'execute'])->where('page','.*');
+Route::get('{page}', [Controllers\DynamicUrl\DynamicUrlController::class, 'execute'])->where('page','.*');

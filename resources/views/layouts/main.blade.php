@@ -14,9 +14,17 @@
 </head>
 <body>
 <div id="app">
+    <header>
+        @include('includes.header')
+    </header>
+
     <main class="py-4">
         @yield('content')
     </main>
+
+    <footer>
+        @include('includes.footer')
+    </footer>
 </div>
 </body>
 </html>
