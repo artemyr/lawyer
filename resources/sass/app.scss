@@ -1,8 +1,20 @@
 // Fonts
-@import url('https://fonts.bunny.net/css?family=Nunito');
+//@import url('https://fonts.bunny.net/css?family=Nunito');
+
+// Nullify
+@import "nullify";
 
 // Variables
 @import 'variables';
 
+// Mixins
+@import "mixin";
+
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
+
+// General
+@import "general";
+
+// App
+@import "app/header/header";

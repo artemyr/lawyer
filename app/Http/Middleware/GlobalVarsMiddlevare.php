@@ -50,11 +50,17 @@ class GlobalVarsMiddlevare
 
     private function cities()
     {
+        if (!Cache::has('G_cities')) {
+            Cache::put('G_cities', City::get(), 60);
+        }
+
         if (!Cache::has('cityRouteList')) {
-            foreach (City::get() as $city) {
+            foreach (Cache::get('G_cities') as $city) {
                 $cityRouteList[] = $city->link;
             }
             Cache::put('cityRouteList', $cityRouteList, config('app.routeListCacheTtl'));
         }
+
+        View::share('G_cities', Cache::get('G_cities'));
     }
 }

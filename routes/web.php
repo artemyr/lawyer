@@ -16,22 +16,15 @@ use App\Http\Controllers;
 */
 
 Auth::routes();
-Route::get('/home', [Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/', [Controllers\MainController::class, 'show'])->name('main');
 
-Route::get('/blog/', function () {
-    return 'blog';
-});
-Route::get('/uslugi/', function () {
-    return 'uslugi';
-});
-Route::get('/kontakty/', function () {
-    return 'kontakty';
-});
-Route::get('/politica/', function () {
-    return 'politica';
-});
+Route::get('/home', [Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/uslugi/', [Controllers\CategoryController::class, 'index'])->name('services');
+Route::get('/blog/', [Controllers\BlogController::class, 'index'])->name('blog');
+Route::get('/kontakty/', [Controllers\ContactController::class, 'index'])->name('blog');
+Route::get('/politica/', [Controllers\PolicyController::class, 'index'])->name('blog');
 
 /**
  * admin
