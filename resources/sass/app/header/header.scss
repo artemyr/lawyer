@@ -4,4 +4,34 @@
     display: grid;
     justify-content: space-between;
     grid-auto-flow: column;
+    min-height: 60px;
+    align-items: center;
+    margin-top: 16px;
+    margin-bottom: 8px;
+
+    .logo {
+        height: 28px;
+        width: 150px;
+    }
+
+    .header__left {
+        display: grid;
+        grid-auto-flow: column;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .header__right {
+        display: grid;
+        grid-auto-flow: column;
+        gap: 28px;
+        align-items: center;
+    }
+
+    .header__phone-lang {
+        display: grid;
+        grid-auto-flow: column;
+        gap: 20px;
+        align-items: center;
+    }
 }

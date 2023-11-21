@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->createCategories();
+        $this->createCities();
     }
 
     private function createCategories()
@@ -72,6 +73,21 @@ class DatabaseSeeder extends Seeder
 //            'subtitle' => 'Автомобили с дефектами','parent_id' => 0,
         ];
 
+        foreach($data as $item)
+            Category::create($item);
+    }
+
+    private function createCities()
+    {
+        $data = [];
+        $data[] = [
+            'name' => 'Москва',
+            'link' => 'moskow',
+        ];
+        $data[] = [
+            'name' => 'Питер',
+            'link' => 'piter',
+        ];
         foreach($data as $item)
             Category::create($item);
     }

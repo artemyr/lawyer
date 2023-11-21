@@ -1,35 +1,18 @@
-.container {
-    padding: 0 20px;
-}
+body {
+    background: $body-bg;
+    a {
+        text-decoration: none;
+        color: $base-text-color;
+        transition: .3s;
 
-@media (min-width: 575.98px){
-    .container {
-        max-width: 540px;
-        margin: auto;
-        padding: 0;
+        &:hover {
+            color: $base-color;
+        }
     }
-}
-
-@media (min-width: 767.98px){
-    .container {
-        max-width: 720px;
+    p {
+        color: $base-text-color;
     }
-}
-
-@media (min-width: 991.98px) {
-    .container {
-        max-width: 960px;
-    }
-}
-
-@media (min-width: 1199.98px){
-    .container {
-        max-width: 1140px;
-    }
-}
-
-@media (max-width: 1199.98px){
-    .m-1200 {
-        display: none;
+    span {
+        color: $base-text-color;
     }
 }

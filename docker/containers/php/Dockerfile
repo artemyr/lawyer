@@ -31,7 +31,7 @@ RUN chmod +x /usr/local/bin/install-php-extensions && \
 #ADD ./conf/php.ini /etc/php/8.2/fpm/php.ini
 #ADD ./conf/php.ini /etc/php/8.2/cli/php.ini
 #ADD ./conf/www.conf /etc/php/8.2/fpm/pool.d/www.conf
-#COPY ./conf/ssmtp.conf /etc/ssmtp/ssmtp.conf
+COPY ./conf/ssmtp.conf /etc/ssmtp/ssmtp.conf
 
 ADD ./conf/php.ini /usr/local/etc/php/php.ini
 

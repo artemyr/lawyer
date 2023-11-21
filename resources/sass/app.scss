@@ -1,9 +1,6 @@
 // Fonts
 //@import url('https://fonts.bunny.net/css?family=Nunito');
 
-// Nullify
-@import "nullify";
-
 // Variables
 @import 'variables';
 
@@ -13,8 +10,14 @@
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
 
+// Nullify
+@import "nullify";
+
 // General
 @import "general";
+
+// UI-Kit
+@import "app/ui-kit/buttons";
 
 // App
 @import "app/header/header";
