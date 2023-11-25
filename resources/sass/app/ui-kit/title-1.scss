@@ -1,0 +1,12 @@
+.title-1 {
+    font-size: 52px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 100%; /* 52px */
+    letter-spacing: -2.6px;
+    font-family: 'Commissioner 600', serif;
+
+    span {
+        color: $base-color;
+    }
+}

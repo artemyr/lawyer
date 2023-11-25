@@ -1,5 +1,5 @@
 @extends('layouts.main')
 
 @section('content')
-    content
+    @include('blocks.services')
 @endsection

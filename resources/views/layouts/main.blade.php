@@ -14,19 +14,19 @@
 </head>
 <body>
 <div id="app">
-    <div class="container">
-        <header>
-            @include('includes.header')
-        </header>
+    <header>
+        @include('includes.header')
+    </header>
 
-        <main>
-            @yield('content')
-        </main>
+    <main>
+        @yield('content')
+    </main>
 
-        <footer>
-            @include('includes.footer')
-        </footer>
-    </div>
+    <footer>
+        @include('includes.footer')
+    </footer>
+
+    @include('includes.modals')
 </div>
 </body>
 </html>

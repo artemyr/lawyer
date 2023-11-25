@@ -1,5 +1,7 @@
 body {
     background: $body-bg;
+    font-family: $--base-font-family;
+
     a {
         text-decoration: none;
         color: $base-text-color;
@@ -14,5 +16,6 @@ body {
     }
     span {
         color: $base-text-color;
+        transition: .3s;
     }
 }
