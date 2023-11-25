@@ -9,7 +9,7 @@ class CategoryController extends Controller implements DynamicUrlInterface
 {
     public function show(UrlValidator $validator)
     {
-        return view('category', [
+        return view('pages.category', [
             'category' => $validator->getCategory(),
             'breadcrumbs' => $validator->getBreadcrumbs()
         ]);

@@ -10,9 +10,7 @@ use Illuminate\Http\Request;
 class CityController extends Controller implements DynamicUrlInterface
 {
     public function show (UrlValidator $validator) {
-        return view('city', [
-//            'categories' => Cache::get('categoryRouteList'),
-//            'instans' => Cache::get('instansRouteList'),
+        return view('pages.category', [
             'city' => $validator->getCity(),
             'breadcrumbs' => $validator->getBreadcrumbs()
         ]);

@@ -8,6 +8,6 @@ use Illuminate\Support\Facades\Cache;
 class MainController extends Controller
 {
     public function show() {
-        return view('main', []);
+        return view('main');
     }
 }
