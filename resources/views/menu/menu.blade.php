@@ -38,5 +38,10 @@
         <li>
             <a href="">Контакты</a>
         </li>
+        @can('view', auth()->user())
+        <li>
+            <a href="{{ route('admin','') }}">Admin</a>
+        </li>
+        @endcan
     </ul>
 </nav>
