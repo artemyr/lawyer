@@ -17,10 +17,11 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
+import axios from "axios";
 
 export default defineComponent({
     components: {},
-    props: ['header', 'rows']
+    props: ['header', 'rows', 'pagen'],
 })
 </script>
 

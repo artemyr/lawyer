@@ -12,7 +12,7 @@ class CityController extends Controller
 {
     public function index ()
     {
-        return CityResource::collection(City::paginate(10));
+        return CityResource::collection(City::paginate(20));
     }
 
     public function show (City $city)

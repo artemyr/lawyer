@@ -4,12 +4,12 @@
 
         <Table :header="['id', 'name', 'link']" :rows="rows"></Table>
 
-        <div class="pagen" v-if="pagen">
-            <a @click.prevent="get(pagen.first)" :href="pagen.first">Первая</a>
-            <a @click.prevent="get(pagen.prev)" :href="pagen.prev">Предидущая</a>
-            <a @click.prevent="get(pagen.next)" :href="pagen.next">Следующая</a>
-            <a @click.prevent="get(pagen.last)" :href="pagen.last">Последняя</a>
-        </div>
+        <ul class="pagination" v-if="pagen">
+            <li class="page-item"><a @click.prevent="get(pagen.first)" class="page-link" :href="pagen.first">First</a></li>
+            <li class="page-item"><a @click.prevent="get(pagen.prev)" class="page-link" :href="pagen.prev">Previous</a></li>
+            <li class="page-item"><a @click.prevent="get(pagen.next)" class="page-link" :href="pagen.next">Next</a></li>
+            <li class="page-item"><a @click.prevent="get(pagen.last)" class="page-link" :href="pagen.last">Last</a></li>
+        </ul>
     </div>
 </template>
 
@@ -71,5 +71,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-
+    .page-item .page-link {
+        background: #2c3034;
+    }
 </style>
