@@ -1,5 +1,18 @@
 <template>
-    <p>Home</p>
+    <div class="menu">
+        <router-link :to="{name: 'admin.city'}" class="menu__item">Города</router-link>
+        <router-link :to="{name: 'admin.category'}" class="menu__item">Категории</router-link>
+        <router-link :to="{name: 'admin.article'}" class="menu__item">Статьи</router-link>
+        <a class="menu__item">Города</a>
+        <a class="menu__item">Категории</a>
+        <a class="menu__item">Статьи</a>
+        <a class="menu__item">Города</a>
+        <a class="menu__item">Категории</a>
+        <a class="menu__item">Статьи</a>
+        <a class="menu__item">Города</a>
+        <a class="menu__item">Категории</a>
+        <a class="menu__item">Статьи</a>
+    </div>
 </template>
 
 <script lang="ts">
@@ -10,5 +23,25 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+    .menu {
+        display: grid;
+        justify-content: space-between;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
 
+        .menu__item {
+            padding: 10px;
+            border-radius: 10px;
+            background: #3d3d3d;
+            min-height: 160px;
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+
+            &:hover {
+                background: #5b5b5b;
+            }
+        }
+    }
 </style>

@@ -6,7 +6,7 @@ import Store from "./src/store/store.js";
 createApp(App)
     .use(Router)
     .use(Store)
-    .mount('#app')
+    .mount('App')
 
 
 import './bootstrap';

@@ -1,7 +1,10 @@
 <template>
-    <PrimaryHeader />
-    <p>Привет {{ name }}</p>
-    <router-view />
+    <div class="body">
+        <div class="container">
+            <PrimaryHeader />
+            <router-view />
+        </div>
+    </div>
 </template>
 
 <script lang="ts">
@@ -17,6 +20,25 @@ export default defineComponent({
 })
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+    .body {
+        background: #242424;
+        height: 100vh;
+        color: white;
+        padding-top: 20px;
 
+        a {
+            color: white;
+        }
+
+        p {
+            color: white;
+        }
+
+        .container {
+            display: grid;
+            grid-auto-flow: row;
+            gap: 20px;
+        }
+    }
 </style>
