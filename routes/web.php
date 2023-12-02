@@ -31,7 +31,7 @@ Route::get('/politica/', [Controllers\PolicyController::class, 'index'])->name('
  */
 Route::group([
     'middleware' => [
-//        'auth:sanctum',
+        'auth:sanctum',
         'admin'
     ],
 ], function() {
