@@ -40,5 +40,9 @@ export default defineComponent({
             grid-auto-flow: row;
             gap: 20px;
         }
+
+        h1 {
+            margin-bottom: 20px;
+        }
     }
 </style>
