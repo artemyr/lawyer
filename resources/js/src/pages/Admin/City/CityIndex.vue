@@ -2,7 +2,26 @@
     <div>
         <h1>Редактировать города</h1>
 
-        <Table :header="['id', 'name', 'link']" :rows="rows"></Table>
+        <router-link :to="{name: 'admin.city.create'}" class="btn btn-success">Create</router-link>
+
+        <table class="table table-striped table-dark">
+            <thead>
+                <tr>
+                    <th v-for="item in this.header" scope="col">{{ item }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="row in this.elements">
+                    <td v-for="coll in row">{{ coll }}</td>
+                    <td>
+                        <router-link :to="{name:'admin.city.edit', params:{id: row.id} }" class="btn btn-success">edit</router-link>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger">delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
         <ul class="pagination" v-if="pagen">
             <li class="page-item"><a @click.prevent="get(pagen.first)" class="page-link" :href="pagen.first">First</a></li>
@@ -15,27 +34,14 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import Table from "../../components/Table.vue";
 import axios from "axios";
 export default defineComponent({
-    components: {Table},
+    components: {},
     data() {
         return {
             elements: null,
             pagen: null,
-        }
-    },
-    computed: {
-        rows() {
-            let arRows = [];
-            for (let row in this.elements) {
-                let arColl = [];
-                for (let coll in this.elements[row]) {
-                    arColl.push(this.elements[row][coll])
-                }
-                arRows.push(arColl);
-            }
-            return arRows;
+            header: ['id','name','link','edit','delete']
         }
     },
     mounted() {

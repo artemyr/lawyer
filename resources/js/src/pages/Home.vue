@@ -1,6 +1,6 @@
 <template>
     <div class="menu">
-        <router-link :to="{name: 'admin.city'}" class="menu__item">Города</router-link>
+        <router-link :to="{name: 'admin.city.index'}" class="menu__item">Города</router-link>
         <router-link :to="{name: 'admin.category'}" class="menu__item">Категории</router-link>
         <router-link :to="{name: 'admin.article'}" class="menu__item">Статьи</router-link>
         <a class="menu__item">Города</a>

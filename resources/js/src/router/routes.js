@@ -11,8 +11,18 @@ const routes = [
     },
     {
         path: '/admin/cities',
-        name: 'admin.city',
-        component: () => import("../pages/Admin/City.vue")
+        name: 'admin.city.index',
+        component: () => import("../pages/Admin/City/CityIndex.vue")
+    },
+    {
+        path: '/admin/cities/:id',
+        name: 'admin.city.edit',
+        component: () => import("../pages/Admin/City/CityEdit.vue")
+    },
+    {
+        path: '/admin/cities/create',
+        name: 'admin.city.create',
+        component: () => import("../pages/Admin/City/CityCreate.vue")
     },
     {
         path: '/admin/categories',

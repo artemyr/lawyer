@@ -18,7 +18,7 @@
                     lang
                 </div>
             </div>
-            <div class="btn">
+            <div class="btn btn-default">
                 Заказать звонок
             </div>
         </div>
