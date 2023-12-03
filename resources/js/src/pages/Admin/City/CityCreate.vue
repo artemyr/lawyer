@@ -3,14 +3,6 @@
         <h1>Редактировать города</h1>
 
         <form>
-<!--            <EditTextComponent-->
-<!--                :id="'name'"-->
-<!--                :name="'Город'"-->
-<!--                :type="'text'"-->
-<!--                :placeholder="'Введите город'"-->
-<!--                :help="'(Краснодар, Москва, ...)'"-->
-<!--            />-->
-
             <EditNameLink
                 :id="'name'"
                 :name="'Город'"
@@ -19,7 +11,7 @@
                 :help="'(Краснодар, Москва, ...)'"
             />
 
-            <button type="submit" class="btn btn-primary">Отправить</button>
+            <button :disabled="!isDisabled" @click.prevent="store" type="submit" class="btn btn-primary">Отправить</button>
         </form>
 
     </div>
@@ -35,7 +27,7 @@ export default defineComponent({
     data () {
         return {
             entity: {
-                title: null,
+                name: null,
                 link: null,
             }
         }
@@ -43,7 +35,7 @@ export default defineComponent({
     methods: {
         store() {
             axios.post('/api/admin/cities', {
-                title: this.entity.title,
+                name: this.entity.name,
                 link: this.entity.link,
             })
                 .then(res => {
@@ -53,7 +45,7 @@ export default defineComponent({
     },
     computed: {
         isDisabled() {
-            return this.entity.title && this.entity.link;
+            return this.entity.name && this.entity.link;
         }
     }
 })

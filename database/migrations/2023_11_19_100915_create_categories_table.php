@@ -16,8 +16,8 @@ return new class extends Migration
 
             $table->string('name');
             $table->string('link');
-            $table->unsignedBigInteger('parent_id');
-            $table->unsignedBigInteger('city_id');
+            $table->unsignedBigInteger('parent_id')->default(0);
+            $table->unsignedBigInteger('city_id')->default(0);
 
             $table->timestamps();
         });

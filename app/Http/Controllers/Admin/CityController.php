@@ -22,15 +22,13 @@ class CityController extends Controller
 
     public function store (StoreRequest $request)
     {
-        $data = $request->validated();
-        City::create($data);
+        City::create($request->validated());
         return response([]);
     }
 
     public function update (UpdateRequest $request, City $city)
     {
-        $data = $request->validated();
-        $city->update($data);
+        $city->update($request->validated());
         return response([]);
     }
 

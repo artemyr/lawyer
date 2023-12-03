@@ -2,7 +2,7 @@
     <div>
         <div class="mb-1">
             <label :for="id" class="form-label">{{ name }}</label>
-            <input v-model="$parent.entity.title" @input="transliterate" :type="type" :id="id"
+            <input v-model="$parent.entity.name" @input="transliterate" :type="type" :id="id"
                    :placeholder="placeholder"
                    :class="{'is-invalid': !errorName}" class="form-control">
             <div class="form-text">{{ help }}</div>
@@ -31,7 +31,7 @@ export default defineComponent({
     methods: {
         transliterate() {
             if (!this.transliteration) return
-            this.$parent.entity.link = tr(this.$parent.entity.title).toLowerCase().replaceAll(/ /g, '-');
+            this.$parent.entity.link = tr(this.$parent.entity.name).toLowerCase().replaceAll(/ /g, '-');
         }
     },
     data() {
@@ -41,7 +41,7 @@ export default defineComponent({
     },
     computed: {
         errorName() {
-            return this.$parent.entity.title
+            return this.$parent.entity.name
         },
         errorLink() {
             return this.$parent.entity.link

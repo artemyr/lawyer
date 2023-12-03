@@ -55,6 +55,7 @@ class GlobalVarsMiddlevare
         }
 
         if (!Cache::has('cityRouteList')) {
+            $cityRouteList = [];
             foreach (Cache::get('G_cities') as $city) {
                 $cityRouteList[] = $city->link;
             }
