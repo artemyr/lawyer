@@ -11,7 +11,7 @@
                 :help="'(Краснодар, Москва, ...)'"
             />
 
-            <button :disabled="!isDisabled" @click.prevent="store" type="submit" class="btn btn-primary">Отправить</button>
+            <button :disabled="!isDisabled" @click.prevent="store" type="submit" class="btn btn-success">Save</button>
         </form>
 
     </div>

@@ -17,7 +17,7 @@
                         <router-link :to="{name:'admin.city.edit', params:{id: row.id} }" class="btn btn-success">edit</router-link>
                     </td>
                     <td>
-                        <button class="btn btn-danger">delete</button>
+                        <button @click.prevent="deleteElement(row.id)" class="btn btn-danger">delete</button>
                     </td>
                 </tr>
             </tbody>
@@ -41,7 +41,8 @@ export default defineComponent({
         return {
             elements: null,
             pagen: null,
-            header: ['id','name','link','edit','delete']
+            header: ['id','name','link','edit','delete'],
+            curLink: null
         }
     },
     mounted() {
@@ -61,14 +62,14 @@ export default defineComponent({
                     console.log(error);
                 })
         },
-        deleteArticle(id) {
-            axios.delete(`/api/admin/articles/${id}`)
+        deleteElement(id) {
+            axios.delete(`/api/admin/cities/${id}`)
                 .then(res => {
                     return this.get(this.curLink);
                 })
                 .then(res => {
                     if (this.elements.length == 0) {
-                        this.get(this.defaultLink);
+                        this.get('/api/admin/cities');
                     }
                 })
         }

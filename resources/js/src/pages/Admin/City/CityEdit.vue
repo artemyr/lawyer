@@ -2,7 +2,18 @@
     <div>
         <h1>Редактировать города</h1>
 
-        {{ entity }}
+        <form v-if="this.entity">
+            <EditNameLink
+                :id="'name'"
+                :name="'Город'"
+                :type="'text'"
+                :placeholder="'Введите город'"
+                :help="'(Краснодар, Москва, ...)'"
+            />
+
+            <button :disabled="!isDisabled" @click.prevent="update(true)" type="submit" class="btn btn-success">Save</button>
+            <button :disabled="!isDisabled" @click.prevent="update(false)" type="submit" class="btn btn-primary">Apply</button>
+        </form>
 
     </div>
 </template>
@@ -10,7 +21,10 @@
 <script lang="ts">
 import {defineComponent} from "vue";
 import axios from "axios";
+import EditNameLink from "../../../components/form/EditNameLinkComponent.vue";
+import EditTextComponent from "../../../components/form/EditTextComponent.vue";
 export default defineComponent({
+    components: {EditNameLink, EditTextComponent},
     mounted() {
         this.get(`/api/admin/cities/${this.$route.params.id}`);
     },
@@ -28,10 +42,8 @@ export default defineComponent({
         },
         update(toIndex) {
             axios.patch(`/api/admin/cities/${this.$route.params.id}`, {
-                title: this.entity.title,
+                name: this.entity.name,
                 link: this.entity.link,
-                coords: this.entity.coords,
-                name_predloshniy_padesh: this.entity.name_predloshniy_padesh
             })
                 .then(res => {
                     if (toIndex){
@@ -48,6 +60,11 @@ export default defineComponent({
                 })
         }
     },
+    computed: {
+        isDisabled() {
+            return this.entity.name && this.entity.link;
+        }
+    }
 })
 </script>
 
