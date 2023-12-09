@@ -1,3 +1,10 @@
 <div class="container">
-    Our jurists
+    <div class="article-1">
+        <div>
+            <div class="title-1">
+                Наши <span>юристы</span>
+            </div>
+        </div>
+        <div></div>
+    </div>
 </div>

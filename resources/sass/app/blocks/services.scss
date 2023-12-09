@@ -1,12 +1,4 @@
 .services {
-    .services__head-row {
-        padding-top: 90px;
-        padding-bottom: 60px;
-        display: grid;
-        justify-content: space-between;
-        grid-auto-flow: column;
-        align-items: start;
-    }
     .services__list {
         display: grid;
         grid-template-columns: repeat(4, 1fr);

@@ -1,12 +1,12 @@
 <div class="services">
     <div class="container">
-        <div class="services__head-row">
-            <div class="services__head-title">
+        <div class="article-1">
+            <div>
                 <div class="title-1">
                     Наша <span>специализация</span>
                 </div>
             </div>
-            <div class="services__head-desc">
+            <div>
                 Большинство наших юристов специализируются<br>
                 на отдельных областях права, что позволяет быстро решать<br>
                 даже самые сложные вопросы и добиваться успеха в более,<br>
