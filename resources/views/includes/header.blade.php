@@ -6,19 +6,21 @@
                     <use xlink:href="{{ asset('svg/sprite.svg#logo') }}"></use>
                 </svg>
             </a>
-            city
+            <div class="header__choose-city">
+                Выберите город
+            </div>
         </div>
         @include('menu.menu')
         <div class="header__right">
             <div class="header__phone-lang">
-                <div class="">
-                    number
+                <div class="header__number">
+                    8 (999) 999 99-99
                 </div>
-                <div class="">
-                    lang
+                <div class="header__lang">
+                    EN
                 </div>
             </div>
-            <div class="btn btn-default">
+            <div class="ui-btn ui-btn-default">
                 Заказать звонок
             </div>
         </div>

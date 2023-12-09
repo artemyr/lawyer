@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use App\Models\Category;
 use App\Models\City;
+use App\Models\Instation;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -23,6 +24,7 @@ class GlobalVarsMiddlevare
     {
         $this->categories();
         $this->cities();
+        $this->instanses();
         return $next($request);
     }
 
@@ -63,5 +65,16 @@ class GlobalVarsMiddlevare
         }
 
         View::share('G_cities', Cache::get('G_cities'));
+    }
+
+    private function instanses()
+    {
+        if (!Cache::has('instansRouteList')) {
+            $instanciesRouteList = [];
+            foreach (Instation::get() as $instation) {
+                $instanciesRouteList[] = $instation->link;
+            }
+            Cache::put('instansRouteList', $instanciesRouteList, config('app.routeListCacheTtl'));
+        }
     }
 }

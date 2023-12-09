@@ -7,35 +7,24 @@ use App\Http\Controllers\DynamicUrl\CityController;
 use App\Http\Controllers\DynamicUrl\DefaultController;
 use App\Http\Controllers\DynamicUrl\DynamicUrlInterface;
 use App\Http\Controllers\DynamicUrl\GosInstansController;
+use App\Http\Controllers\DynamicUrl\GosInstansDetailController;
 use App\Http\Controllers\DynamicUrl\PostController;
 use Illuminate\Support\Facades\Cache;
 
-class UrlValidator
+class UrlValidator extends UrlValidatorAbstract
 {
-    private $page;
-    private $parts;
-    private $slagsCount;
-    private $city;
-    private $category;
-    private $gosInstans;
-    private $post;
-    public function __construct($page) {
-        $this->page = $page;
-        $this->parts = explode('/', $page);
-        $this->slagsCount = count($this->parts);
-    }
     public function validate() : DynamicUrlInterface
     {
-        switch ($this->slagsCount) {
+        switch (count($this->parts)) {
             case 1:
                 /**
                  * 1 слаг - либо город | категория
                  */
-                if (in_array($this->page, self::getCities())) {
+                if (in_array($this->page, $this->getCities())) {
                     $this->city = $this->page;
                     return new CityController;
                 } else {
-                    if (in_array($this->page, self::getCategories())) {
+                    if (in_array($this->page, $this->getCategories())) {
                         $this->category = $this->page;
                         return new CategoryController;
                     }
@@ -43,18 +32,17 @@ class UrlValidator
                 break;
             case 2:
                 /**
-                 * 2 слага - категория города | гос инстанция
+                 * 2 слага - категория города | гос инстанции
                  */
-                if (in_array($this->parts[0], self::getCities())) {
+                if (in_array($this->parts[0], $this->getCities())) {
                     $this->city = $this->parts[0];
-                    if (in_array($this->parts[1], self::getCategories())) {
+                    if (in_array($this->parts[1], $this->getCategories())) {
                         $this->category = $this->parts[1];
                         return new CategoryController;
-                    } else {
-                        if (in_array($this->parts[1], self::getGosInstans())) {
-                            $this->gosInstans = $this->parts[1];
-                            return new GosInstansController;
-                        }
+                    }
+                } elseif (in_array($this->parts[0], $this->getCategories())) {
+                    if ($this->parts[1] === 'instation') {
+                        return new GosInstansController();
                     }
                 }
                 break;
@@ -62,18 +50,12 @@ class UrlValidator
                 /**
                  * 3 слага - гос инстанция детальная
                  */
-                if (in_array($this->parts[0], self::getCities())) {
+                if (in_array($this->parts[0], $this->getCategories())) {
                     $this->city = $this->parts[0];
-                    if (in_array($this->parts[1], self::getCategories())) {
-                        $this->category = $this->parts[1];
-                        return new CategoryController;
-                    } else {
-                        if (in_array($this->parts[1], self::getGosInstans())) {
-                            $this->gosInstans = $this->parts[1];
-                            if (in_array($this->parts[2], self::getPosts())) {
-                                $this->post = $this->parts[2];
-                                return new PostController;
-                            }
+                    if ($this->parts[1] === 'instation') {
+                        if (in_array($this->parts[2], $this->getGosInstanses())) {
+                            $this->gosInstans = $this->parts[2];
+                            return new GosInstansDetailController();
                         }
                     }
                 }
@@ -82,66 +64,5 @@ class UrlValidator
                 throw new \Exception("обработчик не найден");
         }
         return new DefaultController;
-    }
-    private static function getCities() : array {
-        if (!Cache::has('cityRouteList'))
-            Cache::put('cityRouteList', ["moskow", "piter", "krasnodar"], 60);
-        return Cache::get('cityRouteList');
-    }
-    private static function getCategories() : array
-    {
-        if (!Cache::has('categoryRouteList'))
-            Cache::put('categoryRouteList', ["autojurist", "bankrotstvo", "kredity"], 60);
-        return Cache::get('categoryRouteList');
-    }
-    private static function getGosInstans() : array
-    {
-        if (!Cache::has('instansRouteList'))
-            Cache::put('instansRouteList', ["gibdd", "prokuratura", "sudy"], 60);
-        return Cache::get('instansRouteList');
-    }
-    private static function getPosts() : array
-    {
-        if (!Cache::has('postsRouteList'))
-            Cache::put('postsRouteList', ["detal1", "detal2", "detal3"], 60);
-        return Cache::get('postsRouteList');
-    }
-    public function getCity() {
-        return $this->city;
-    }
-    public function getCategory() {
-        return $this->category;
-    }
-    public function getGosInstanse() {
-        return $this->gosInstans;
-    }
-    public function getPost() {
-        return $this->post;
-    }
-    public function getParts() {
-        return $this->parts;
-    }
-    public function getBreadcrumbs() {
-        $parts = [];
-        foreach ($this->parts as $key => $part) {
-            if ($key > 0) {
-                $parts[$key] = $parts[$key - 1] . "/" . $this->parts[$key];
-            } else {
-                $parts[$key] = $part;
-            }
-        }
-        $crumbs = [];
-        foreach ($this->parts as $key => $part) {
-            $crumbs[] = [
-                'name' => $part,
-                'link' => "/" . $parts[$key] . "/",
-            ];
-        }
-        return array_merge([
-            [
-                'link' => '/',
-                'name' => 'home'
-            ]
-        ], $crumbs);
     }
 }

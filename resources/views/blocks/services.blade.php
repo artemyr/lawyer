@@ -15,7 +15,7 @@
         </div>
         <div class="services__list">
             @foreach($G_categories as $category)
-                <a class="services__item" href="{{ $category->link }}">
+                <a class="services__item" href="{{ ($city->link ?? '') .'/'. $category->link }}">
                     <span>{{ $category->name }}</span>
                 </a>
             @endforeach

@@ -1,4 +1,14 @@
-.btn.btn-default {
+.ui-btn.ui-btn-default {
     background: $base-color-2;
     color: $base-color;
+    padding: 12px 24px;
+    border-radius: 8px;
+}
+
+.ui-btn.ui-btn-arrow {
+    background: $base-color;
+    border-radius: 30px;
+    color: white;
+    padding: 18px 32px;
+    display: inline-block;
 }

@@ -1,0 +1,35 @@
+.banner {
+    margin-bottom: 50px;
+    .banner__slide {
+        position: relative;
+        height: 758px;
+        overflow: hidden;
+
+        img {
+            position: absolute;
+            width: 100%;
+        }
+    }
+
+    .banner__inner {
+        position: absolute;
+        top: 50px;
+        left: 50px;
+        z-index: 2;
+        display: inline-grid;
+        grid-auto-flow: row;
+        gap: 32px;
+
+        .banner__title {
+            color: white;
+            font-family: 'Commissioner 600';
+            font-size: 82px;
+            line-height: 85%;
+
+            span {
+                color: white;
+                opacity: 40%;
+            }
+        }
+    }
+}
