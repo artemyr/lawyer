@@ -1,6 +1,7 @@
 body {
     background: $body-bg;
     font-family: $--base-font-family;
+    color: $base-text-color;
 
     a {
         text-decoration: none;
@@ -17,5 +18,11 @@ body {
     span {
         color: $base-text-color;
         transition: .3s;
+    }
+}
+
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1384px;
     }
 }

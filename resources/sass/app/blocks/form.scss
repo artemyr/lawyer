@@ -1,0 +1,62 @@
+.form {
+    .form__wrapper {
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-columns: repeat(2, 1fr);
+
+        .form__title {
+            height: 313px;
+        }
+
+        .form__left, .form__right {
+            background: $base-gray-2;
+            border-radius: 16px;
+            padding: 48px;
+        }
+
+        .form__submit {
+            display: grid;
+            justify-content: space-between;
+            grid-auto-flow: column;
+            gap: 24px;
+
+            label {
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+.phones {
+    .phones__list {
+        display: grid;
+        grid-auto-flow: row;
+        gap: 24px;
+    }
+
+    .phones__phone {
+        font-family: "Commissioner 500";
+        font-size: 24px;
+        margin-bottom: 16px;
+    }
+
+    .phones__address-list {
+        color: $base-text-gray;
+        display: grid;
+        grid-auto-flow: row;
+        gap: 8px;
+    }
+
+    .phones__address {
+        display: grid;
+        grid-auto-flow: column;
+        gap: 4px;
+        align-items: center;
+        justify-content: start;
+
+        svg {
+            width: 16px;
+            height: 16px;
+        }
+    }
+}

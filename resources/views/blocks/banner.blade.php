@@ -7,7 +7,10 @@
                 </div>
                 <div class="">
                     <a class="ui-btn ui-btn-arrow">
-                        Заказать звонок
+                        <span>Заказать звонок</span>
+                        <svg>
+                            <use xlink:href="{{ asset('svg/sprite.svg#arrow-1') }}"></use>
+                        </svg>
                     </a>
                 </div>
             </div>

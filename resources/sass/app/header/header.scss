@@ -35,8 +35,20 @@
         align-items: center;
     }
 
-    .header__choose-city, .header__number, .header__lang {
+    .header__choose-city span, .header__number, .header__lang {
         color: #888CA2
     }
 
+    .header__choose-city {
+        display: grid;
+        justify-content: start;
+        grid-auto-flow: column;
+        gap: 4px;
+        align-items: center;
+
+        svg {
+            width: 16px;
+            height: 16px;
+        }
+    }
 }

@@ -1,3 +1,7 @@
+.ui-btn {
+    border: none;
+}
+
 .ui-btn.ui-btn-default {
     background: $base-color-2;
     color: $base-color;
@@ -8,7 +12,18 @@
 .ui-btn.ui-btn-arrow {
     background: $base-color;
     border-radius: 30px;
-    color: white;
-    padding: 18px 32px;
-    display: inline-block;
+    padding: 8px 8px 8px 32px;
+    display: inline-grid;
+    grid-auto-flow: column;
+    align-items: center;
+    gap: 16px;
+
+    span {
+        color: white;
+    }
+
+    svg {
+        width: 44px;
+        height: 44px;
+    }
 }

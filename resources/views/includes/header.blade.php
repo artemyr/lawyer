@@ -7,7 +7,12 @@
                 </svg>
             </a>
             <div class="header__choose-city">
-                Выберите город
+                <svg>
+                    <use xlink:href="{{ asset('svg/sprite.svg#point') }}"></use>
+                </svg>
+                <span>
+                    Выберите город
+                </span>
             </div>
         </div>
         @include('menu.menu')

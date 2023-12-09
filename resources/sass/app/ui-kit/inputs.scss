@@ -1,0 +1,16 @@
+.ui-input {
+    background: white;
+    width: 100%;
+    border: 1px solid #E7E9F1;
+    border-radius: 8px;
+    padding: 18px 16px;
+    margin-bottom: 16px;
+
+    &::placeholder {
+        color: $base-text-gray
+    }
+}
+
+textarea.ui-input {
+    min-height: 120px;
+}
