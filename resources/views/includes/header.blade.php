@@ -11,7 +11,7 @@
                     <use xlink:href="{{ asset('svg/sprite.svg#point') }}"></use>
                 </svg>
                 <span>
-                    Выберите город
+                    {{ $userCity->name ?? 'Выберите город' }}
                 </span>
             </div>
         </div>

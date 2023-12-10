@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace App\Http\Middleware\App;
 
 use App\Models\Category;
 use App\Models\City;

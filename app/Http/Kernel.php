@@ -2,6 +2,9 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\App\AdminPanel;
+use App\Http\Middleware\App\CityMiddlevare;
+use App\Http\Middleware\App\GlobalVarsMiddlevare;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -36,7 +39,8 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-            \App\Http\Middleware\GlobalVarsMiddlevare::class,
+            GlobalVarsMiddlevare::class,
+            CityMiddlevare::class,
         ],
 
         'api' => [
@@ -65,6 +69,6 @@ class Kernel extends HttpKernel
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'admin' => \App\Http\Middleware\AdminPanel::class
+        'admin' => AdminPanel::class
     ];
 }

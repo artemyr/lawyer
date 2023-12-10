@@ -185,6 +185,6 @@ return [
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 
-    'routeListCacheTtl' => 1
+    'routeListCacheTtl' => 60
 
 ];

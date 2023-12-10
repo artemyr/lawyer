@@ -14,8 +14,8 @@
             </div>
         </div>
         <div class="services__list">
-            @foreach($G_categories as $category)
-                <a class="services__item" href="{{ ($city->link ?? '') .'/'. $category->link }}">
+            @foreach($G_categories as $key => $category)
+                <a class="services__item" href="{{ ($city->link ?? '') .'/'. $category->link }}" @if ($key > 23) style="display: none" @endif>
                     <span>{{ $category->name }}</span>
                 </a>
             @endforeach
