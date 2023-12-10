@@ -1,8 +1,8 @@
 <template>
     <div>
-        <h1>Редактировать города</h1>
+        <h1>Редактировать категории</h1>
 
-        <router-link :to="{name: 'admin.city.create'}" class="btn btn-success">Create</router-link>
+        <router-link :to="{name: 'admin.category.create'}" class="btn btn-success">Create</router-link>
 
         <table class="table table-striped table-dark">
             <thead>
@@ -16,7 +16,7 @@
                 <tr v-for="row in this.elements">
                     <td v-for="code in this.header">{{ row[code] }}</td>
                     <td>
-                        <router-link :to="{name:'admin.city.edit', params:{id: row.id} }" class="btn btn-success">edit</router-link>
+                        <router-link :to="{name:'admin.category.edit', params:{id: row.id} }" class="btn btn-success">edit</router-link>
                     </td>
                     <td>
                         <button @click.prevent="deleteElement(row.id)" class="btn btn-danger">delete</button>
@@ -48,7 +48,7 @@ export default defineComponent({
         }
     },
     mounted() {
-        this.get('/api/admin/cities');
+        this.get('/api/admin/categories');
     },
     methods: {
         async get (link) {
@@ -65,13 +65,13 @@ export default defineComponent({
                 })
         },
         deleteElement(id) {
-            axios.delete(`/api/admin/cities/${id}`)
+            axios.delete(`/api/admin/categories/${id}`)
                 .then(res => {
                     return this.get(this.curLink);
                 })
                 .then(res => {
                     if (this.elements.length == 0) {
-                        this.get('/api/admin/cities');
+                        this.get('/api/admin/categories');
                     }
                 })
         }

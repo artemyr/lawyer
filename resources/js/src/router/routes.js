@@ -26,8 +26,18 @@ const routes = [
     },
     {
         path: '/admin/categories',
-        name: 'admin.category',
-        component: () => import("../pages/Admin/Category.vue")
+        name: 'admin.category.index',
+        component: () => import("../pages/Admin/Category/CategoryIndex.vue")
+    },
+    {
+        path: '/admin/categories/:id',
+        name: 'admin.category.edit',
+        component: () => import("../pages/Admin/Category/CategoryEdit.vue")
+    },
+    {
+        path: '/admin/categories/create',
+        name: 'admin.category.create',
+        component: () => import("../pages/Admin/Category/CategoryCreate.vue")
     },
     {
         path: '/admin/article',

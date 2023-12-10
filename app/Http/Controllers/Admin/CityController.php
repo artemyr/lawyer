@@ -10,31 +10,36 @@ use App\Models\City;
 
 class CityController extends Controller
 {
-    public function index ()
+    public function index()
     {
         return CityResource::collection(City::paginate(20));
     }
 
-    public function show (City $city)
+    public function show(City $city)
     {
         return new CityResource($city);
     }
 
-    public function store (StoreRequest $request)
+    public function store(StoreRequest $request)
     {
         City::create($request->validated());
         return response([]);
     }
 
-    public function update (UpdateRequest $request, City $city)
+    public function update(UpdateRequest $request, City $city)
     {
         $city->update($request->validated());
         return response([]);
     }
 
-    public function destroy (City $city)
+    public function destroy(City $city)
     {
         $city->delete();
         return response([]);
+    }
+
+    public function all()
+    {
+        return CityResource::collection(City::get());
     }
 }

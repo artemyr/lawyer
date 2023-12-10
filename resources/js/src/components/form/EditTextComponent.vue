@@ -10,7 +10,8 @@
 import {defineComponent} from "vue";
 
 export default defineComponent({
-    props: ['id', 'name', 'type', 'help', 'value', 'placeholder']
+    props: ['id', 'name', 'type', 'help', 'value', 'placeholder'],
+
 })
 </script>
 

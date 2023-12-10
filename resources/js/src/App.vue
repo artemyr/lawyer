@@ -23,9 +23,10 @@ export default defineComponent({
 <style lang="scss">
     .body {
         background: #242424;
-        height: 100vh;
+        min-height: 100vh;
         color: white;
         padding-top: 20px;
+        padding-bottom: 100px;
 
         a {
             color: white;
