@@ -4,7 +4,7 @@
         <div class="article-1">
             <div>
                 <div class="title-1">
-                    Юридические услуги <br><span>онлайн, по телефону или лично</span>
+                    Юридические услуги <span>онлайн,<br> по телефону или лично</span>
                 </div>
             </div>
             <div>

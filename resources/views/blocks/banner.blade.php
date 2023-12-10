@@ -5,7 +5,7 @@
                 <div class="banner__title">
                     {!! $banner_title !!}
                 </div>
-                <div class="">
+                <div>
                     <a class="ui-btn ui-btn-arrow">
                         <span>Заказать звонок</span>
                         <svg>

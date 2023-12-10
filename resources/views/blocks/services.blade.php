@@ -16,9 +16,20 @@
         <div class="services__list">
             @foreach($G_categories as $key => $category)
                 <a class="services__item" href="{{ ($city->link ?? '') .'/'. $category->link }}" @if ($key > 23) style="display: none" @endif>
+                    <svg>
+                        <use xlink:href="{{ asset('svg/sprite.svg#' . $category->icon) }}"></use>
+                    </svg>
                     <span>{{ $category->name }}</span>
                 </a>
             @endforeach
+        </div>
+        <div class="services__footer">
+            <a class="ui-btn ui-btn-arrow">
+                <span>Заказать звонок</span>
+                <svg>
+                    <use xlink:href="{{ asset('svg/sprite.svg#button-plus') }}"></use>
+                </svg>
+            </a>
         </div>
     </div>
 </div>

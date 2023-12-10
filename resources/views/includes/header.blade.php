@@ -1,7 +1,7 @@
 <div class="container">
     <div class="header">
         <div class="header__left">
-            <a href="{{ route('main') }}">
+            <a href="{{ isset($userCity) ? '/' . $userCity->link : route('main') }}">
                 <svg class="logo">
                     <use xlink:href="{{ asset('svg/sprite.svg#logo') }}"></use>
                 </svg>
