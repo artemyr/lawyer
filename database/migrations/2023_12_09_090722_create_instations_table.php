@@ -16,6 +16,7 @@ return new class extends Migration
 
             $table->string('name')->unique();
             $table->string('link')->unique();
+            $table->unsignedBigInteger('category_id')->default(0);
 
             $table->timestamps();
         });

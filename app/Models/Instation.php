@@ -9,4 +9,9 @@ class Instation extends Model
 {
     use HasFactory;
     protected $guarded = false;
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

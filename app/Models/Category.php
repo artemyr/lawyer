@@ -12,10 +12,15 @@ class Category extends Model
     protected $table = 'categories';
     protected $guarded = false;
 
-//    public function city()
-//    {
-//        return $this->belongsTo(City::class);
-//    }
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+    }
+
+    public function instations()
+    {
+        return $this->hasMany(Instation::class);
+    }
 
     public function children () {
         return $this->hasMany(self::class, 'parent_id');

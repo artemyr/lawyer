@@ -8,8 +8,6 @@ use App\Http\Controllers\DynamicUrl\DefaultController;
 use App\Http\Controllers\DynamicUrl\DynamicUrlInterface;
 use App\Http\Controllers\DynamicUrl\GosInstansController;
 use App\Http\Controllers\DynamicUrl\GosInstansDetailController;
-use App\Http\Controllers\DynamicUrl\PostController;
-use Illuminate\Support\Facades\Cache;
 
 class UrlValidator extends UrlValidatorAbstract
 {
@@ -41,6 +39,7 @@ class UrlValidator extends UrlValidatorAbstract
                         return new CategoryController;
                     }
                 } elseif (in_array($this->parts[0], $this->getCategories())) {
+                    $this->category = $this->parts[0];
                     if ($this->parts[1] === 'instation') {
                         return new GosInstansController();
                     }
@@ -51,7 +50,7 @@ class UrlValidator extends UrlValidatorAbstract
                  * 3 слага - гос инстанция детальная
                  */
                 if (in_array($this->parts[0], $this->getCategories())) {
-                    $this->city = $this->parts[0];
+                    $this->category = $this->parts[0];
                     if ($this->parts[1] === 'instation') {
                         if (in_array($this->parts[2], $this->getGosInstanses())) {
                             $this->gosInstans = $this->parts[2];
