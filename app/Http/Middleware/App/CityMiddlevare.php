@@ -25,6 +25,17 @@ class CityMiddlevare
         if (!empty($city)) {
             if (in_array($city, Cache::get('cityRouteList'))) {
                 Cookie::queue('city', $request->get('setCity'), 60);
+                $cities = Cache::get('G_cities');
+                $city = $cities->where('link', $city)->first();
+                View::share('userCity', $city);
+            }
+        } else {
+            $city = $request->cookie('city');
+            if (!empty($city)) {
+                /** @var Collection $cities */
+                $cities = Cache::get('G_cities');
+                $city = $cities->where('link', $city)->first();
+                View::share('userCity', $city);
             }
         }
 
@@ -35,14 +46,6 @@ class CityMiddlevare
                     return redirect('/' . $city, 301);
                 }
             }
-        }
-
-        $city = $request->cookie('city');
-        if (!empty($city)) {
-            /** @var Collection $cities */
-            $cities = Cache::get('G_cities');
-            $city = $cities->where('link', $city)->first();
-            View::share('userCity', $city);
         }
 
         return $next($request);

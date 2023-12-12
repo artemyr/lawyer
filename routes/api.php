@@ -44,3 +44,5 @@ Route::group([
         Route::patch('/{category}', [CategoryController::class, 'update'])->name('admin.categories.update');
     });
 });
+
+Route::get('/cities/all', [CityController::class, 'all']);

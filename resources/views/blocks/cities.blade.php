@@ -12,6 +12,8 @@
             </div>
         </div>
 
+        <city-select-component></city-select-component>
+
         <div class="cities__list">
             @foreach($G_cities as $key => $city)
                 <div class="cities__item" @if ($key > 23) style="display: none" @endif>
