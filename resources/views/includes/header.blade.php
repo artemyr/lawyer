@@ -32,9 +32,25 @@
     </div>
 
     <div id="main-services-menu">
-        <ul>
-            @include('menu.services_menu')
-        </ul>
+        <div class="main-services-menu__spoiler">
+            <div class="main-services-menu__left">
+                <a class="main-services-menu__services-link" href="{{ route('services') }}">
+                    <span>Услуги</span>
+                    <svg>
+                        <use xlink:href="{{ asset('svg/sprite.svg#arrow-3') }}"></use>
+                    </svg>
+                </a>
+                <ul>
+                    @include('menu.services_menu')
+                </ul>
+            </div>
+            <div class="main-services-menu__center" js-service-menu="submenu">
+
+            </div>
+            <div class="main-services-menu__right">
+
+            </div>
+        </div>
     </div>
 
 </div>

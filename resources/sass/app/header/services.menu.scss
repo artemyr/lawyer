@@ -1,7 +1,7 @@
 #main-services-menu {
     position: relative;
 
-    &>ul {
+    .main-services-menu__spoiler {
         position: absolute;
         bottom: 0;
         width: 100%;
@@ -9,10 +9,39 @@
         z-index: 20;
         background: white;
         border-radius: 0 0 11px 11px;
+
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+
+        & > div {
+            padding:40px;
+        }
     }
 
-    &.active > ul {
+    &.active .main-services-menu__spoiler {
         transform: translateY(100%);
+    }
+
+    .main-services-menu__left {
+        & > ul {
+            display: grid;
+            grid-auto-flow: row;
+            gap: 16px;
+        }
+
+        .main-services-menu__services-link {
+            margin-bottom: 24px;
+            display: grid;
+            grid-auto-flow: column;
+            align-items: center;
+            justify-content: start;
+            gap: 8px;
+
+             svg {
+                 height: 32px;
+                 width: 32px;
+             }
+        }
     }
 
     .dropdown-menu__icon {

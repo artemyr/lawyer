@@ -17,16 +17,16 @@ createApp(CitySelectComponent)
 (function (window) {
     'use strict';
 
-    if (window.mainMap)
+    if (window.mainMenu)
         return;
 
-    window.mainMap = function (arParams)
+    window.mainMenu = function (arParams)
     {
         this.params = arParams;
         this.init();
     };
 
-    window.mainMap.prototype = {
+    window.mainMenu.prototype = {
         init: function()
         {
             const mainMenuToggle = document.querySelector('[js-toggle-menu="toggler"] a')
@@ -46,6 +46,18 @@ createApp(CitySelectComponent)
                     mainServicesMenu.classList.remove('active');
                     shadow.classList.remove('active');
                 }
+            })
+
+            const submenu = document.querySelector('[js-service-menu="submenu"]')
+            const menuItems = mainServicesMenu.querySelectorAll('[js-service-menu="item"]')
+            menuItems.forEach(el => {
+                el.addEventListener('mouseenter', (e) => {
+                    let template = document.getElementById('menu-services-template-' + e.target.getAttribute('data-id'));
+                    submenu.innerHTML = '';
+                    if (template) {
+                        submenu.appendChild(template.content.cloneNode(true));
+                    }
+                })
             })
         },
     }
