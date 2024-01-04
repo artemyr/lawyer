@@ -1,4 +1,22 @@
 .footer {
+    padding-top: 96px;
+    padding-bottom: 20px;
     background: $base-text-color;
     color: #fff;
+
+    .logo {
+        height: 40px;
+    }
+
+    .footer_top {
+        display: grid;
+        grid-auto-flow: column;
+        justify-content: space-between;
+
+        & > div {
+            display: grid;
+            grid-auto-flow: column;
+            gap: 40px;
+        }
+    }
 }
