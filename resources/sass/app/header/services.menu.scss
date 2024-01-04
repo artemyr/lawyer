@@ -1,0 +1,22 @@
+#main-services-menu {
+    position: relative;
+
+    &>ul {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        transition: .3s;
+        z-index: 20;
+        background: white;
+        border-radius: 0 0 11px 11px;
+    }
+
+    &.active > ul {
+        transform: translateY(100%);
+    }
+
+    .dropdown-menu__icon {
+        height: 28px;
+        width: 28px;
+    }
+}

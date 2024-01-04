@@ -22,6 +22,23 @@ body {
     }
 }
 
+#shadow {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 5;
+    background: black;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    transition: .3s;
+    pointer-events: none;
+
+    &.active {
+        opacity: .5;
+    }
+}
+
 @media (min-width: 1400px) {
     .container {
         max-width: 1384px;

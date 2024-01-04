@@ -30,4 +30,11 @@
             </div>
         </div>
     </div>
+
+    <div id="main-services-menu">
+        <ul>
+            @include('menu.services_menu')
+        </ul>
+    </div>
+
 </div>

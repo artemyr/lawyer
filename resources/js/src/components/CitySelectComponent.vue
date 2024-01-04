@@ -1,6 +1,6 @@
 <template>
     <div class="city-select">
-        <div>
+        <div class="city-select__select">
             <model-list-select
                 :list="options"
                 v-model="city"
@@ -8,13 +8,13 @@
                 option-text="name"
                 id="mySelectId"
                 name="mySelectName"
-                placeholder="select item"
+                placeholder="Выберите город"
                 @searchchange="printSearchText"
                 @blur="handleBlur"
                 @update:model-value="handleChange"
             />
         </div>
-        <div>
+        <div class="city-select__reset">
             <button @click.prevent="reset">Сбросить</button>
         </div>
     </div>
@@ -65,10 +65,48 @@ export default defineComponent({
 })
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
     .city-select {
         display: grid;
         grid-auto-flow: column;
         grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+
+        .city-select__select {
+            .search, .dropdown {
+                min-height: 60px;
+                cursor: pointer;
+            }
+
+            .ui.selection.active.dropdown {
+                border-radius: 8px!important;
+            }
+
+            .search.selection, .ui.selection.dropdown .menu {
+                border: none;
+                border-radius: 8px;
+            }
+
+            .dropdown {
+                display: grid;
+                align-items: center;
+            }
+
+            .ui.selection.dropdown .menu {
+                margin-top: 4px;
+            }
+        }
+
+        .city-select__reset {
+            display: grid;
+            align-items: center;
+            justify-content: end;
+
+            button {
+                background: transparent;
+                border: none;
+                color: #888CA2;
+            }
+        }
     }
 </style>

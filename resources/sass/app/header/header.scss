@@ -1,54 +1,64 @@
 @import "menu";
+@import "services.menu";
 
-.header {
-    display: grid;
-    justify-content: space-between;
-    grid-auto-flow: column;
-    min-height: 60px;
-    align-items: center;
-    margin-top: 16px;
-    margin-bottom: 8px;
+header {
+    background: white;
+    position: relative;
+    z-index: 30;
 
-    .logo {
-        height: 28px;
-        width: 150px;
-    }
-
-    .header__left {
+    .header {
         display: grid;
+        justify-content: space-between;
         grid-auto-flow: column;
-        gap: 20px;
+        min-height: 60px;
         align-items: center;
-    }
+        padding-top: 16px;
+        padding-bottom: 8px;
+        position: relative;
+        z-index: 30;
+        background: white;
 
-    .header__right {
-        display: grid;
-        grid-auto-flow: column;
-        gap: 28px;
-        align-items: center;
-    }
+        .logo {
+            height: 28px;
+            width: 150px;
+        }
 
-    .header__phone-lang {
-        display: grid;
-        grid-auto-flow: column;
-        gap: 20px;
-        align-items: center;
-    }
+        .header__left {
+            display: grid;
+            grid-auto-flow: column;
+            gap: 20px;
+            align-items: center;
+        }
 
-    .header__choose-city span, .header__number, .header__lang {
-        color: #888CA2
-    }
+        .header__right {
+            display: grid;
+            grid-auto-flow: column;
+            gap: 28px;
+            align-items: center;
+        }
 
-    .header__choose-city {
-        display: grid;
-        justify-content: start;
-        grid-auto-flow: column;
-        gap: 4px;
-        align-items: center;
+        .header__phone-lang {
+            display: grid;
+            grid-auto-flow: column;
+            gap: 20px;
+            align-items: center;
+        }
 
-        svg {
-            width: 16px;
-            height: 16px;
+        .header__choose-city span, .header__number, .header__lang {
+            color: #888CA2
+        }
+
+        .header__choose-city {
+            display: grid;
+            justify-content: start;
+            grid-auto-flow: column;
+            gap: 4px;
+            align-items: center;
+
+            svg {
+                width: 16px;
+                height: 16px;
+            }
         }
     }
 }
