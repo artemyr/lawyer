@@ -4,6 +4,10 @@
     background: $base-text-color;
     color: #fff;
 
+    a {
+        color: #fff;
+    }
+
     .logo {
         height: 40px;
     }
@@ -12,11 +16,98 @@
         display: grid;
         grid-auto-flow: column;
         justify-content: space-between;
+        margin-bottom: 108px;
+
+        .footer__phone {
+            display: grid;
+            grid-auto-flow: row;
+            justify-content: space-between;
+            .footer__phone-number {
+                font-family: 'Commissioner 500';
+                font-size: 20px;
+                color: $base-color;
+            }
+            .footer__phone-label {
+                font-size: 14px;
+                color: #696B77;
+            }
+        }
 
         & > div {
             display: grid;
             grid-auto-flow: column;
             gap: 40px;
+        }
+
+        .footer__btns {
+            display: grid;
+            grid-auto-flow: column;
+            gap: 8px;
+        }
+
+        .footer__to-top-btn {
+            display: grid;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 100%;
+            cursor: pointer;
+
+            svg {
+                height: 28px;
+                width: 28px;
+            }
+        }
+    }
+
+    .footer__bottom {
+
+        margin-bottom: 72px;
+
+        .footer__menu {
+            display: grid;
+            grid-auto-flow: column;
+            justify-content: space-between;
+
+            .footer-menu {
+                display: grid;
+                grid-auto-flow: column;
+                gap: 32px;
+
+                .footer-menu__title {
+                    color: #696B77;
+                    font-size: 20px;
+                }
+
+                ul {
+                    display: grid;
+                    grid-auto-flow: row;
+                    grid-auto-rows: min-content;
+                    gap: 16px;
+                }
+            }
+        }
+
+        .footer-socials {
+            margin-top: 32px;
+
+            p {
+                margin-bottom: 16px;
+            }
+
+            .footer-socials__list {
+
+                display: grid;
+                grid-auto-flow: column;
+                gap: 12px;
+
+                svg {
+                    width: 40px;
+                    height: 40px;
+                }
+            }
         }
     }
 }
