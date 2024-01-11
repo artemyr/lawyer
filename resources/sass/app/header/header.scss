@@ -48,6 +48,12 @@ header {
             color: #888CA2
         }
 
+        @include size768 {
+            .header__number, .header__lang {
+                display: none;
+            }
+        }
+
         .header__choose-city {
             display: grid;
             justify-content: start;

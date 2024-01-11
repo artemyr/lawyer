@@ -5,6 +5,14 @@
         gap: 16px;
         margin-bottom: 16px;
 
+        @include size1024 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @include size768 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
         .services__item {
             background: #f0f1f5;
             border-radius: 10px;

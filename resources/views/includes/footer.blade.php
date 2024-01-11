@@ -1,4 +1,14 @@
 <div class="footer">
+
+    <div id="map" style="height: 420px"></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            const obj_map = new JCmap({
+                "center": [45.035470, 38.975313],
+            });
+        })
+    </script>
+
     <div class="container">
         <div class="footer_top">
             <div>

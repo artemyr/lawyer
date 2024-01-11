@@ -1,5 +1,4 @@
 .footer {
-    padding-top: 96px;
     padding-bottom: 20px;
     background: $base-text-color;
     color: #fff;
@@ -10,12 +9,18 @@
 
     .logo {
         height: 40px;
+
+        @include size768 {
+            height: 28px;
+            width: 155px;
+        }
     }
 
     .footer_top {
         display: grid;
         grid-auto-flow: column;
         justify-content: space-between;
+        padding-top: 96px;
         margin-bottom: 108px;
 
         .footer__phone {
@@ -26,6 +31,10 @@
                 font-family: 'Commissioner 500';
                 font-size: 20px;
                 color: $base-color;
+
+                @include size768 {
+                    font-size: 18px;
+                }
             }
             .footer__phone-label {
                 font-size: 14px;

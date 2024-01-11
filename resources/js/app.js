@@ -17,8 +17,7 @@ createApp(CitySelectComponent)
 (function (window) {
     'use strict';
 
-    if (window.mainMenu)
-        return;
+    if (window.mainMenu) return;
 
     window.mainMenu = function (arParams)
     {
@@ -61,4 +60,33 @@ createApp(CitySelectComponent)
             })
         },
     }
-})(window)
+})(window);
+
+(function (window){
+    'use strict';
+
+    if (window.JCmap) return;
+
+    window.JCmap = function (arParams)
+    {
+        this.params = arParams;
+        this.init();
+    };
+
+    window.JCmap.prototype = {
+        init: function()
+        {
+            let yaMapInit = () => {
+                if (!document.getElementById('map')) return;
+                const myMap = new ymaps.Map('map', {
+                    center: this.params.center,
+                    zoom: 10,
+                    controls: ['zoomControl'],
+                    behaviors: ['drag'],
+                });
+            }
+
+            ymaps.ready(yaMapInit);
+        },
+    }
+})(window);

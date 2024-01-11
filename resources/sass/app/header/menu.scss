@@ -4,4 +4,9 @@
         grid-auto-flow: column;
         gap: 20px;
     }
+
+    @include size1024 {
+        display: none;
+    }
 }
+

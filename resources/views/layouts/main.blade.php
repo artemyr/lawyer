@@ -10,6 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru-RU&apikey=dbe92ebd-1c70-436b-a435-6457f76bf351" type="text/javascript"></script>
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
