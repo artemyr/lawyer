@@ -23,8 +23,8 @@ Route::get('/home', [Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/uslugi/', [Controllers\CategoryController::class, 'index'])->name('services');
 Route::get('/blog/', [Controllers\BlogController::class, 'index'])->name('blog');
-Route::get('/kontakty/', [Controllers\ContactController::class, 'index'])->name('blog');
-Route::get('/politica/', [Controllers\PolicyController::class, 'index'])->name('blog');
+Route::get('/kontakty/', [Controllers\ContactController::class, 'index'])->name('contacts');
+Route::get('/politica/', [Controllers\PolicyController::class, 'index'])->name('policy');
 
 /**
  * admin

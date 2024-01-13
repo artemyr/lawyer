@@ -9,3 +9,13 @@
         grid-auto-flow: row;
     }
 }
+
+.article-2 {
+    .text {
+        margin-top: 32px;
+        color: $base-text-gray;
+    }
+    .ui-btn {
+        margin-top: 32px;
+    }
+}
