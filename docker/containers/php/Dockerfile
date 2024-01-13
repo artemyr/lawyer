@@ -26,7 +26,7 @@ RUN cd /bin && curl --silent --show-error https://getcomposer.org/installer | ph
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 
 RUN chmod +x /usr/local/bin/install-php-extensions && \
-    install-php-extensions openssl pdo_mysql mbstring tokenizer xml mysqli
+    install-php-extensions openssl pdo_mysql mbstring tokenizer xml mysqli xdebug
 
 #ADD ./conf/php.ini /etc/php/8.2/fpm/php.ini
 #ADD ./conf/php.ini /etc/php/8.2/cli/php.ini
@@ -37,6 +37,8 @@ ADD ./conf/php.ini /usr/local/etc/php/php.ini
 
 RUN sed -i -e "s/www-data:x:82:82:Linux User,,,:\/home\/www-data:\/sbin\/nologin/www-data:x:${USER_ID}:${GROUP_ID}:Linux User,,,:\/home\/www-data:\/bin\/bash/g" /etc/passwd
 RUN sed -i -e "s/www-data:x:82:www-data/www-data:x:${GROUP_ID}:www-data/g" /etc/group
+
+ADD ./conf/docker-php-ext-xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
 WORKDIR /var/www/html
 RUN export HOME="/var/www/html"

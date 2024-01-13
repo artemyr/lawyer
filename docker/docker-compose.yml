@@ -51,6 +51,9 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_HOST: ${MYSQL_HOST}
       PROJECT_PREFIX: "$PROJECT_PREFIX"
+      PHP_IDE_CONFIG: serverName=Docker
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
   mysql:
     platform: linux/amd64
