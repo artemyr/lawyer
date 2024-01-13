@@ -103,3 +103,13 @@ createApp(CitySelectComponent)
         },
     }
 })(window);
+
+(function (window) {
+    const body = document.querySelector('body')
+    document.querySelectorAll('[data-scroll-to-top]').forEach(el => {
+        el.onclick = () => {
+            body.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+        }
+    })
+})(window);
+

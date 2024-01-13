@@ -32,7 +32,7 @@
                             <use xlink:href="http://lawyer.localhost/svg/sprite.svg#button-plus"></use>
                         </svg>
                     </a>
-                    <div class="footer__to-top-btn">
+                    <div class="footer__to-top-btn" data-scroll-to-top="">
                         <svg>
                             <use xlink:href="{{ asset('svg/sprite.svg#arrow-4') }}"></use>
                         </svg>

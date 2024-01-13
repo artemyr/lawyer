@@ -15,5 +15,4 @@
     @include('blocks.articles')
     @include('blocks.faq')
     @include('blocks.form-2')
-    @include('blocks.map')
 @endsection
