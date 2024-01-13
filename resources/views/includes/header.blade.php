@@ -48,7 +48,16 @@
 
             </div>
             <div class="main-services-menu__right">
-
+                <div class="form-3">
+                    <div class="form-3__title">Готовы решить вашу <span>проблему?</span></div>
+                    <div class="form-3__text">Задайте ваш вопрос сейчас и получите ответ нашего юриста</div>
+                    <a class="ui-btn ui-btn-arrow ui-btn-arrow_white">
+                        <span>Задать вопрос</span>
+                        <svg>
+                            <use xlink:href="{{ asset('svg/sprite.svg#arrow-5') }}"></use>
+                        </svg>
+                    </a>
+                </div>
             </div>
         </div>
     </div>

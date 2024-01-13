@@ -1,0 +1,159 @@
+.form {
+    .form__wrapper {
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-columns: repeat(2, 1fr);
+
+        @include size1024 {
+            grid-auto-flow: row;
+            grid-template-columns: 1fr;
+        }
+
+        .form__title {
+            height: 313px;
+        }
+
+        .form__left, .form__right {
+            background: $base-gray;
+            border-radius: 16px;
+            padding: 48px;
+
+            @include size1024 {
+                padding: 40px;
+            }
+
+            @include size375 {
+                padding: 20px;
+            }
+        }
+
+        .form__submit {
+            display: grid;
+            justify-content: space-between;
+            grid-auto-flow: column;
+            gap: 24px;
+
+            label {
+                font-size: 14px;
+            }
+        }
+    }
+
+    .phones {
+        .phones__list {
+            display: grid;
+            grid-auto-flow: row;
+            gap: 24px;
+        }
+
+        .phones__phone {
+            font-family: "Commissioner 500";
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+
+        .phones__address-list {
+            color: $base-text-gray;
+            display: grid;
+            grid-auto-flow: row;
+            gap: 8px;
+        }
+
+        .phones__address {
+            display: grid;
+            grid-auto-flow: column;
+            gap: 4px;
+            align-items: center;
+            justify-content: start;
+
+            svg {
+                width: 16px;
+                height: 16px;
+            }
+        }
+    }
+}
+
+.form-2 {
+    margin-top: 96px;
+    background: $base-color;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: auto max-content;
+    justify-content: space-between;
+    gap: 40px;
+    border-radius: 16px;
+    padding: 48px;
+    color: white;
+
+    .form-2__title {
+        font-size: 52px;
+        color: white;
+        font-family: 'Commissioner 600';
+        span {
+            color: rgba(255, 255, 255, 0.40);
+        }
+    }
+
+    .form-2__right {
+        form {
+            display: grid;
+            grid-auto-flow: row;
+            gap: 16px;
+        }
+    }
+
+    input {
+        background: rgba(255, 255, 255, 0.20);
+        border-radius: 8px;
+        border: none;
+        padding: 16px;
+        color: white;
+
+        &::placeholder {
+            color: white;
+        }
+    }
+
+    .form-2__sign {
+        display: grid;
+        grid-auto-flow: column;
+        gap: 20px;
+
+        svg {
+            height: 20px;
+            width: 20px;
+        }
+
+        p {
+            font-size: 14px;
+            color: white;
+            padding-right: 88px;
+
+            a {
+                color: white;
+            }
+        }
+    }
+}
+
+.form-3 {
+    background: $base-color;
+    border-radius: 16px;
+    padding: 20px;
+
+    .form-3__title {
+        font-family: 'Commissioner 500';
+        font-size: 24px;
+        color: white;
+        margin-bottom: 16px;
+
+        span {
+            color: rgba(255, 255, 255, 0.40);;
+        }
+    }
+    .form-3__text {
+        color: white;
+        margin-bottom: 144px;
+    }
+}
