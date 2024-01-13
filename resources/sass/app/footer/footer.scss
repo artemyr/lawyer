@@ -23,6 +23,10 @@
         padding-top: 96px;
         margin-bottom: 108px;
 
+        @include size375 {
+            grid-auto-flow: row;
+        }
+
         .footer__phone {
             display: grid;
             grid-auto-flow: row;
@@ -80,10 +84,18 @@
             grid-auto-flow: column;
             justify-content: space-between;
 
+            @include size375 {
+                grid-auto-flow: row;
+            }
+
             .footer-menu {
                 display: grid;
                 grid-auto-flow: column;
                 gap: 32px;
+
+                @include size375 {
+                    grid-auto-flow: row;
+                }
 
                 .footer-menu__title {
                     color: #696B77;

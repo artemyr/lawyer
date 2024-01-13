@@ -17,6 +17,14 @@
             background: $base-gray;
             border-radius: 16px;
             padding: 48px;
+
+            @include size1024 {
+                padding: 40px;
+            }
+
+            @include size375 {
+                padding: 20px;
+            }
         }
 
         .form__submit {

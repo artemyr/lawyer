@@ -13,6 +13,10 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
 
+        @include size375 {
+            grid-template-columns: 1fr;
+        }
+
         & > div {
             padding:40px;
         }

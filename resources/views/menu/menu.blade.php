@@ -18,6 +18,6 @@
 </nav>
 <script>
     document.addEventListener('DOMContentLoaded', function(){
-        var obj_mainMap = new mainMenu({});
+        window.obj_mainMap = new mainMenu({});
     })
 </script>

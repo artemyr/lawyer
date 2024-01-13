@@ -8,6 +8,10 @@
             height: 700px;
         }
 
+        @include size375 {
+            height: 573px;
+        }
+
         img {
             position: absolute;
             width: 100%;
@@ -32,6 +36,11 @@
 
             @include size1024 {
                 font-size: 64px;
+            }
+
+            @include size375 {
+                font-size: 36px;
+                letter-spacing: -1.8px;
             }
 
             span {

@@ -7,6 +7,14 @@
     font-family: 'Commissioner 600', serif;
     margin-bottom: 18px;
 
+    @include size1024 {
+        font-size: 44px;
+    }
+
+    @include size375 {
+        font-size: 28px;
+    }
+
     span {
         color: $base-color;
     }

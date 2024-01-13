@@ -1,12 +1,23 @@
 .cities {
+
     background: $base-gray;
     padding-bottom: 96px;
     padding-top: 100px;
+
     .cities__list {
         display: grid;
         gap: 8px;
         grid-template-columns: repeat(4, 1fr);
         padding-top: 20px;
+
+        @include size1024 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @include size375 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
         .cities__item {
             background: #fff;
             border-radius: 10px;

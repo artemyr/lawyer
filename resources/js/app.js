@@ -22,33 +22,46 @@ createApp(CitySelectComponent)
     window.mainMenu = function (arParams)
     {
         this.params = arParams;
+        this.mainMenuToggle = {};
+        this.mainServicesMenu = {};
+        this.shadow = {};
         this.init();
     };
 
     window.mainMenu.prototype = {
         init: function()
         {
-            const mainMenuToggle = document.querySelector('[js-toggle-menu="toggler"] a')
-            const mainServicesMenu = document.getElementById('main-services-menu')
-            const shadow = document.getElementById('shadow')
+            this.mainMenuToggle = document.querySelector('[js-toggle-menu="toggler"] a')
+            this.mainServicesMenu = document.getElementById('main-services-menu')
+            this.shadow = document.getElementById('shadow')
 
-            mainMenuToggle.addEventListener('click',(e) => {
+            this.mainMenuToggle.addEventListener('click',(e) => {
                 e.preventDefault();
             })
+
             document.addEventListener('click',(e) => {
                 if (e.target.closest('[js-toggle-menu="toggler"]')) {
-                    mainServicesMenu.classList.toggle('active');
-                    shadow.classList.toggle('active');
+                    this.open();
                 } else if (e.target.closest('#main-services-menu')) {
 
                 } else {
-                    mainServicesMenu.classList.remove('active');
-                    shadow.classList.remove('active');
+                    this.close();
                 }
             })
 
+            this.submenu();
+        },
+        open: function () {
+            this.mainServicesMenu.classList.toggle('active');
+            this.shadow.classList.toggle('active');
+        },
+        close: function () {
+            this.mainServicesMenu.classList.remove('active');
+            this.shadow.classList.remove('active');
+        },
+        submenu: function () {
             const submenu = document.querySelector('[js-service-menu="submenu"]')
-            const menuItems = mainServicesMenu.querySelectorAll('[js-service-menu="item"]')
+            const menuItems = this.mainServicesMenu.querySelectorAll('[js-service-menu="item"]')
             menuItems.forEach(el => {
                 el.addEventListener('mouseenter', (e) => {
                     let template = document.getElementById('menu-services-template-' + e.target.getAttribute('data-id'));
@@ -58,7 +71,7 @@ createApp(CitySelectComponent)
                     }
                 })
             })
-        },
+        }
     }
 })(window);
 
