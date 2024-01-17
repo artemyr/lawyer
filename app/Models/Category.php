@@ -17,6 +17,11 @@ class Category extends Model
         return $this->belongsTo(City::class);
     }
 
+    public function icon()
+    {
+        return $this->hasOne(Icon::class, 'id','icon_id');
+    }
+
     public function instations()
     {
         return $this->hasMany(Instation::class);

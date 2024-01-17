@@ -30,7 +30,7 @@ class GlobalVarsMiddlevare
 
     private function categories () {
         if (!Cache::has('G_categories'))
-            Cache::put('G_categories', Category::with('children')->where('parent_id', 0)->get(), 60);
+            Cache::put('G_categories', Category::with('children')->where('parent_id', 0)->where('active', true)->orderBy('sort')->get(), 60);
 
         if (!Cache::has('categoryRouteList')) {
             $this->getCategoryRoutList(Cache::get('G_categories'));

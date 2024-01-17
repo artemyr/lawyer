@@ -16,9 +16,11 @@ return new class extends Migration
 
             $table->string('name');
             $table->string('link');
-            $table->string('icon')->nullable();
+            $table->integer('icon_id')->nullable();
             $table->unsignedBigInteger('parent_id')->default(0);
             $table->unsignedBigInteger('city_id')->default(0);
+            $table->integer('sort')->default(500);
+            $table->boolean('active')->default(true);
 
             $table->timestamps();
         });

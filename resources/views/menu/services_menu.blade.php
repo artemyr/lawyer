@@ -1,7 +1,7 @@
 @foreach($G_categories as $category)
     @if ($category->children->count())
         <li class="dropdown-menu__item" js-service-menu="item" data-id="{{ $category->id }}">
-            <svg class="dropdown-menu__icon"><use xlink:href="{{ asset('svg/sprite.svg#').$category->icon }}"></use></svg>
+            <svg class="dropdown-menu__icon"><use xlink:href="{{ asset('svg/sprite.svg#').$category->icon->code }}-small"></use></svg>
             <a class="" href="{{ (isset($userCity) ? "/$userCity->link/" : '/'). $category->link }}">{{ $category->name }}</a>
             <svg class="dropdown-menu__icon"><use xlink:href="{{ asset('svg/sprite.svg#arrow-2') }}"></use></svg>
 
@@ -18,7 +18,7 @@
         @endisset
 
         <li class="dropdown-menu__item" js-service-menu="item" data-id="{{ $category->id }}">
-            <svg class="dropdown-menu__icon"><use xlink:href="{{ asset('svg/sprite.svg#').$category->icon }}"></use></svg>
+            <svg class="dropdown-menu__icon"><use xlink:href="{{ asset('svg/sprite.svg#').$category->icon->code }}-small"></use></svg>
             <a class="" href="{{ (isset($userCity) ? "/$userCity->link/" : '/'). $category->link }}">{{ $category->name }}</a>
         </li>
     @endif
