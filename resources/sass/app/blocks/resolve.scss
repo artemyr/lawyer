@@ -16,10 +16,18 @@
         grid-template-columns: repeat(3, 1fr);
         gap: 17px;
 
+        @include size375 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
         .resolve__item {
             border-radius: 16px;
             padding: 20px;
             background: $base-gray;
+
+            @include size1024 {
+                padding: 13px;
+            }
 
             &:nth-child(1), &:nth-child(9) {
                 background: $base-color;
@@ -49,6 +57,11 @@
 
         .resolve__text {
             font-size: 24px;
+
+            @include size1024 {
+                font-size: 16px;
+            }
+
             font-family: 'Commissioner 500';
         }
     }

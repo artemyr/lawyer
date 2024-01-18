@@ -13,7 +13,7 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
 
-        @include size375 {
+        @include size1024 {
             grid-template-columns: 1fr;
         }
 

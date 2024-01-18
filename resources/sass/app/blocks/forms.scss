@@ -78,7 +78,6 @@
     margin-top: 96px;
     background: $base-color;
     display: grid;
-    grid-auto-flow: column;
     grid-template-columns: auto max-content;
     justify-content: space-between;
     gap: 40px;
@@ -86,8 +85,26 @@
     padding: 48px;
     color: white;
 
+    @include size1024 {
+        grid-template-columns: 1fr;
+        padding: 40px;
+    }
+
+    @include size375 {
+        padding: 20px;
+    }
+
     .form-2__title {
         font-size: 52px;
+
+        @include size1024 {
+            font-size: 44px;
+        }
+
+        @include size375 {
+            font-size: 28px;
+        }
+
         color: white;
         font-family: 'Commissioner 600';
         span {
