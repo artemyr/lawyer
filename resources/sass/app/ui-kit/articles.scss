@@ -5,7 +5,7 @@
     grid-auto-flow: column;
     align-items: start;
 
-    @include size768 {
+    @include size1024 {
         grid-auto-flow: row;
     }
 }

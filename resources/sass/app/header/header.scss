@@ -18,7 +18,7 @@ header {
         z-index: 30;
         background: white;
 
-        @include size375 {
+        @include size768 {
             display: none;
         }
 
@@ -52,7 +52,7 @@ header {
             color: #888CA2
         }
 
-        @include size768 {
+        @include size1024 {
             .header__number, .header__lang {
                 display: none;
             }

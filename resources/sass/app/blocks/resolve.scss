@@ -14,10 +14,19 @@
     .resolve__wrapper {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 17px;
+        gap: 16px;
 
-        @include size375 {
+        @include size1440 {
+            gap: 11px;
+        }
+
+        @include size1024 {
+            gap: 8px;
+        }
+
+        @include size768 {
             grid-template-columns: repeat(2, 1fr);
+            gap: 5px;
         }
 
         .resolve__item {
@@ -25,8 +34,12 @@
             padding: 20px;
             background: $base-gray;
 
-            @include size1024 {
+            @include size1440 {
                 padding: 13px;
+            }
+
+            @include size1024 {
+                padding: 10px;
             }
 
             &:nth-child(1), &:nth-child(9) {
@@ -58,8 +71,12 @@
         .resolve__text {
             font-size: 24px;
 
-            @include size1024 {
+            @include size1440 {
                 font-size: 16px;
+            }
+
+            @include size768 {
+                font-size: 12px;
             }
 
             font-family: 'Commissioner 500';

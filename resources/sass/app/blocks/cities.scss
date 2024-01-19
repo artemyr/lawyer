@@ -10,11 +10,11 @@
         grid-template-columns: repeat(4, 1fr);
         padding-top: 20px;
 
-        @include size1024 {
+        @include size1440 {
             grid-template-columns: repeat(3, 1fr);
         }
 
-        @include size375 {
+        @include size768 {
             grid-template-columns: repeat(2, 1fr);
         }
 

@@ -7,11 +7,11 @@
     font-family: 'Commissioner 600', serif;
     margin-bottom: 18px;
 
-    @include size1024 {
+    @include size1440 {
         font-size: 44px;
     }
 
-    @include size375 {
+    @include size768 {
         font-size: 28px;
     }
 

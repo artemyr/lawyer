@@ -3,4 +3,11 @@
     grid-auto-flow: row;
     gap: 100px;
     padding-bottom: 96px;
+
+    @include size1440 {
+        gap: 80px;
+    }
+    @include size768 {
+        gap: 64px;
+    }
 }

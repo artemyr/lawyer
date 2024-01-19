@@ -1,10 +1,21 @@
 .howItWork {
+
+    @include size1024 {
+        .container {
+            background: $base-gray;
+            border-radius: 16px;
+            padding-top: 65px;
+            padding-bottom: 65px;
+        }
+    }
+
     .howItWork__wrapper {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
 
-        @include size768 {
+        @include size1024 {
             grid-template-columns: 1fr;
+            gap: 32px;
         }
 
         & > div {
@@ -13,11 +24,26 @@
             padding-top: 96px;
             padding-bottom: 96px;
 
+            @include size1024 {
+                background: transparent;
+            }
+
             &:nth-child(1) {
                 padding-left: 40px;
             }
             &:nth-child(2) {
                 padding-right: 40px;
+            }
+
+            @include size1024() {
+                padding: 0;
+
+                &:nth-child(1) {
+                    padding-left: 0;
+                }
+                &:nth-child(2) {
+                    padding-right: 0;
+                }
             }
         }
     }
@@ -35,6 +61,14 @@
             .howItWork__itemNumber {
                 color: $base-text-gray;
                 margin-bottom: 64px;
+
+                @include size1440 {
+                    margin-bottom: 32px;
+                }
+
+                @include size768 {
+                    margin-bottom: 24px;
+                }
             }
 
             .howItWork__itemTitle {

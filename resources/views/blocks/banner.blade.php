@@ -1,5 +1,5 @@
-<div class="container">
-    <div class="banner">
+<div class="banner">
+    <div class="container">
         <div class="banner__slide">
             <div class="banner__inner">
                 <div class="banner__title">
@@ -14,7 +14,11 @@
                     </a>
                 </div>
             </div>
-            <img src="{{ $banner }}">
+            <picture>
+                <source srcset="{{ $banner->bigImage }}" media="(min-width: 1025px)" />
+                <source srcset="{{ $banner->averageImage }}" media="(min-width: 767px)" />
+                <img src="{{ $banner->smallImage }}" />
+            </picture>
         </div>
     </div>
 </div>

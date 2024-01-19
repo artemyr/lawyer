@@ -1,5 +1,5 @@
-<div class="container">
-    <div class="howItWork">
+<div class="howItWork">
+    <div class="container">
         <div class="howItWork__wrapper">
             <div>
                 <div class="article-2">

@@ -1,4 +1,4 @@
-.ui-btn {
+ .ui-btn {
     border: none;
     cursor: pointer;
 }
@@ -20,6 +20,10 @@
     grid-template-columns: max-content min-content;
     justify-content: space-between;
     gap: 16px;
+
+    @include size768 {
+        padding: 2px 2px 2px 20px;
+    }
 
     span {
         color: white;

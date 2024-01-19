@@ -10,7 +10,7 @@
     .logo {
         height: 40px;
 
-        @include size768 {
+        @include size1024 {
             height: 28px;
             width: 155px;
         }
@@ -23,7 +23,7 @@
         padding-top: 96px;
         margin-bottom: 108px;
 
-        @include size375 {
+        @include size768 {
             grid-auto-flow: row;
         }
 
@@ -36,7 +36,7 @@
                 font-size: 20px;
                 color: $base-color;
 
-                @include size768 {
+                @include size1024 {
                     font-size: 18px;
                 }
             }
@@ -51,7 +51,7 @@
             grid-auto-flow: column;
             gap: 40px;
 
-            @include size375 {
+            @include size768 {
                 grid-auto-flow: row;
             }
         }
@@ -72,6 +72,16 @@
             border-radius: 100%;
             cursor: pointer;
 
+            @include size1440 {
+                width: 52px;
+                height: 52px;
+            }
+
+            @include size1440 {
+                width: 48px;
+                height: 48px;
+            }
+
             svg {
                 height: 28px;
                 width: 28px;
@@ -88,7 +98,7 @@
             grid-auto-flow: column;
             justify-content: space-between;
 
-            @include size768 {
+            @include size1024 {
                 grid-auto-flow: row;
             }
 
@@ -97,7 +107,7 @@
                 grid-auto-flow: column;
                 gap: 32px;
 
-                @include size375 {
+                @include size768 {
                     grid-auto-flow: row;
                 }
 

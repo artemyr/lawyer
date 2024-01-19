@@ -1,14 +1,21 @@
 .banner {
+
+    @include size768 {
+        .container {
+            padding: 0;
+        }
+    }
+
     .banner__slide {
         position: relative;
         height: 758px;
         overflow: hidden;
 
-        @include size1024 {
+        @include size1440 {
             height: 700px;
         }
 
-        @include size375 {
+        @include size1024 {
             height: 573px;
         }
 
@@ -34,11 +41,11 @@
             line-height: 85%;
             letter-spacing: -4.1px;
 
-            @include size1024 {
+            @include size1440 {
                 font-size: 64px;
             }
 
-            @include size375 {
+            @include size768 {
                 font-size: 36px;
                 letter-spacing: -1.8px;
             }
