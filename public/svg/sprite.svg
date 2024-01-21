@@ -90,6 +90,10 @@
         <path fill-rule="evenodd" clip-rule="evenodd" d="M18.5437 13.999C18.8939 13.6987 19.4212 13.7393 19.7214 14.0895L26.4035 21.8854C26.6716 22.1982 26.6716 22.6597 26.4035 22.9725L19.7214 30.7683C19.4212 31.1186 18.8939 31.1591 18.5437 30.8589C18.1934 30.5587 18.1528 30.0314 18.4531 29.6812L24.6692 22.4289L18.4531 15.1767C18.1528 14.8265 18.1934 14.2992 18.5437 13.999Z" fill="white"/>
     </svg>
 
+    <svg id="arrow-6" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M6 12L10 8L6 4" stroke="#888CA2" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+
 
 <!--    common    -->
     <svg id="point" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -1,0 +1,24 @@
+.breadcrumbs {
+    margin-top: 40px;
+    margin-bottom: 20px;
+
+    .breadcrumbs__wrapper {
+        display: grid;
+        grid-auto-flow: column;
+        gap: 8px;
+        align-items: center;
+        justify-content: start;
+
+        span {
+            padding: 4px 8px;
+            border-radius: 8px;
+            background: $base-gray;
+            color: $base-text-gray;
+        }
+
+        svg {
+            width: 16px;
+            height: 16px;
+        }
+    }
+}
