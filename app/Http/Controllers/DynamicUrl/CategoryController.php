@@ -6,17 +6,17 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\City;
 use App\Models\DTO\Banner;
-use App\Services\DynamicUrl\UrlValidator;
+use App\Services\DynamicUrl\Contracts\DynamicUrlControllerInterface;
+use App\Services\DynamicUrl\Helpers\DynamicUrlHelper;
 
-class CategoryController extends Controller implements DynamicUrlInterface
+class CategoryController extends Controller implements DynamicUrlControllerInterface
 {
-    public function show(UrlValidator $validator)
+    public function show(DynamicUrlHelper $validator)
     {
         $category = Category::where('link', $validator->getCategory())->first();
 
         return view('pages.category', [
             'category' => $category,
-            'breadcrumbs' => $validator->getBreadcrumbs(),
             'banner' => new Banner(
                 bigImage: asset('image/bg.jpg'),
                 averageImage: asset('image/bg.png'),

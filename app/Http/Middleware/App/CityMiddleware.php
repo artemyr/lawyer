@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\View;
 
-class CityMiddlevare
+class CityMiddleware
 {
     /**
      * Handle an incoming request.

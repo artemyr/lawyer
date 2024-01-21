@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\DynamicUrl;
 
 use App\Http\Controllers\Controller;
-use App\Services\DynamicUrl\UrlValidator;
+use App\Services\DynamicUrl\Contracts\DynamicUrlControllerInterface;
+use App\Services\DynamicUrl\Helpers\DynamicUrlHelper;
 
-class DefaultController extends Controller implements DynamicUrlInterface
+class DefaultController extends Controller implements DynamicUrlControllerInterface
 {
-    public function show(UrlValidator $validator)
+    public function show(DynamicUrlHelper $validator)
     {
         abort(404);
     }

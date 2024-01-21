@@ -3,8 +3,8 @@
 namespace App\Http;
 
 use App\Http\Middleware\App\AdminPanel;
-use App\Http\Middleware\App\CityMiddlevare;
-use App\Http\Middleware\App\GlobalVarsMiddlevare;
+use App\Http\Middleware\App\CityMiddleware;
+use App\Http\Middleware\App\GlobalVarsMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -39,8 +39,8 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-            GlobalVarsMiddlevare::class,
-            CityMiddlevare::class,
+            GlobalVarsMiddleware::class,
+            CityMiddleware::class,
         ],
 
         'api' => [

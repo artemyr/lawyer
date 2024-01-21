@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\View;
 
-class GlobalVarsMiddlevare
+class GlobalVarsMiddleware
 {
     /**
      * Handle an incoming request.

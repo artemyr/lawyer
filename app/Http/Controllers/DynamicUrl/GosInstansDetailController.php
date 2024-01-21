@@ -4,11 +4,12 @@ namespace App\Http\Controllers\DynamicUrl;
 
 use App\Http\Controllers\Controller;
 use App\Models\Instation;
-use App\Services\DynamicUrl\UrlValidator;
+use App\Services\DynamicUrl\Contracts\DynamicUrlControllerInterface;
+use App\Services\DynamicUrl\Helpers\DynamicUrlHelper;
 
-class GosInstansDetailController extends Controller implements DynamicUrlInterface
+class GosInstansDetailController extends Controller implements DynamicUrlControllerInterface
 {
-    public function show(UrlValidator $validator)
+    public function show(DynamicUrlHelper $validator)
     {
         $instation = Instation::where('link', $validator->getGosInstanse())->first();
 

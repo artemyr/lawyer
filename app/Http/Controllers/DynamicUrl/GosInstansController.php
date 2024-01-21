@@ -4,11 +4,12 @@ namespace App\Http\Controllers\DynamicUrl;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
-use App\Services\DynamicUrl\UrlValidator;
+use App\Services\DynamicUrl\Contracts\DynamicUrlControllerInterface;
+use App\Services\DynamicUrl\Helpers\DynamicUrlHelper;
 
-class GosInstansController extends Controller implements DynamicUrlInterface
+class GosInstansController extends Controller implements DynamicUrlControllerInterface
 {
-    public function show(UrlValidator $validator)
+    public function show(DynamicUrlHelper $validator)
     {
         $category = Category::where('link', $validator->getCategory())->first();
 
