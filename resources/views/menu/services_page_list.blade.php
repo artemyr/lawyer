@@ -1,4 +1,4 @@
-@foreach($G_categories as $category)
+@foreach($L_categories as $category)
 
     @if ($category->children->count())
         <div class="services-page__item">
@@ -9,7 +9,7 @@
                 </div>
             </a>
             <ul>
-                @include('menu.services_page_list', ['G_categories' => $category->children, 'is_child' => true])
+                @include('menu.services_page_list', ['L_categories' => $category->children, 'is_child' => true])
             </ul>
         </div>
     @else

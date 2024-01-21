@@ -19,6 +19,11 @@
         @include('includes.header')
     </header>
 
+    <div class="container">
+        @include('includes.breadcrumbs')
+        @include('includes.title')
+    </div>
+
     <main class="main-content-wrapper">
         @yield('content')
     </main>

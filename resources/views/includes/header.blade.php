@@ -61,8 +61,4 @@
             </div>
         </div>
     </div>
-
-    @include('includes.breadcrumbs')
-    @include('includes.title')
-
 </div>

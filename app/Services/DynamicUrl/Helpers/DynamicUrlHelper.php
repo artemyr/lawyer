@@ -2,12 +2,12 @@
 
 namespace App\Services\DynamicUrl\Helpers;
 
-use App\Http\Controllers\DynamicUrl\CategoryController;
-use App\Http\Controllers\DynamicUrl\CityController;
-use App\Http\Controllers\DynamicUrl\DefaultController;
-use App\Http\Controllers\DynamicUrl\GosInstansController;
-use App\Http\Controllers\DynamicUrl\GosInstansDetailController;
 use App\Services\DynamicUrl\Contracts\DynamicUrlControllerInterface;
+use App\Services\DynamicUrl\Controllers\CategoryController;
+use App\Services\DynamicUrl\Controllers\CityController;
+use App\Services\DynamicUrl\Controllers\DefaultController;
+use App\Services\DynamicUrl\Controllers\GosInstansController;
+use App\Services\DynamicUrl\Controllers\GosInstansDetailController;
 use Exception;
 
 class DynamicUrlHelper extends DynamicUrlHelperAbstract

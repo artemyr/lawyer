@@ -14,8 +14,8 @@
             </div>
         </div>
         <div class="services__list">
-            @foreach($city->categories ?? $G_categories as $key => $category)
-                <a class="services__item" href="{{ ($city->link ?? '') .'/'. $category->link }}" @if ($key > 23) style="display: none" @endif>
+            @foreach($L_categories as $key => $category)
+                <a class="services__item" href="{{ (isset($userCity) ? "/$userCity->link/" : '/'). $category->link }}" @if ($key > 23) style="display: none" @endif>
                     <svg>
                         <use xlink:href="{{ asset('svg/sprite.svg#' . $category->icon->code) }}"></use>
                     </svg>

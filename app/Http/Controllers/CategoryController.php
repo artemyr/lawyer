@@ -12,7 +12,7 @@ class CategoryController extends Controller
     {
         return view('pages.services', [
             'page' => new Page('Услуги'),
-            'breadcrumbs' => (new Breadcrumbs())->add('uslugi', 'Услуги')
+            'breadcrumbs' => (new Breadcrumbs())->add('/','Главная')->add('uslugi', 'Услуги')
         ]);
     }
 }

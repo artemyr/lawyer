@@ -1,4 +1,5 @@
-@foreach($G_categories as $category)
+@foreach($L_categories as $category)
+
     @if ($category->children->count())
         <li class="dropdown-menu__item" js-service-menu="item" data-id="{{ $category->id }}">
             <svg class="dropdown-menu__icon"><use xlink:href="{{ asset('svg/sprite.svg#').$category->icon->code }}-small"></use></svg>
@@ -7,7 +8,7 @@
 
             <template id="menu-services-template-{{ $category->id }}">
                 <ul>
-                    @include('menu.services_menu', ['G_categories' => $category->children, 'is_child' => true])
+                    @include('menu.services_menu', ['L_categories' => $category->children, 'is_child' => true])
                 </ul>
             </template>
         </li>
@@ -22,4 +23,5 @@
             <a class="" href="{{ (isset($userCity) ? "/$userCity->link/" : '/'). $category->link }}">{{ $category->name }}</a>
         </li>
     @endif
+
 @endforeach

@@ -5,6 +5,13 @@
         grid-template-columns: repeat(3, 1fr);
         gap: 16px;
 
+        @include size1440 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        @include size1024 {
+            grid-template-columns: repeat(1, 1fr);
+        }
+
         .services-page__item {
             background: $base-gray;
             border-radius: 16px;

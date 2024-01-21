@@ -28,19 +28,30 @@ class GlobalVarsMiddleware
         return $next($request);
     }
 
-    private function categories () {
+    private function categories (): void
+    {
+        // если кеш с категориями пуст
+        // запрашиваем все категории с подкатегориями
         if (!Cache::has('G_categories'))
-            Cache::put('G_categories', Category::with('children')->where('parent_id', 0)->where('active', true)->orderBy('sort')->get(), 60);
+            Cache::put('G_categories',
+                Category::with('children')
+                    ->where('parent_id', 0)
+                    ->where('active', true)
+                    ->orderBy('sort')
+                    ->get(),
+            60);
 
+        // запоминаем все слаги в кеш
         if (!Cache::has('categoryRouteList')) {
             $this->getCategoryRoutList(Cache::get('G_categories'));
             Cache::put('categoryRouteList', $this->categoryRouteList, config('app.routeListCacheTtl'));
         }
 
+        // передаем категории в шаблоны
         View::share('G_categories', Cache::get('G_categories'));
     }
 
-    private function getCategoryRoutList($G_categories)
+    private function getCategoryRoutList($G_categories): void
     {
         foreach ($G_categories as $category) {
             $this->categoryRouteList[] = $category->link;
@@ -50,7 +61,7 @@ class GlobalVarsMiddleware
         }
     }
 
-    private function cities()
+    private function cities(): void
     {
         if (!Cache::has('G_cities')) {
             Cache::put('G_cities', City::get(), 60);
@@ -67,7 +78,7 @@ class GlobalVarsMiddleware
         View::share('G_cities', Cache::get('G_cities'));
     }
 
-    private function instanses()
+    private function instanses(): void
     {
         if (!Cache::has('instansRouteList')) {
             $instanciesRouteList = [];
