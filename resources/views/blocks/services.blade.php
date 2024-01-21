@@ -25,7 +25,7 @@
         </div>
         <div class="services__footer">
             <a class="ui-btn ui-btn-arrow">
-                <span>Заказать звонок</span>
+                <span>Показать еще</span>
                 <svg>
                     <use xlink:href="{{ asset('svg/sprite.svg#button-plus') }}"></use>
                 </svg>

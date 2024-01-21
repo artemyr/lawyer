@@ -3,7 +3,7 @@
         <div class="banner__slide">
             <div class="banner__inner">
                 <div class="banner__title">
-                    {!! $banner_title !!}
+                    {!! $banner->title !!}
                 </div>
                 <div>
                     <a class="ui-btn ui-btn-arrow">

@@ -8,6 +8,7 @@ class Banner
         public string $bigImage,
         public string $averageImage,
         public string $smallImage,
+        public string $title,
     ){
     }
 }

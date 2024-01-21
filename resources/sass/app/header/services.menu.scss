@@ -48,8 +48,11 @@
         }
     }
 
-    .main-services-menu__right {
-
+    .dropdown-menu__item {
+        display: inline-grid;
+        grid-auto-flow: column;
+        justify-content: start;
+        gap: 8px;
     }
 
     .dropdown-menu__icon {

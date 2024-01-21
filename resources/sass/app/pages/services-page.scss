@@ -1,0 +1,36 @@
+.services-page {
+    .services-page__wrapper {
+
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+
+        .services-page__item {
+            background: $base-gray;
+            border-radius: 16px;
+            padding: 20px;
+
+            .services-page__category-title {
+
+                display: inline-grid;
+                grid-auto-flow: column;
+                gap: 20px;
+                align-items: center;
+
+                svg {
+                    width: 44px;
+                    height: 44px;
+                }
+            }
+
+            & > ul {
+
+                margin-top: 20px;
+
+                li a {
+                    color: $base-text-gray;
+                }
+            }
+        }
+    }
+}
