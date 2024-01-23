@@ -7,7 +7,7 @@
     @include('blocks.howItWork')
     @include('blocks.services')
     @include('blocks.examples')
-    @include('blocks.achievements')
+    @include('blocks.advantages')
     @include('blocks.cities')
     @include('blocks.ourJurists')
     @include('blocks.guardInterests')

@@ -5,6 +5,10 @@
         gap: 16px;
         margin-bottom: 100px;
 
+        @include size768 {
+            grid-template-columns: 1fr;
+        }
+
         & > div {
             .examples__item {
                 padding: 20px;
@@ -51,9 +55,23 @@
         color: white;
         text-align: center;
 
+        @include size1440 {
+            padding: 40px;
+        }
+
+        @include size768 {
+            padding: 20px;
+        }
+
         .examples__form-title {
+            padding-bottom: 16px;
             font-family: 'Commissioner 600';
             font-size: 52px;
+
+            @include size768 {
+                font-size: 28px;
+                line-height: 85%;
+            }
 
             span {
                 color: rgba(255, 255, 255, 0.40);
@@ -62,6 +80,10 @@
 
         .ui-btn {
             margin-top: 128px;
+
+            @include size768 {
+                margin-top: 96px;
+            }
         }
     }
 }
