@@ -1,0 +1,32 @@
+.faq {
+    .faq__wrapper {
+        display: grid;
+        grid-auto-flow: row;
+        gap: 16px;
+        .faq__item {
+            background: $base-gray;
+            border-radius: 16px;
+            padding: 20px;
+
+            .faq__title {
+                font-family: 'Commissioner 500';
+                font-size: 22px;
+
+                display: grid;
+                justify-content: space-between;
+                align-items: center;
+                grid-auto-flow: column;
+
+                svg {
+                    height: 33px;
+                    width: 33px;
+                }
+            }
+
+            .faq__text {
+                padding-top: 8px;
+                color: $base-text-gray;
+            }
+        }
+    }
+}

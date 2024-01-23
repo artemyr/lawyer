@@ -1,0 +1,22 @@
+.partners {
+    .partners__wrapper {
+        display: grid;
+        justify-content: space-between;
+        grid-auto-flow: column;
+
+        @include size768 {
+            grid-auto-flow: unset;
+            grid-template-columns: repeat(auto-fill, minmax(65px, 80px));
+        }
+
+        img {
+            height: 80px;
+            width: 80px;
+
+            @include size768 {
+                height: 65px;
+                width: 65px;
+            }
+        }
+    }
+}

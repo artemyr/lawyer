@@ -1,6 +1,6 @@
 <div class="howItWork">
     <div class="container">
-        <div class="howItWork__wrapper">
+        <div class="howItWork__wrapper container-2col">
             <div>
                 <div class="article-2">
                     <div>

@@ -10,14 +10,6 @@
     }
 
     .howItWork__wrapper {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-
-        @include size1024 {
-            grid-template-columns: 1fr;
-            gap: 32px;
-        }
-
         & > div {
             background: $base-gray;
             border-radius: 16px;
