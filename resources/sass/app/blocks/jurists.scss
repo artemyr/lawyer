@@ -1,0 +1,83 @@
+.our-jurists {
+    .our-jurists__wrapper {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+
+        @include size1440 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @include size1024 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include size768 {
+            grid-template-columns: 1fr;
+        }
+
+        .our-jurists-item {
+            background: $base-gray;
+            border-radius: 14px;
+            display: grid;
+            grid-auto-flow: row;
+            justify-content: center;
+
+            .our-jurists-item__image {
+                padding: 8px;
+                img{
+                    width: 100%;
+                    object-fit: cover;
+                    border-radius: 14px;
+                    overflow: hidden;
+                }
+            }
+
+            .our-jurists-item__data {
+                padding: 20px;
+
+                .our-jurists-item__name {
+                    font-size: 24px;
+                    font-family: 'Commissioner 500';
+                }
+
+                .our-jurists-item__subtitle, .our-jurists-item__list {
+                    color: $base-text-gray;
+                }
+
+                .our-jurists-item__list li {
+                    margin-left: 20px;
+                    position: relative;
+                }
+
+                .our-jurists-item__list li::before {
+                    content: '';
+                    width: 4px;
+                    height: 4px;
+                    border-radius: 100%;
+                    display: block;
+                    position: absolute;
+                    background: $base-text-gray;
+                    left: -12px;
+                    top: 12px;
+                }
+            }
+        }
+
+        .our-jurists-mock-item {
+            background: $base-color;
+            color: white;
+            padding: 20px;
+            border-radius: 14px;
+
+            display: inline-grid;
+            grid-auto-flow: row;
+            align-content: space-between;
+
+            .our-jurists-mock-item__text {
+                font-family: 'Commissioner 500';
+                font-size: 24px;
+            }
+        }
+    }
+}
