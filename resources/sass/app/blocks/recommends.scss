@@ -1,0 +1,27 @@
+.recommends {
+    .recommends__wrapper {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+
+        .recommends-item {
+            background: white;
+            min-height: 350px;
+            padding: 20px;
+            display: grid;
+            grid-auto-flow: row;
+            align-content: space-between;
+            border-radius: 16px;
+            .recommends-item__avatar {
+                margin-bottom: 32px;
+            }
+            .recommends-item__name {
+                font-size: 20px;
+                font-family: 'Commissioner 500';
+            }
+            .recommends-item__text, .recommends-item__date {
+                color: $base-text-gray;
+            }
+        }
+    }
+}
