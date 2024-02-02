@@ -9,6 +9,10 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    {{--    js-libs   --}}
+    <link rel="stylesheet" href="{{ asset('css/hystmodal.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/swiper.min.css') }}">
+
     <!-- Scripts -->
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru-RU&apikey=dbe92ebd-1c70-436b-a435-6457f76bf351" type="text/javascript"></script>
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -34,5 +38,8 @@
 
     @include('includes.modals')
 </div>
+
+<script src="{{ asset('js/libs/hystmodal.min.js') }}"></script>
+<script src="{{ asset('js/libs/swiper.min.js') }}"></script>
 </body>
 </html>

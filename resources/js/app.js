@@ -14,6 +14,7 @@ createApp(App)
 createApp(CitySelectComponent)
     .mount('city-select-component');
 
+// main menu
 (function (window) {
     'use strict';
 
@@ -75,6 +76,7 @@ createApp(CitySelectComponent)
     }
 })(window);
 
+// map
 (function (window){
     'use strict';
 
@@ -104,6 +106,7 @@ createApp(CitySelectComponent)
     }
 })(window);
 
+// tap to top
 (function (window) {
     const body = document.querySelector('body')
     document.querySelectorAll('[data-scroll-to-top]').forEach(el => {
@@ -113,3 +116,73 @@ createApp(CitySelectComponent)
     })
 })(window);
 
+// accordion
+(function(window){
+    function init_accordion(option) {
+        const block = document.querySelectorAll('[data-accordion="block"]')
+
+        if(block.length > 0){
+            block.forEach(itemBlock => {
+                const btn = itemBlock.querySelector('[data-accordion="head"]')
+                const el = itemBlock.querySelector('[data-accordion="body"]')
+
+                smoothView(btn, el)
+
+                btn.addEventListener('click', () => {
+                    itemBlock.classList.toggle('active')
+                })
+            })
+
+            if(option === 'first_active')
+                block[0].querySelector('[data-accordion="head"]').click();
+        }
+    }
+
+    function smoothView(btn, el, startHeight = 0) {
+
+        if (!btn && !el) return
+
+        let heightEl = el.offsetHeight
+        el.classList.add('not-active')
+        el.style.height = startHeight + 'px';
+
+        if (startHeight > 0) {
+            if (heightEl < startHeight) {
+                el.classList.remove('not-active')
+                el.style.height = heightEl + 'px';
+            }
+        }
+
+        const update = () => {
+            el.style.height = 'auto'
+            setTimeout(() => {
+                heightEl = el.offsetHeight
+                el.style.height = heightEl + 'px';
+            }, 100)
+        }
+
+        btn.addEventListener('click', () => {
+            if (el.classList.contains('not-active')) {
+                el.classList.remove('not-active')
+                el.style.height = heightEl + 'px';
+                btn.classList.add('active')
+            } else {
+                el.classList.add('not-active')
+                el.style.height = startHeight + 'px';
+                btn.classList.remove('active')
+            }
+        })
+
+        let observer = new MutationObserver(mutationRecords => {
+            update()
+        })
+
+        observer.observe(el, {
+            childList: true,
+            subtree: true,
+            characterDataOldValue: true
+        })
+    }
+
+    init_accordion('first_active');
+})(window);

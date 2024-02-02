@@ -20,12 +20,20 @@
                 svg {
                     height: 33px;
                     width: 33px;
+                    transition: .3s;
+                    transform: rotate(180deg);
                 }
             }
 
             .faq__text {
                 padding-top: 8px;
                 color: $base-text-gray;
+                transition: .3s;
+                overflow: hidden;
+            }
+
+            &.active svg {
+                transform: rotate(0deg);
             }
         }
     }
