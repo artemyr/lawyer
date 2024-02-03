@@ -2,20 +2,20 @@
     background: $base-gray;
     padding-top: 96px;
     padding-bottom: 96px;
-    .recommends__wrapper {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 16px;
-
-        @include size1440 {
-            grid-template-columns: repeat(3,1fr);
-        }
-        @include size1024 {
-            grid-template-columns: repeat(2,1fr);
-        }
-        @include size768 {
-            grid-template-columns: 1fr;
-        }
+    //.recommends__wrapper {
+        //display: grid;
+        //grid-template-columns: repeat(4, 1fr);
+        //gap: 16px;
+        //
+        //@include size1440 {
+        //    grid-template-columns: repeat(3,1fr);
+        //}
+        //@include size1024 {
+        //    grid-template-columns: repeat(2,1fr);
+        //}
+        //@include size768 {
+        //    grid-template-columns: 1fr;
+        //}
 
         .recommends-item {
             background: white;
@@ -25,6 +25,11 @@
             grid-auto-flow: row;
             align-content: space-between;
             border-radius: 16px;
+
+            @include size768 {
+                max-width: calc(100vw - 40px);
+            }
+
             .recommends-item__avatar {
                 margin-bottom: 32px;
             }
@@ -36,5 +41,5 @@
                 color: $base-text-gray;
             }
         }
-    }
+    //}
 }
