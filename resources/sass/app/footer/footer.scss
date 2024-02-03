@@ -11,8 +11,16 @@
         height: 40px;
 
         @include size1024 {
-            height: 28px;
-            width: 155px;
+            display: none;
+        }
+    }
+
+    .small-logo {
+        height: 28px;
+        display: none;
+
+        @include size1024 {
+            display: block;
         }
     }
 

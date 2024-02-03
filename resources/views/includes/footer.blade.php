@@ -16,6 +16,9 @@
                     <svg class="logo">
                         <use xlink:href="{{ asset('svg/sprite.svg#logo-footer') }}"></use>
                     </svg>
+                    <svg class="small-logo">
+                        <use xlink:href="{{ asset('svg/sprite.svg#small-logo-footer') }}"></use>
+                    </svg>
                 </a>
             </div>
             <div>
