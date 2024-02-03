@@ -1,4 +1,7 @@
 .recommends {
+    background: $base-gray;
+    padding-top: 96px;
+    padding-bottom: 96px;
     .recommends__wrapper {
         display: grid;
         grid-template-columns: repeat(4, 1fr);

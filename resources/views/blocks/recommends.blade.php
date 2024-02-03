@@ -1,18 +1,17 @@
-<div class="container">
-    <div class="article-1">
-        <div>
-            <div class="title-1">
-                Нас рекомендуют <span>12 тыс <br>постоянных клиентов</span>
+<div class="recommends">
+    <div class="container">
+        <div class="article-1">
+            <div>
+                <div class="title-1">
+                    Нас рекомендуют <span>12 тыс <br>постоянных клиентов</span>
+                </div>
+            </div>
+            <div>
+                Уже более 200 000 человек получили <br>юридическую консультацию <br>на «Юристы КСТ»
             </div>
         </div>
-        <div>
-            Уже более 200 000 человек получили <br>юридическую консультацию <br>на «Юристы КСТ»
-        </div>
-    </div>
 
-    <div class="recommends">
         <div class="recommends__wrapper">
-
             <div class="recommends-item">
                 <div>
                     <div class="recommends-item__avatar">
@@ -79,7 +78,7 @@
                         Максим Машкин
                     </div>
                     <div class="recommends-item__text">
-                        Отдельное спасибо хочется сказать откликнувшимся юристам за скорость и помощь в решении
+                        Отдельное спасибо хочется сказать откликнувшимся юристам за скорость и помощь в решении
                         вопросов.
                         Этот случай убедил меня ещё раз, что лично мне необходим этот сайт под рукой.
                     </div>

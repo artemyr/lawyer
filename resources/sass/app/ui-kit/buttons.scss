@@ -40,4 +40,11 @@
             color: $base-color;
         }
     }
+
+    &.ui-btn-arrow_transparent {
+        background: $base-color-2;
+        span {
+            color: $base-color;
+        }
+    }
 }
