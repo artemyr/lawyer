@@ -15,7 +15,10 @@
                 <div class="articles-item__wrapper">
                     <div>
                         <div class="articles-item__top">
-                            <img src="{{ asset('image/articles/1.jpg') }}" alt="">
+                            <picture>
+                                <source srcset="{{ asset('image/articles/1.jpg') }}" media="(min-width: 1441px)" />
+                                <img src="{{ asset('image/articles/4.jpg') }}" />
+                            </picture>
                         </div>
                         <div class="articles-item__center">
                             <div class="articles-item__person">
@@ -31,6 +34,26 @@
                     </div>
                     <div>
                         <div class="articles-item__bottom">
+                            <div class="articles-item-icons">
+                                <div class="articles-item-icons__item">
+                                    <svg>
+                                        <use xlink:href="{{ asset('svg/sprite.svg#icon-like') }}"></use>
+                                    </svg>
+                                    <span>122</span>
+                                </div>
+                                <div class="articles-item-icons__item">
+                                    <svg>
+                                        <use xlink:href="{{ asset('svg/sprite.svg#icon-eye') }}"></use>
+                                    </svg>
+                                    <span>512</span>
+                                </div>
+                                <div class="articles-item-icons__item">
+                                    <svg>
+                                        <use xlink:href="{{ asset('svg/sprite.svg#icon-star') }}"></use>
+                                    </svg>
+                                    <span>4.6</span>
+                                </div>
+                            </div>
                             <div class="articles-item__date">
                                 04.09.2023
                             </div>
@@ -59,6 +82,26 @@
                     </div>
                     <div>
                         <div class="articles-item__bottom">
+                            <div class="articles-item-icons">
+                                <div class="articles-item-icons__item">
+                                    <svg>
+                                        <use xlink:href="{{ asset('svg/sprite.svg#icon-like') }}"></use>
+                                    </svg>
+                                    <span>122</span>
+                                </div>
+                                <div class="articles-item-icons__item">
+                                    <svg>
+                                        <use xlink:href="{{ asset('svg/sprite.svg#icon-eye') }}"></use>
+                                    </svg>
+                                    <span>512</span>
+                                </div>
+                                <div class="articles-item-icons__item">
+                                    <svg>
+                                        <use xlink:href="{{ asset('svg/sprite.svg#icon-star') }}"></use>
+                                    </svg>
+                                    <span>4.6</span>
+                                </div>
+                            </div>
                             <div class="articles-item__date">
                                 04.09.2023
                             </div>
@@ -87,6 +130,26 @@
                     </div>
                     <div>
                         <div class="articles-item__bottom">
+                            <div class="articles-item-icons">
+                                <div class="articles-item-icons__item">
+                                    <svg>
+                                        <use xlink:href="{{ asset('svg/sprite.svg#icon-like') }}"></use>
+                                    </svg>
+                                    <span>122</span>
+                                </div>
+                                <div class="articles-item-icons__item">
+                                    <svg>
+                                        <use xlink:href="{{ asset('svg/sprite.svg#icon-eye') }}"></use>
+                                    </svg>
+                                    <span>512</span>
+                                </div>
+                                <div class="articles-item-icons__item">
+                                    <svg>
+                                        <use xlink:href="{{ asset('svg/sprite.svg#icon-star') }}"></use>
+                                    </svg>
+                                    <span>4.6</span>
+                                </div>
+                            </div>
                             <div class="articles-item__date">
                                 04.09.2023
                             </div>

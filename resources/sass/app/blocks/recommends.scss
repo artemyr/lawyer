@@ -7,6 +7,16 @@
         grid-template-columns: repeat(4, 1fr);
         gap: 16px;
 
+        @include size1440 {
+            grid-template-columns: repeat(3,1fr);
+        }
+        @include size1024 {
+            grid-template-columns: repeat(2,1fr);
+        }
+        @include size768 {
+            grid-template-columns: 1fr;
+        }
+
         .recommends-item {
             background: white;
             min-height: 350px;
