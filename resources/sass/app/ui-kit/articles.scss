@@ -5,8 +5,16 @@
     grid-auto-flow: column;
     align-items: start;
 
+    @include size1440 {
+        margin-bottom: 48px;
+    }
+
     @include size1024 {
         grid-auto-flow: row;
+    }
+
+    @include size768 {
+        margin-bottom: 32px;
     }
 }
 
