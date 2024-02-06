@@ -25,9 +25,16 @@
                     EN
                 </div>
             </div>
-            <div class="ui-btn ui-btn-default">
+            <div class="header__call ui-btn ui-btn-default">
                 Заказать звонок
             </div>
+
+            <div class="header__menu-toggler" js-service-menu="toggler">
+                <div class="header__menu-toggler-1"></div>
+                <div class="header__menu-toggler-2"></div>
+                <div class="header__menu-toggler-3"></div>
+            </div>
+
         </div>
     </div>
 

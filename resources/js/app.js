@@ -53,6 +53,7 @@ createApp(CitySelectComponent)
             })
 
             this.submenu();
+            window.addEventListener("resize", this.submenu);
         },
         open: function () {
             this.mainServicesMenu.classList.toggle('active');
@@ -64,16 +65,38 @@ createApp(CitySelectComponent)
         },
         submenu: function () {
             const submenu = document.querySelector('[js-service-menu="submenu"]')
-            const menuItems = this.mainServicesMenu.querySelectorAll('[js-service-menu="item"]')
+            const menuItems = document.getElementById('main-services-menu').querySelectorAll('[js-service-menu="item"]')
+            let once = false
+
             menuItems.forEach(el => {
-                el.addEventListener('mouseenter', (e) => {
-                    let template = document.getElementById('menu-services-template-' + e.target.getAttribute('data-id'));
-                    submenu.innerHTML = '';
-                    if (template) {
-                        submenu.appendChild(template.content.cloneNode(true));
+
+                if (window.screen.width > 1439) {
+
+                    if (el.querySelector('[js-service-menu="child"]')) {
+                        el.querySelector('[js-service-menu="child"]').style.display = 'none';
                     }
-                })
+
+                    if (!once) {
+                        el.addEventListener('mouseenter', (e) => {
+                            let template = document.getElementById('menu-services-template-' + e.target.getAttribute('data-id'));
+                            submenu.innerHTML = '';
+                            if (template) {
+                                submenu.appendChild(template.content.cloneNode(true));
+                            }
+                        })
+                    }
+
+                } else {
+
+                    if (el.querySelector('[js-service-menu="child"]')) {
+                        el.querySelector('[js-service-menu="child"]').style.display = 'block';
+                    }
+
+                }
+
             })
+
+            once = true
         }
     }
 })(window);
