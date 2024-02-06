@@ -44,10 +44,19 @@
                     @include('menu.services_menu')
                 </ul>
             </div>
+
             <div class="main-services-menu__center" js-service-menu="submenu">
 
             </div>
+
             <div class="main-services-menu__right">
+
+                <div class="main-services-menu__closer" js-service-menu="closer">
+                    <svg>
+                        <use xlink:href="{{ asset('svg/sprite.svg#icon-menu-close') }}"></use>
+                    </svg>
+                </div>
+
                 <div class="form-3">
                     <div class="form-3__title">Готовы решить вашу <span>проблему?</span></div>
                     <div class="form-3__text">Задайте ваш вопрос сейчас и получите ответ нашего юриста</div>

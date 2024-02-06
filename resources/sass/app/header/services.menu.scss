@@ -48,6 +48,15 @@
         }
     }
 
+    .main-services-menu__right {
+        display: grid;
+        grid-auto-flow: row;
+        gap: 24px;
+        justify-items: end;
+        align-items: start;
+        align-content: start;
+    }
+
     .dropdown-menu__item {
         display: inline-grid;
         grid-auto-flow: column;
@@ -58,5 +67,11 @@
     .dropdown-menu__icon {
         height: 28px;
         width: 28px;
+    }
+
+    .main-services-menu__closer svg {
+        width: 32px;
+        height: 32px;
+        display: block;
     }
 }

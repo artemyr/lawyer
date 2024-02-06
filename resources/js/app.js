@@ -32,7 +32,7 @@ createApp(CitySelectComponent)
     window.mainMenu.prototype = {
         init: function()
         {
-            this.mainMenuToggle = document.querySelector('[js-toggle-menu="toggler"] a')
+            this.mainMenuToggle = document.querySelector('[js-service-menu="toggler"] a')
             this.mainServicesMenu = document.getElementById('main-services-menu')
             this.shadow = document.getElementById('shadow')
 
@@ -41,10 +41,12 @@ createApp(CitySelectComponent)
             })
 
             document.addEventListener('click',(e) => {
-                if (e.target.closest('[js-toggle-menu="toggler"]')) {
+                if (e.target.closest('[js-service-menu="toggler"]')) {
                     this.open();
+                } else if (e.target.closest('[js-service-menu="closer"]')) {
+                    this.close();
                 } else if (e.target.closest('#main-services-menu')) {
-
+                    // nothing
                 } else {
                     this.close();
                 }

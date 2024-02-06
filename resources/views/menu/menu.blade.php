@@ -1,6 +1,6 @@
 <nav id="top-menu">
     <ul>
-        <li js-toggle-menu="toggler">
+        <li js-service-menu="toggler">
             <a href="{{ route('services') }}">Услуги •••</a>
         </li>
         <li>
