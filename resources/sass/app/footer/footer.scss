@@ -9,6 +9,7 @@
 
     .logo {
         height: 40px;
+        width: 217px;
 
         @include size1024 {
             display: none;
@@ -17,6 +18,7 @@
 
     .small-logo {
         height: 28px;
+        width: 155px;
         display: none;
 
         @include size1024 {
@@ -33,6 +35,8 @@
 
         @include size768 {
             grid-auto-flow: row;
+            padding-top: 40px;
+            margin-bottom: 32px;
         }
 
         .footer__phone {
@@ -62,6 +66,9 @@
             @include size768 {
                 grid-auto-flow: row;
             }
+            @include size1024 {
+                gap: 32px;
+            }
         }
 
         .footer__btns {
@@ -85,7 +92,7 @@
                 height: 52px;
             }
 
-            @include size1440 {
+            @include size1024 {
                 width: 48px;
                 height: 48px;
             }
