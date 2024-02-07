@@ -6,8 +6,18 @@
                     Нас рекомендуют <span>12 тыс <br>постоянных клиентов</span>
                 </div>
             </div>
-            <div>
-                Уже более 200 000 человек получили <br>юридическую консультацию <br>на «Юристы КСТ»
+            <div class="recommends__buttons">
+                <div>
+                    Уже более 200 000 человек получили <br>юридическую консультацию <br>на «Юристы КСТ»
+                </div>
+                <div class="ui-slider-btn">
+                    <svg id="recoments_l">
+                        <use xlink:href="{{ asset('svg/sprite.svg#arrow-round-left-light') }}"></use>
+                    </svg>
+                    <svg id="recoments_r">
+                        <use xlink:href="{{ asset('svg/sprite.svg#arrow-round-right-light') }}"></use>
+                    </svg>
+                </div>
             </div>
         </div>
 

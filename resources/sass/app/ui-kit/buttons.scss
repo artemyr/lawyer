@@ -48,3 +48,15 @@
         }
     }
 }
+
+.ui-slider-btn {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 16px;
+    align-items: center;
+    justify-content: start;
+    svg {
+        height: 44px;
+        width: 44px;
+    }
+}

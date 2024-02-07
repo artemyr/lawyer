@@ -184,14 +184,37 @@ createApp(CitySelectComponent)
 
 // slider
 (function (window){
-    const swiper = new Swiper("#recommends-swiper",
+    const recommends = new Swiper("#recommends-swiper",
         {
             slidesPerView: 1,
             spaceBetween: 20,
-            // navigation: {
-            //     nextEl: "#recoments_r",
-            //     prevEl: "#recoments_l",
-            // },
+            navigation: {
+                nextEl: "#recoments_r",
+                prevEl: "#recoments_l",
+            },
+            breakpoints: {
+                767: {
+                    slidesPerView: 2,
+                    spaceBetween: 16,
+                },
+                1023: {
+                    slidesPerView: 3,
+                    spaceBetween: 16,
+                },
+                1439: {
+                    slidesPerView: 4,
+                    spaceBetween: 16,
+                },
+            }
+        });
+    const jurists = new Swiper("#jurists-swiper",
+        {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            navigation: {
+                nextEl: "#jurists_r",
+                prevEl: "#jurists_l",
+            },
             breakpoints: {
                 767: {
                     slidesPerView: 2,

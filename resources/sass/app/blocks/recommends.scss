@@ -23,4 +23,11 @@
             color: $base-text-gray;
         }
     }
+
+    .recommends__buttons {
+        display: grid;
+        grid-auto-flow: column;
+        gap: 24px;
+        margin-top: auto;
+    }
 }
