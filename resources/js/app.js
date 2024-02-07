@@ -15,7 +15,7 @@ createApp(CitySelectComponent)
     .mount('city-select-component');
 
 // main menu
-(function (window) {
+(function (window, document) {
     'use strict';
 
     if (window.mainMenu) return;
@@ -32,9 +32,11 @@ createApp(CitySelectComponent)
     window.mainMenu.prototype = {
         init: function()
         {
-            this.mainMenuToggle = document.querySelector('[js-service-menu="toggler"] a')
             this.mainServicesMenu = document.getElementById('main-services-menu')
+            this.mainMenuToggle = document.querySelector('[js-service-menu="toggler"] a')
             this.shadow = document.getElementById('shadow')
+            this.menuItems = this.mainServicesMenu.querySelectorAll('[js-service-menu="item"]')
+            this.submenu = this.mainServicesMenu.querySelector('[js-service-menu="submenu"]')
 
             this.mainMenuToggle.addEventListener('click',(e) => {
                 e.preventDefault();
@@ -52,8 +54,7 @@ createApp(CitySelectComponent)
                 }
             })
 
-            this.submenu();
-            window.addEventListener("resize", this.submenu);
+            this.initSubmenu();
         },
         open: function () {
             this.mainServicesMenu.classList.toggle('active');
@@ -63,43 +64,58 @@ createApp(CitySelectComponent)
             this.mainServicesMenu.classList.remove('active');
             this.shadow.classList.remove('active');
         },
-        submenu: function () {
-            const submenu = document.querySelector('[js-service-menu="submenu"]')
-            const menuItems = document.getElementById('main-services-menu').querySelectorAll('[js-service-menu="item"]')
-            let once = false
-
-            menuItems.forEach(el => {
-
-                if (window.screen.width > 1439) {
-
-                    if (el.querySelector('[js-service-menu="child"]')) {
-                        el.querySelector('[js-service-menu="child"]').style.display = 'none';
-                    }
-
-                    if (!once) {
-                        el.addEventListener('mouseenter', (e) => {
-                            let template = document.getElementById('menu-services-template-' + e.target.getAttribute('data-id'));
-                            submenu.innerHTML = '';
-                            if (template) {
-                                submenu.appendChild(template.content.cloneNode(true));
-                            }
-                        })
-                    }
-
-                } else {
-
-                    if (el.querySelector('[js-service-menu="child"]')) {
-                        el.querySelector('[js-service-menu="child"]').style.display = 'block';
-                    }
-
+        initSubmenu: function () {
+            if (window.innerWidth > 1439) {
+                this.desktop();
+            } else {
+                this.mobile();
+            }
+            this.mouseEnterAction();
+            this.mobileClickAction();
+        },
+        desktop: function () {
+            this.menuItems.forEach(el => {
+                if (el.querySelector('[js-service-menu="child"]')) {
+                    el.querySelector('[js-service-menu="child"]').style.display = 'none';
                 }
-
             })
-
-            once = true
+        },
+        mobile: function() {
+            this.menuItems.forEach(el => {
+                if (el.querySelector('[js-service-menu="child"]')) {
+                    el.querySelector('[js-service-menu="child"]').style.display = 'block';
+                }
+            })
+        },
+        mouseEnterAction: function () {
+            this.menuItems.forEach(el => {
+                el.addEventListener('mouseenter', (e) => {
+                    let template = document.getElementById('menu-services-template-' + e.target.getAttribute('data-id'));
+                    this.submenu.innerHTML = '';
+                    if (template) {
+                        this.submenu.appendChild(template.content.cloneNode(true));
+                    }
+                })
+            })
+            this.mouseEnterAction = () => {
+                console.log('event already created')
+            }
+        },
+        mobileClickAction: function () {
+            this.menuItems.forEach(btn => {
+                smoothView(btn, btn.querySelector('[js-service-menu="child"]'))
+            })
+            this.mobileClickAction = () => {
+                console.log('event already created')
+            }
         }
     }
-})(window);
+
+    document.addEventListener('DOMContentLoaded', function(){
+        const obj_mainMap = new mainMenu({});
+        window.addEventListener("resize", obj_mainMap.initSubmenu.bind(obj_mainMap));
+    })
+})(window, document);
 
 // map
 (function (window){
@@ -163,52 +179,6 @@ createApp(CitySelectComponent)
         }
     }
 
-    function smoothView(btn, el, startHeight = 0) {
-
-        if (!btn && !el) return
-
-        let heightEl = el.offsetHeight
-        el.classList.add('not-active')
-        el.style.height = startHeight + 'px';
-
-        if (startHeight > 0) {
-            if (heightEl < startHeight) {
-                el.classList.remove('not-active')
-                el.style.height = heightEl + 'px';
-            }
-        }
-
-        const update = () => {
-            el.style.height = 'auto'
-            setTimeout(() => {
-                heightEl = el.offsetHeight
-                el.style.height = heightEl + 'px';
-            }, 100)
-        }
-
-        btn.addEventListener('click', () => {
-            if (el.classList.contains('not-active')) {
-                el.classList.remove('not-active')
-                el.style.height = heightEl + 'px';
-                btn.classList.add('active')
-            } else {
-                el.classList.add('not-active')
-                el.style.height = startHeight + 'px';
-                btn.classList.remove('active')
-            }
-        })
-
-        let observer = new MutationObserver(mutationRecords => {
-            update()
-        })
-
-        observer.observe(el, {
-            childList: true,
-            subtree: true,
-            characterDataOldValue: true
-        })
-    }
-
     init_accordion('first_active');
 })(window);
 
@@ -238,3 +208,49 @@ createApp(CitySelectComponent)
             }
         });
 })(window)
+
+function smoothView(btn, el, startHeight = 0) {
+
+    if (!btn && !el) return
+
+    let heightEl = el.offsetHeight
+    el.classList.add('not-active')
+    el.style.height = startHeight + 'px';
+
+    if (startHeight > 0) {
+        if (heightEl < startHeight) {
+            el.classList.remove('not-active')
+            el.style.height = heightEl + 'px';
+        }
+    }
+
+    const update = () => {
+        el.style.height = 'auto'
+        setTimeout(() => {
+            heightEl = el.offsetHeight
+            el.style.height = heightEl + 'px';
+        }, 100)
+    }
+
+    btn.addEventListener('click', () => {
+        if (el.classList.contains('not-active')) {
+            el.classList.remove('not-active')
+            el.style.height = heightEl + 'px';
+            btn.classList.add('active')
+        } else {
+            el.classList.add('not-active')
+            el.style.height = startHeight + 'px';
+            btn.classList.remove('active')
+        }
+    })
+
+    let observer = new MutationObserver(mutationRecords => {
+        update()
+    })
+
+    observer.observe(el, {
+        childList: true,
+        subtree: true,
+        characterDataOldValue: true
+    })
+}

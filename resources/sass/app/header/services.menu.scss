@@ -74,6 +74,11 @@
             justify-content: start;
             gap: 8px;
         }
+
+        .dropdown-menu__child {
+            transition: .3s;
+            overflow: hidden;
+        }
     }
 
     .dropdown-menu__icon {

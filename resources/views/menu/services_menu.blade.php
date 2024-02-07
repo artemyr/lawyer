@@ -25,7 +25,7 @@
             @continue
         @endisset
 
-        <li class="dropdown-menu__item" js-service-menu="item" data-id="{{ $category->id }}">
+        <li class="dropdown-menu__item">
             <svg class="dropdown-menu__icon"><use xlink:href="{{ asset('svg/sprite.svg#').$category->icon->code }}-small"></use></svg>
             <a class="" href="{{ (isset($userCity) ? "/$userCity->link/" : '/'). $category->link }}">{{ $category->name }}</a>
         </li>

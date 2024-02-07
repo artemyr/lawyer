@@ -16,8 +16,3 @@
         @endcan
     </ul>
 </nav>
-<script>
-    document.addEventListener('DOMContentLoaded', function(){
-        window.obj_mainMap = new mainMenu({});
-    })
-</script>
