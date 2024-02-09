@@ -19,7 +19,7 @@
 </head>
 <body>
 <div id="app">
-    <header>
+    <header class="{{ $page->headerClass }}">
         @include('includes.header')
     </header>
 

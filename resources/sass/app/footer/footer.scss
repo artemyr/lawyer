@@ -108,6 +108,10 @@
 
         margin-bottom: 72px;
 
+        @include size768 {
+            margin: 0;
+        }
+
         .footer__menu {
             display: grid;
             grid-auto-flow: column;

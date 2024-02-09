@@ -5,6 +5,7 @@ namespace App\Services\DynamicUrl\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\City;
 use App\Models\DTO\Banner;
+use App\Models\DTO\Page;
 use App\Services\DynamicUrl\Contracts\DynamicUrlControllerInterface;
 use App\Services\DynamicUrl\Helpers\DynamicUrlHelper;
 use Illuminate\Support\Facades\Cache;
@@ -17,6 +18,7 @@ class CityController extends Controller implements DynamicUrlControllerInterface
         $city = City::where('link', $dynamicUrlHelper->getCity())->first();
 
         return view('pages.category', [
+            'page' => new Page('','mobile-banner'),
             'banner' => new Banner(
                 bigImage: asset('image/bg.jpg'),
                 averageImage: asset('image/bg.png'),

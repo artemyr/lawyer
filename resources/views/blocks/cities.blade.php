@@ -17,7 +17,7 @@
         <div class="cities__list">
             @foreach($G_cities as $key => $city)
                 <div class="cities__item" @if ($key > 23) style="display: none" @endif>
-                    <a href="/ {{ $city->link . "?setCity={$city->link}" }}">{{ $city->name }}</a>
+                    <a href="/{{ $city->link . "?setCity={$city->link}" }}">{{ $city->name }}</a>
                 </div>
             @endforeach
         </div>

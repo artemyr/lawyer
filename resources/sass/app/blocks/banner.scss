@@ -34,6 +34,11 @@
         grid-auto-flow: row;
         gap: 32px;
 
+        @include size768 {
+            top: 70px;
+            left: 20px;
+        }
+
         .banner__title {
             color: white;
             font-family: 'Commissioner 600';

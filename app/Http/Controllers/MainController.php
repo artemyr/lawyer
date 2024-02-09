@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\DTO\Banner;
+use App\Models\DTO\Page;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
@@ -11,6 +12,7 @@ class MainController extends Controller
     public function show()
     {
         return view('main', [
+            'page' => new Page('','mobile-banner'),
             'banner' => new Banner(
                 bigImage: asset('image/bg.jpg'),
                 averageImage: asset('image/bg.png'),
