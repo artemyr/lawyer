@@ -33,6 +33,10 @@ createApp(CitySelectComponent)
     window.mainMenu.prototype = {
         init: function()
         {
+            if (!document.getElementById('main-services-menu')) {
+                return
+            }
+
             this.mainServicesMenu = document.getElementById('main-services-menu')
             this.header = document.querySelector('.header')
             this.mainMenuToggle = document.querySelector('[js-service-menu="toggler"] a')
@@ -197,8 +201,16 @@ createApp(CitySelectComponent)
 })(window);
 
 // slider
-(function (window){
-    const recommends = new Swiper("#recommends-swiper",
+(function (document){
+    if (document.getElementById('recommends-swiper')) {
+        initRecommendsSlider()
+    }
+    if (document.getElementById('jurists-swiper')) {
+        initJuristsSlider()
+    }
+
+    function initRecommendsSlider() {
+        const recommends = new Swiper("#recommends-swiper",
         {
             slidesPerView: 1,
             spaceBetween: 20,
@@ -221,30 +233,33 @@ createApp(CitySelectComponent)
                 },
             }
         });
-    const jurists = new Swiper("#jurists-swiper",
-        {
-            slidesPerView: 1,
-            spaceBetween: 20,
-            navigation: {
-                nextEl: "#jurists_r",
-                prevEl: "#jurists_l",
-            },
-            breakpoints: {
-                767: {
-                    slidesPerView: 2,
-                    spaceBetween: 16,
+    }
+    function initJuristsSlider() {
+        const jurists = new Swiper("#jurists-swiper",
+            {
+                slidesPerView: 1,
+                spaceBetween: 20,
+                navigation: {
+                    nextEl: "#jurists_r",
+                    prevEl: "#jurists_l",
                 },
-                1023: {
-                    slidesPerView: 3,
-                    spaceBetween: 16,
-                },
-                1439: {
-                    slidesPerView: 4,
-                    spaceBetween: 16,
-                },
-            }
-        });
-})(window)
+                breakpoints: {
+                    767: {
+                        slidesPerView: 2,
+                        spaceBetween: 16,
+                    },
+                    1023: {
+                        slidesPerView: 3,
+                        spaceBetween: 16,
+                    },
+                    1439: {
+                        slidesPerView: 4,
+                        spaceBetween: 16,
+                    },
+                }
+            });
+    }
+})(document)
 
 function smoothView(btn, el, startHeight = 0) {
 
