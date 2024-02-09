@@ -15,7 +15,12 @@
             />
         </div>
         <div class="city-select__reset">
-            <button @click.prevent="reset">Сбросить</button>
+            <button @click.prevent="reset">
+                Сбросить
+                <svg>
+                    <use xlink:href="/svg/sprite.svg#icon-close"></use>
+                </svg>
+            </button>
         </div>
     </div>
 </template>
@@ -106,6 +111,14 @@ export default defineComponent({
                 background: transparent;
                 border: none;
                 color: #888CA2;
+                display: grid;
+                grid-auto-flow: column;
+                align-items: center;
+
+                svg {
+                    height: 20px;
+                    width: 20px;
+                }
             }
         }
     }

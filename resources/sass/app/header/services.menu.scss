@@ -3,7 +3,7 @@
 
     .main-services-menu__spoiler {
         position: absolute;
-        bottom: 0;
+        bottom: 60px;
         width: 100%;
         transition: .3s;
         z-index: 20;
@@ -24,6 +24,7 @@
 
     &.active .main-services-menu__spoiler {
         transform: translateY(100%);
+        bottom: 1px;
     }
 
     .main-services-menu__left {

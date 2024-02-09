@@ -26,6 +26,7 @@ createApp(CitySelectComponent)
         this.mainMenuToggle = {};
         this.mainServicesMenu = {};
         this.shadow = {};
+        this.opened = false;
         this.init();
     };
 
@@ -33,6 +34,7 @@ createApp(CitySelectComponent)
         init: function()
         {
             this.mainServicesMenu = document.getElementById('main-services-menu')
+            this.header = document.querySelector('.header')
             this.mainMenuToggle = document.querySelector('[js-service-menu="toggler"] a')
             this.shadow = document.getElementById('shadow')
             this.menuItems = this.mainServicesMenu.querySelectorAll('[js-service-menu="item"]')
@@ -44,7 +46,7 @@ createApp(CitySelectComponent)
 
             document.addEventListener('click',(e) => {
                 if (e.target.closest('[js-service-menu="toggler"]')) {
-                    this.open();
+                    this.toggle();
                 } else if (e.target.closest('[js-service-menu="closer"]')) {
                     this.close();
                 } else if (e.target.closest('#main-services-menu')) {
@@ -56,13 +58,25 @@ createApp(CitySelectComponent)
 
             this.initSubmenu();
         },
+        toggle: function () {
+            if (this.opened) {
+                this.close()
+            } else {
+                this.open()
+            }
+        },
         open: function () {
-            this.mainServicesMenu.classList.toggle('active');
-            this.shadow.classList.toggle('active');
+            this.mainServicesMenu.style.display = 'block'
+            this.mainServicesMenu.classList.add('active');
+            this.shadow.classList.add('active');
+            this.header.classList.add('menu-opened')
+            this.opened = true;
         },
         close: function () {
             this.mainServicesMenu.classList.remove('active');
             this.shadow.classList.remove('active');
+            this.header.classList.remove('menu-opened')
+            this.opened = false;
         },
         initSubmenu: function () {
             if (window.innerWidth > 1439) {

@@ -12,8 +12,12 @@
         .form__title {
             height: 313px;
 
-            @include size768 {
+            @include size1440 {
                 height: unset;
+                padding-bottom: 48px;
+            }
+
+            @include size768 {
                 padding-bottom: 32px;
             }
         }
@@ -103,7 +107,12 @@
         padding: 40px;
     }
 
+    @include size1024 {
+        margin-top: 80px;
+    }
+
     @include size768 {
+        margin-top: 70px;
         padding: 20px;
     }
 

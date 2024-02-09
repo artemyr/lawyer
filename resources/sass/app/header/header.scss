@@ -6,6 +6,16 @@ header {
     position: relative;
     z-index: 30;
 
+    @include size768 {
+        position: absolute;
+        width: 100%;
+        background: transparent;
+
+        .container {
+            padding: 0;
+        }
+    }
+
     .header {
         display: grid;
         justify-content: space-between;
@@ -17,6 +27,15 @@ header {
         position: relative;
         z-index: 30;
         background: white;
+
+        @include size768 {
+            background: transparent;
+            padding: 16px 20px 8px;
+
+            &.menu-opened {
+                background: white;
+            }
+        }
 
         .logo {
             height: 28px;

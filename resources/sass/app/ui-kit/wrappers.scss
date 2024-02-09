@@ -6,8 +6,10 @@
 
     @include size1440 {
         gap: 80px;
+        padding-bottom: 80px;
     }
     @include size768 {
+        padding-bottom: 64px;
         gap: 64px;
     }
 }
