@@ -1,9 +1,11 @@
 <template>
-    <div>
+    <div class="menu-row">
         <ul>
-            <li><a href="/">Back to site</a></li>
             <li><router-link :to="{ name: 'home' }">Home</router-link></li>
             <li><router-link :to="{ name: 'about' }">About</router-link></li>
+        </ul>
+        <ul>
+            <li><a href="/">Back to site</a></li>
         </ul>
     </div>
 </template>
@@ -20,5 +22,10 @@ export default defineComponent({
         display: inline-grid;
         gap: 20px;
         grid-auto-flow: column;
+    }
+    .menu-row {
+        display: grid;
+        grid-auto-flow: column;
+        justify-content: space-between;
     }
 </style>
