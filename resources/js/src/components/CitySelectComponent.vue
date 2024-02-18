@@ -17,22 +17,20 @@
         <div class="city-select__reset">
             <button @click.prevent="reset">
                 Сбросить
-                <svg>
-                    <use xlink:href="/svg/sprite.svg#icon-close"></use>
-                </svg>
+                <Icon code="icon-close" />
             </button>
         </div>
     </div>
 </template>
 
 <script lang="ts">
-import {defineComponent} from "vue";
 import axios from "axios";
 import { ModelListSelect } from "vue-search-select";
 import "vue-search-select/dist/VueSearchSelect.css"
+import Icon from "./tools/Icon.vue";
 
-export default defineComponent({
-    components: {ModelListSelect},
+export default {
+    components: {Icon, ModelListSelect},
     mounted() {
         this.get(`/api/cities/all`);
     },
@@ -67,7 +65,7 @@ export default defineComponent({
             location.href = this.city.link + '?setCity=' + this.city.link
         }
     }
-})
+}
 </script>
 
 <style lang="scss">
