@@ -1,11 +1,13 @@
 <template>
     <div>
         <div class="mb-1">
-            <label :for="id" class="form-label">{{ name }}</label>
-            <input v-model="$parent.entity.name" @input="transliterate" :type="type" :id="id"
-                   :placeholder="placeholder"
-                   :class="{'is-invalid': !errorName}" class="form-control">
-            <div class="form-text">{{ help }}</div>
+            <label :for="fields.name.name" class="form-label">{{ fields.name.label }}</label>
+            <input v-model="name" @input="transliterate"
+               :type="fields.name.type"
+               :id="fields.name.name"
+               :placeholder="fields.name.placeholder"
+               :class="{'is-invalid': !errorName}" class="form-control">
+            <div class="form-text">{{ fields.name.caption }}</div>
         </div>
 
         <div class="mb-1">
@@ -13,11 +15,13 @@
         </div>
 
         <div class="mb-3">
-            <label for="link" class="form-label">Ссылка</label>
-            <input v-model="$parent.entity.link" :class="{'is-invalid': !errorLink}" type="text" id="link"
-                   placeholder="link"
-                   class="form-control">
-            <div class="form-text">Человеко понятный url</div>
+            <label :for="fields.link.name" class="form-label">{{ fields.link.label }}</label>
+            <input v-model="link" :class="{'is-invalid': !errorLink}"
+               :type="fields.link.type"
+               :id="fields.link.name"
+               :placeholder="fields.link.placeholder"
+               class="form-control">
+            <div class="form-text">{{ fields.link.caption }}</div>
         </div>
     </div>
 </template>
@@ -26,28 +30,43 @@
 import {defineComponent} from "vue";
 import {transliterate as tr} from 'transliteration';
 
-export default defineComponent({
-    props: ['id', 'name', 'type', 'help', 'value', 'placeholder'],
+export default {
+    props: ['fields'],
     methods: {
         transliterate() {
             if (!this.transliteration) return
-            this.$parent.entity.link = tr(this.$parent.entity.name).toLowerCase().replaceAll(/ /g, '-');
+            this.link = tr(this.name).toLowerCase().replaceAll(/ /g, '-');
+        },
+        check() {
+            return Boolean(this.name && this.link)
+        },
+        getValues() {
+            return new Map([
+                [this.fields.name.name, this.name],
+                [this.fields.link.name, this.link],
+            ])
         }
     },
     data() {
         return {
+            name: '',
+            link: '',
             transliteration: true
         }
     },
+    mounted() {
+        this.name = this.fields.name.value
+        this.link = this.fields.link.value
+    },
     computed: {
         errorName() {
-            return this.$parent.entity.name
+            return this.name
         },
         errorLink() {
-            return this.$parent.entity.link
+            return this.link
         }
     }
-})
+}
 </script>
 
 <style lang="scss" scoped>

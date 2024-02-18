@@ -23,17 +23,22 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::group([
     'prefix' => 'admin',
     'middleware' => [
-        'auth:sanctum',
-        'admin'
+//        'auth:sanctum',
+//        'admin'
     ]
 ], function() {
     Route::group(['prefix' => 'cities'], function() {
         Route::get('/all', [CityController::class, 'all']);
         Route::get('/', [CityController::class, 'index'])->name('admin.city.index');
-        Route::get('/{city}', [CityController::class, 'show'])->name('admin.city.show');
         Route::post('/', [CityController::class,'store'])->name('admin.city.store');
         Route::delete('/{city}', [CityController::class, 'destroy'])->name('admin.city.destroy');
         Route::patch('/{city}', [CityController::class, 'update'])->name('admin.city.update');
+
+        Route::get('/controls', [CityController::class, 'controls'])->name('admin.city.controls.create');
+        Route::get('/controls/{city}', [CityController::class, 'controls'])->name('admin.city.controls.update');
+
+        Route::get('/{city}', [CityController::class, 'show'])->name('admin.city.show');
+
     });
 
     Route::group(['prefix' => 'categories'], function() {
@@ -44,5 +49,3 @@ Route::group([
         Route::patch('/{category}', [CategoryController::class, 'update'])->name('admin.categories.update');
     });
 });
-
-Route::get('/cities/all', [CityController::class, 'all']);

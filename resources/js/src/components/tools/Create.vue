@@ -1,0 +1,93 @@
+<template>
+    <form v-if="this.form.fields">
+
+        <div v-for="groupField in this.form.fields">
+            <component ref="childComponent" v-bind:is="groupField.type"
+                       :fields = groupField.fields
+            />
+        </div>
+
+        <button :disabled="!isDisabled" @click.prevent="update(true)" type="submit" class="btn btn-success">Save</button>
+        <button @click.prevent="update(false)" type="submit" class="btn btn-primary">Apply</button>
+    </form>
+</template>
+
+<script lang="ts">
+import axios from "axios";
+import EditNameLink from "../form/EditNameLinkComponent.vue";
+import EditText from "../form/EditTextComponent.vue";
+
+export default {
+    props:['entity'],
+    components: {EditNameLink, EditText},
+    mounted() {
+        this.getForm(`/api/admin/${this.entity}/controls`)
+    },
+    data() {
+        return {
+            form: {
+                fields: {},
+                values: {},
+                validated: true
+            }
+        }
+    },
+    methods: {
+        getForm(link) {
+            axios.get(link)
+                .then(res => {
+                    this.form.fields = res.data
+                })
+        },
+        getFormParameters() {
+            let result = {};
+            this.$refs.childComponent.forEach(component => {
+                let params = component.getValues()
+                params.forEach(function (value,key) {
+                    result[key] = value
+                }, this)
+            })
+            return result
+
+        },
+        check() {
+            let result = true;
+
+            this.$refs.childComponent.forEach(component => {
+                if(!component.check()){
+                    result = false
+                }
+            }, this)
+
+            this.form.validated = result
+        },
+        update(toIndex) {
+
+            this.check()
+            if (!this.form.validated){
+                alert('ошибки')
+                return
+            }
+
+            let data = this.getFormParameters()
+
+            axios.post(`/api/admin/${this.entity}`, data)
+                .then(res => {
+                    this.$router.push({name:'admin.city.edit', params: {id: res.data.id}})
+                })
+                .catch(error => {
+                    this.errors = error.response.data.errors
+                })
+        }
+    },
+    computed: {
+        isDisabled() {
+            return this.form.validated
+        }
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+
+</style>

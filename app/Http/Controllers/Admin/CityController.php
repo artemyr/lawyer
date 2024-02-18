@@ -7,6 +7,7 @@ use App\Http\Requests\City\StoreRequest;
 use App\Http\Requests\City\UpdateRequest;
 use App\Http\Resources\CityResource;
 use App\Models\City;
+use App\Services\FormBuilder\Enum\TypeEnum;
 
 class CityController extends Controller
 {
@@ -22,24 +23,29 @@ class CityController extends Controller
 
     public function store(StoreRequest $request)
     {
-        City::create($request->validated());
-        return response([]);
+        $city = City::create($request->validated());
+        return response(['id' => $city->id]);
     }
 
     public function update(UpdateRequest $request, City $city)
     {
         $city->update($request->validated());
-        return response([]);
+        return response(['id' => $city->id]);
     }
 
     public function destroy(City $city)
     {
         $city->delete();
-        return response([]);
+        return response(['id' => $city->id]);
     }
 
     public function all()
     {
         return CityResource::collection(City::get());
+    }
+
+    public function controls(City $city)
+    {
+        return response(TypeEnum::CITY->getForm($city)->toArray());
     }
 }
