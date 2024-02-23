@@ -19,6 +19,9 @@
                         <router-link :to="{name:'admin.category.edit', params:{id: row.id} }" class="btn btn-success">edit</router-link>
                     </td>
                     <td>
+                        <router-link :to="{name:'admin.category.copy', params:{id: row.id} }" class="btn btn-primary">copy</router-link>
+                    </td>
+                    <td>
                         <button @click.prevent="deleteElement(row.id)" class="btn btn-danger">delete</button>
                     </td>
                 </tr>
@@ -35,15 +38,14 @@
 </template>
 
 <script lang="ts">
-import {defineComponent} from "vue";
 import axios from "axios";
-export default defineComponent({
+export default {
     components: {},
     data() {
         return {
             elements: null,
             pagen: null,
-            header: ['id','name','link'],
+            header: ['id','name','active','link','sort'],
             curLink: null
         }
     },
@@ -76,7 +78,7 @@ export default defineComponent({
                 })
         }
     }
-})
+}
 </script>
 
 <style lang="scss" scoped>

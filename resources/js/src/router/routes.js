@@ -40,6 +40,11 @@ const routes = [
         component: () => import("../pages/Admin/Category/CategoryCreate.vue")
     },
     {
+        path: '/admin/categories/copy/:id',
+        name: 'admin.category.copy',
+        component: () => import("../pages/Admin/Category/CategoryCopy.vue")
+    },
+    {
         path: '/admin/article',
         name: 'admin.article',
         component: () => import("../pages/Admin/Article.vue")

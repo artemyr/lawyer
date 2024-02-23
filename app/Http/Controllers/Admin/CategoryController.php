@@ -13,7 +13,7 @@ class CategoryController extends Controller
 {
     public function index ()
     {
-        return CategoryResource::collection(Category::paginate(20));
+        return CategoryResource::collection(Category::orderBy('sort')->paginate(20));
     }
 
     public function show (Category $category)
