@@ -1,11 +1,11 @@
 <template>
     <div class="mb-3">
-        <label class="form-label">{{ name }}</label>
+        <label class="form-label">{{ fields.select.label }}</label>
         <model-list-select
             :list="options"
-            v-model="$parent.entity[id]"
+            v-model="value"
             option-value="id"
-            option-text="name"
+            option-text="label"
             id="mySelectId"
             name="mySelectName"
             placeholder="select item"
@@ -16,30 +16,33 @@
 </template>
 
 <script lang="ts">
-import {defineComponent} from "vue";
-import axios from "axios";
 import { ModelListSelect } from "vue-search-select";
 import "vue-search-select/dist/VueSearchSelect.css"
 
-export default defineComponent({
+export default {
     components: {ModelListSelect},
-    props: ['id', 'name', 'url'],
+    props: ['fields'],
     mounted() {
-        this.get(`/api/admin/${this.url}`);
+        this.options = this.fields.select.values
+        this.value = this.fields.select.value
     },
     data() {
         return {
+            value: '',
+
             options: [],
             objectItem: null,
             searchText: "",
         }
     },
     methods: {
-        get(link) {
-            axios.get(link)
-                .then(res => {
-                    this.options = res.data.data
-                })
+        getValues() {
+            return new Map([
+                [this.fields.select.name, this.value]
+            ])
+        },
+        check() {
+            return true
         },
         reset() {
             this.objectItem = {}
@@ -51,7 +54,7 @@ export default defineComponent({
             console.log("handleBlur")
         },
     }
-})
+}
 </script>
 
 <style lang="scss" scoped>

@@ -7,6 +7,7 @@ use App\Http\Requests\Category\StoreRequest;
 use App\Http\Requests\Category\UpdateRequest;
 use App\Http\Resources\CategoryResource;
 use App\Models\Category;
+use App\Services\FormBuilder\Enum\TypeEnum;
 
 class CategoryController extends Controller
 {
@@ -22,19 +23,24 @@ class CategoryController extends Controller
 
     public function store (StoreRequest $request)
     {
-        Category::create($request->validated());
-        return response([]);
+        $category = Category::create($request->validated());
+        return response(['id' => $category->id]);
     }
 
     public function update (UpdateRequest $request, Category $category)
     {
         $category->update($request->validated());
-        return response([]);
+        return response(['id' => $category->id]);
     }
 
     public function destroy (Category $category)
     {
         $category->delete();
-        return response([]);
+        return response(['id' => $category->id]);
+    }
+
+    public function controls(Category $category)
+    {
+        return response(TypeEnum::CATEGORY->getForm($category)->toArray());
     }
 }

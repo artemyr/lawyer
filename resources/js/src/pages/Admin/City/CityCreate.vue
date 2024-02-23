@@ -2,7 +2,7 @@
     <div>
         <h1>Создать новый город</h1>
 
-        <Create :entity="'cities'" />
+        <Create :entity="'cities'" :entityOne="'city'" />
     </div>
 </template>
 

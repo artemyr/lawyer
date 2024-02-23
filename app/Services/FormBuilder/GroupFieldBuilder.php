@@ -8,7 +8,7 @@ use App\Services\FormBuilder\Model\GroupField;
 
 class GroupFieldBuilder
 {
-    protected GroupFieldTypeEnum $type;
+    protected GroupFieldTypeEnum $type = GroupFieldTypeEnum::TEXT;
 
     /** @var Field[] */
     protected array $fields = [];

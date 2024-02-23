@@ -2,7 +2,7 @@
     <div>
         <h1>Редактировать город</h1>
 
-        <Edit :entity="'cities'" />
+        <Edit :entity="'cities'" :entityOne="'city'" />
     </div>
 </template>
 
@@ -11,7 +11,6 @@ import Edit from "../../../components/tools/Edit.vue";
 
 export default {
     components: {Edit}
-
 }
 </script>
 

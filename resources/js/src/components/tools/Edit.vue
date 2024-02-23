@@ -1,9 +1,10 @@
 <template>
     <form v-if="this.form.fields">
-
         <div v-for="groupField in this.form.fields">
-            <component ref="childComponent" v-bind:is="groupField.type"
-                       :fields = groupField.fields
+            <component
+                ref="childComponent"
+                v-bind:is="groupField.type"
+                :fields = groupField.fields
             />
         </div>
 
@@ -16,10 +17,13 @@
 import axios from "axios";
 import EditNameLink from "../form/EditNameLinkComponent.vue";
 import EditText from "../form/EditTextComponent.vue";
+import EditSelect from "../form/EditSelectComponent.vue";
+import EditSelectMulti from "../form/EditSelectMultiComponent.vue";
+import EditSearchSelect from "../SearchSelectComponent.vue";
 
 export default {
-    props: ['entity'],
-    components: {EditNameLink, EditText},
+    props: ['entity','entityOne'],
+    components: {EditNameLink, EditText, EditSelect, EditSelectMulti, EditSearchSelect},
     mounted() {
         this.getForm(`/api/admin/${this.entity}/controls/${this.$route.params.id}`)
     },
@@ -74,7 +78,9 @@ export default {
             axios.patch(`/api/admin/${this.entity}/${this.$route.params.id}`, data)
                 .then(res => {
                     if (toIndex){
-                        this.$router.push({name:'admin.city.index'})
+                        this.$router.push({
+                            name:`admin.${this.entityOne}.index`
+                        })
                     } else {
                         this.errors = {"Статус": ["Сохранено"]}
                         document.querySelector('body').scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });

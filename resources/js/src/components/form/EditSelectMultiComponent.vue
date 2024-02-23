@@ -1,37 +1,34 @@
 <template>
-    <div v-if="vars" class="admin-edit__form-control">
-        <label :for="vars.id">{{ vars.name }}</label>
-        <select v-model="$parent.entity[vars.id]" :id="vars.id" multiple>
-            <option v-for="value in values" :value="value.id">{{ value.title }}</option>
+    <div class="mb-3">
+        <label :for="fields.select.name">{{ fields.select.label }}</label>
+        <select v-model="value" :id="fields.select.name" multiple class="form-control">
+            <option v-for="value in values" :value="value.id">{{ value.label }}</option>
         </select>
     </div>
 </template>
 
 <script>
-import { assertExpressionStatement } from '@babel/types';
-
 export default {
-    name: 'EditSelectMulti',
     data () {
         return {
+            value: '',
             values: []
         }
     },
-    props: ['vars'],
+    props: ['fields'],
     mounted() {
-        this.get();
-        // console.log(this.$parent);
+        this.values = this.fields.select.values
+        this.value = this.fields.select.value
     },
     methods: {
-        async get () {
-            await axios.get(`/api/admin/${this.vars.entity}`)
-            .then(response => {
-                this.values = response.data.data;
-            })
-            .catch(error => {
-                console.log(error);
-            })
+        getValues() {
+            return new Map([
+                [this.fields.select.name, this.value]
+            ])
         },
+        check() {
+            return true
+        }
     }
 }
 </script>

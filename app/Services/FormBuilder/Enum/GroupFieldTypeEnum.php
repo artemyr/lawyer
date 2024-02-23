@@ -5,5 +5,8 @@ namespace App\Services\FormBuilder\Enum;
 enum GroupFieldTypeEnum: string
 {
     case NAME_LINK = 'EditNameLink';
-    case EDIT_TEXT = 'EditText';
+    case TEXT = 'EditText';
+    case SELECT = 'EditSelect';
+    case SELECT_MULTI = 'EditSelectMulti';
+    case SELECT_SEARCH = 'EditSearchSelect';
 }

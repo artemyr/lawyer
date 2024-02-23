@@ -24,7 +24,7 @@ class CityForm extends AbstractForm
             ->addGroupField($this->getNameLink())
             ->addGroupField(
                 GroupFieldBuilder::createInstance()
-                    ->configureType(GroupFieldTypeEnum::EDIT_TEXT)
+                    ->configureType(GroupFieldTypeEnum::TEXT)
                     ->addField(
                         FieldBuilder::createInstance()
                             ->configureType(FieldTypeEnum::TEXT)

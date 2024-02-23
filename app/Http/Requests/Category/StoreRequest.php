@@ -32,7 +32,11 @@ class StoreRequest extends FormRequest
                 'nullable',
                 Rule::exists('cities', 'id')
             ],
-            'icon' => 'string|nullable',
+            'icon_id' => [
+                'integer',
+                'nullable',
+                Rule::exists('icons', 'id')
+            ],
         ];
     }
 }

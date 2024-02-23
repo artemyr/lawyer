@@ -1,9 +1,10 @@
 <template>
     <form v-if="this.form.fields">
-
         <div v-for="groupField in this.form.fields">
-            <component ref="childComponent" v-bind:is="groupField.type"
-                       :fields = groupField.fields
+            <component
+                ref="childComponent"
+                v-bind:is="groupField.type"
+                :fields = groupField.fields
             />
         </div>
 
@@ -16,10 +17,13 @@
 import axios from "axios";
 import EditNameLink from "../form/EditNameLinkComponent.vue";
 import EditText from "../form/EditTextComponent.vue";
+import EditSelect from "../form/EditSelectComponent.vue";
+import EditSelectMulti from "../form/EditSelectMultiComponent.vue";
+import EditSearchSelect from "../SearchSelectComponent.vue";
 
 export default {
-    props:['entity'],
-    components: {EditNameLink, EditText},
+    props:['entity','entityOne'],
+    components: {EditNameLink, EditText, EditSelect, EditSelectMulti, EditSearchSelect},
     mounted() {
         this.getForm(`/api/admin/${this.entity}/controls`)
     },
@@ -73,7 +77,12 @@ export default {
 
             axios.post(`/api/admin/${this.entity}`, data)
                 .then(res => {
-                    this.$router.push({name:'admin.city.edit', params: {id: res.data.id}})
+                    this.$router.push({
+                        name:`admin.${this.entityOne}.edit`,
+                        params: {
+                            id: res.data.id
+                        }
+                    })
                 })
                 .catch(error => {
                     this.errors = error.response.data.errors

@@ -43,9 +43,13 @@ Route::group([
 
     Route::group(['prefix' => 'categories'], function() {
         Route::get('/', [CategoryController::class, 'index'])->name('admin.categories.index');
-        Route::get('/{category}', [CategoryController::class, 'show'])->name('admin.categories.show');
         Route::post('/', [CategoryController::class,'store'])->name('admin.categories.store');
         Route::delete('/{category}', [CategoryController::class, 'destroy'])->name('admin.categories.destroy');
         Route::patch('/{category}', [CategoryController::class, 'update'])->name('admin.categories.update');
+
+        Route::get('/controls', [CategoryController::class, 'controls'])->name('admin.category.controls.create');
+        Route::get('/controls/{category}', [CategoryController::class, 'controls'])->name('admin.category.controls.update');
+
+        Route::get('/{category}', [CategoryController::class, 'show'])->name('admin.categories.show');
     });
 });
