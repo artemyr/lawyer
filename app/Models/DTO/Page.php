@@ -4,12 +4,11 @@ namespace App\Models\DTO;
 
 class Page
 {
-    public string $title;
-    public string $headerClass;
-
-    public function __construct(string $title = '', string $headerClass = '')
+    public function __construct(
+        public string $browserTitle = '',
+        public string $pageTitle = '',
+        public string $headerClass = ''
+    )
     {
-        $this->title = $title;
-        $this->headerClass = $headerClass;
     }
 }

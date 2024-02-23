@@ -13,10 +13,15 @@ class CategoryController extends Controller implements DynamicUrlControllerInter
 {
     public function show(DynamicUrlHelper $dynamicUrlHelper)
     {
-        $category = Category::where('link', $dynamicUrlHelper->getCategory())->first();
+        $category =  $dynamicUrlHelper->getCategory();
+        $city = $dynamicUrlHelper->getCity();
 
         return view('pages.category', [
-            'page' => new Page('','mobile-banner'),
+            'page' => new Page(
+                browserTitle: $category->name . ' в ' . $city->name,
+                pageTitle: '',
+                headerClass: 'mobile-banner'
+            ),
             'category' => $category,
             'banner' => new Banner(
                 bigImage: asset('image/bg.jpg'),

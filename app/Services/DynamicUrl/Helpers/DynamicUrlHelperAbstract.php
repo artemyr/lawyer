@@ -2,6 +2,8 @@
 
 namespace App\Services\DynamicUrl\Helpers;
 
+use App\Models\Category;
+use App\Models\City;
 use App\Models\DTO\Breadcrumbs;
 use Illuminate\Support\Facades\Cache;
 
@@ -9,8 +11,10 @@ abstract class DynamicUrlHelperAbstract
 {
     protected string $url;
     protected array $slags;
-    protected string $city;
-    protected string $category;
+    protected string $citySlug;
+    protected City $city;
+    protected string $categorySlug;
+    protected Category $category;
     protected string $gosInstans;
 
     /**
@@ -34,12 +38,20 @@ abstract class DynamicUrlHelperAbstract
     {
         return Cache::get('instansRouteList');
     }
-    public function getCity(): string
+    public function getCity(): City
     {
+        if (empty($this->city)) {
+            $this->city = City::where('link', $this->citySlug)->first();
+        }
+
         return $this->city;
     }
-    public function getCategory(): string
+    public function getCategory(): Category
     {
+        if (empty($this->category)) {
+            $this->category = Category::where('link', $this->categorySlug)->first();
+        }
+
         return $this->category;
     }
     public function getGosInstanse(): string

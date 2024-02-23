@@ -23,11 +23,11 @@ class DynamicUrlHelper extends DynamicUrlHelperAbstract
                  * 1 слаг - либо город | категория
                  */
                 if (in_array($this->slags[0], $this->getCities())) {
-                    $this->city = $this->slags[0];
+                    $this->citySlug = $this->slags[0];
                     return new CityController;
                 } else {
                     if (in_array($this->slags[0], $this->getCategories())) {
-                        $this->category = $this->slags[0];
+                        $this->categorySlug = $this->slags[0];
                         return new CategoryController;
                     }
                 }
@@ -37,13 +37,13 @@ class DynamicUrlHelper extends DynamicUrlHelperAbstract
                  * 2 слага - категория города | гос инстанции
                  */
                 if (in_array($this->slags[0], $this->getCities())) {
-                    $this->city = $this->slags[0];
+                    $this->citySlug = $this->slags[0];
                     if (in_array($this->slags[1], $this->getCategories())) {
-                        $this->category = $this->slags[1];
+                        $this->categorySlug = $this->slags[1];
                         return new CategoryController;
                     }
                 } elseif (in_array($this->slags[0], $this->getCategories())) {
-                    $this->category = $this->slags[0];
+                    $this->categorySlug = $this->slags[0];
                     if ($this->slags[1] === 'instation') {
                         return new GosInstansController();
                     }
@@ -54,7 +54,7 @@ class DynamicUrlHelper extends DynamicUrlHelperAbstract
                  * 3 слага - гос инстанция детальная
                  */
                 if (in_array($this->slags[0], $this->getCategories())) {
-                    $this->category = $this->slags[0];
+                    $this->categorySlug = $this->slags[0];
                     if ($this->slags[1] === 'instation') {
                         if (in_array($this->slags[2], $this->getGosInstanses())) {
                             $this->gosInstans = $this->slags[2];

@@ -30,7 +30,7 @@ class CityForm extends AbstractForm
                             ->configureType(FieldTypeEnum::TEXT)
                             ->configureCode('text')
                             ->configureName('TEXT')
-                            ->configureLabel('Город в дательном пажеже')
+                            ->configureLabel('Город в предложном пажеже')
                             ->configurePlaceholder('Москве')
                             ->create()
                     )

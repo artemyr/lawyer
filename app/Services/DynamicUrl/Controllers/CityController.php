@@ -15,10 +15,14 @@ class CityController extends Controller implements DynamicUrlControllerInterface
 {
     public function show (DynamicUrlHelper $dynamicUrlHelper)
     {
-        $city = City::where('link', $dynamicUrlHelper->getCity())->first();
+        $city = $dynamicUrlHelper->getCity();
 
         return view('pages.category', [
-            'page' => new Page('','mobile-banner'),
+            'page' => new Page(
+                browserTitle: $city->name,
+                pageTitle: '',
+                headerClass: 'mobile-banner'
+            ),
             'banner' => new Banner(
                 bigImage: asset('image/bg.jpg'),
                 averageImage: asset('image/bg.png'),
