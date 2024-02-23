@@ -25,6 +25,8 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
+            'active' => 'boolean',
+            'sort' => 'integer',
             'name' => 'string',
             'link' => 'string',
             'city_id' => [

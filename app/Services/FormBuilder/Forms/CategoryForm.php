@@ -23,7 +23,45 @@ class CategoryForm extends AbstractForm
             $this->category = $category;
         }
 
+        $active = false;
+        if (!empty($this->category->active)) {
+            $active = (bool)$this->category->active;
+        }
+
+        $sort = 500;
+        if (!empty($this->category->sort)) {
+            $sort = $this->category->sort;
+        }
+
         $this->groupFields = FormBuilder::createInstance()
+            ->addGroupField(
+                GroupFieldBuilder::createInstance()
+                    ->configureType(GroupFieldTypeEnum::CHECKBOX)
+                    ->addField(
+                        FieldBuilder::createInstance()
+                            ->configureType(FieldTypeEnum::CHECKBOX)
+                            ->configureCode('checkbox')
+                            ->configureName('active')
+                            ->configureLabel('Активность')
+                            ->configureValue($active)
+                            ->create()
+                    )
+                    ->create()
+            )
+            ->addGroupField(
+                GroupFieldBuilder::createInstance()
+                    ->configureType(GroupFieldTypeEnum::NUMBER)
+                    ->addField(
+                        FieldBuilder::createInstance()
+                            ->configureType(FieldTypeEnum::NUMBER)
+                            ->configureCode('number')
+                            ->configureName('sort')
+                            ->configureLabel('Сортировка')
+                            ->configureValue($sort)
+                            ->create()
+                    )
+                    ->create()
+            )
             ->addGroupField($this->getNameLinkField())
             ->addGroupField($this->getIconField())
             ->addGroupField($this->getCityField())

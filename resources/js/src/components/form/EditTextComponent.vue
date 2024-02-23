@@ -11,9 +11,7 @@
 </template>
 
 <script lang="ts">
-import {defineComponent} from "vue";
-
-export default defineComponent({
+export default {
     props: ['fields'],
     data() {
         return {
@@ -33,7 +31,7 @@ export default defineComponent({
             return true
         }
     }
-})
+}
 </script>
 
 <style lang="scss" scoped>

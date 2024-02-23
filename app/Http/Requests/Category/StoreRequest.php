@@ -25,6 +25,8 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
+            'active' => 'boolean',
+            'sort' => 'integer',
             'name' => 'string',
             'link' => 'string',
             'city_id' => [
@@ -36,7 +38,7 @@ class StoreRequest extends FormRequest
                 'integer',
                 'nullable',
                 Rule::exists('icons', 'id')
-            ],
+            ]
         ];
     }
 }

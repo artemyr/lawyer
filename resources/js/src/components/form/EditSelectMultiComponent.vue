@@ -1,9 +1,11 @@
 <template>
     <div class="mb-3">
-        <label :for="fields.select.name">{{ fields.select.label }}</label>
+        <label :for="fields.select.name" class="form-label">{{ fields.select.label }}</label>
         <select v-model="value" :id="fields.select.name" multiple class="form-control">
             <option v-for="value in values" :value="value.id">{{ value.label }}</option>
         </select>
+        <div class="form-text">{{ fields.select.caption }}</div>
+
     </div>
 </template>
 
@@ -32,3 +34,8 @@ export default {
     }
 }
 </script>
+
+<style>
+.form-text {
+    color: white;
+}</style>

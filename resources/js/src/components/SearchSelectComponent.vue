@@ -12,6 +12,7 @@
             @searchchange="printSearchText"
             @blur="handleBlur"
         />
+        <div class="form-text">{{ fields.select.caption }}</div>
     </div>
 </template>
 
@@ -58,5 +59,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.form-text {
+    color: white;
+}
 </style>
