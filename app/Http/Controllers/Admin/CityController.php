@@ -39,11 +39,6 @@ class CityController extends Controller
         return response(['id' => $city->id]);
     }
 
-    public function all()
-    {
-        return CityResource::collection(City::get());
-    }
-
     public function controls(City $city)
     {
         return response(TypeEnum::CITY->getForm($city)->toArray());

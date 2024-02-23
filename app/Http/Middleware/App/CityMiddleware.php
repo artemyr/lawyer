@@ -85,10 +85,15 @@ class CityMiddleware
 
     private function cityCategories(int $cityId): void
     {
+        // достаем из кеша все категории
         $G_categories = Cache::get('G_categories');
         /** @var Collection $G_categories */
-        /** @var Collection $cities */
-        $cities = $G_categories->whereIn('city_id',[$cityId, 0])->sortByDesc('city_id');
-        View::share('L_categories', $cities->where('parent_id', 0));
+        /** @var Collection $categories */
+
+        // достаем из коллекции категории либо этого города либо без города и без города сортируем в низ
+        $categories = $G_categories->whereIn('city_id',[$cityId, 0])->sortByDesc('city_id');
+
+        // берем корневые категории и сортируем их по полю sort
+        View::share('L_categories', $categories->where('parent_id', 0)->sortBy('sort'));
     }
 }
