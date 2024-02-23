@@ -16,9 +16,17 @@ class CategoryController extends Controller implements DynamicUrlControllerInter
         $category =  $dynamicUrlHelper->getCategory();
         $city = $dynamicUrlHelper->getCity();
 
+        if ($city) {
+            $browserTitle = $category->name . ' в ' . $city->name;
+            $dynamicBlock = 'instance';
+        } else {
+            $browserTitle = $category->name;
+            $dynamicBlock = 'cities';
+        }
+
         return view('pages.category', [
             'page' => new Page(
-                browserTitle: $category->name . ' в ' . $city->name,
+                browserTitle: $browserTitle,
                 pageTitle: '',
                 headerClass: 'mobile-banner'
             ),
@@ -29,6 +37,7 @@ class CategoryController extends Controller implements DynamicUrlControllerInter
                 smallImage: asset('image/bg-small.png'),
                 title: "Юридические<br>услуги <span> " . $category->name . "</span>"
             ),
+            'dynamicBlock' => $dynamicBlock
         ]);
     }
 }

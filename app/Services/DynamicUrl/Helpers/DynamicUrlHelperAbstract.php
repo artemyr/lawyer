@@ -38,8 +38,12 @@ abstract class DynamicUrlHelperAbstract
     {
         return Cache::get('instansRouteList');
     }
-    public function getCity(): City
+    public function getCity(): ?City
     {
+        if (empty($this->citySlug)) {
+            return null;
+        }
+
         if (empty($this->city)) {
             $this->city = City::where('link', $this->citySlug)->first();
         }

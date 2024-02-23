@@ -1,0 +1,45 @@
+.instance {
+    .instance__list {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        margin-bottom: 16px;
+
+        @include size1440 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @include size1024 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include size768 {
+            grid-template-columns: 1fr;
+        }
+
+        .instance__item {
+            background: #f0f1f5;
+            border-radius: 10px;
+            min-height: 85px;
+            display: grid;
+            grid-auto-flow: column;
+            gap: 16px;
+            justify-content: start;
+            align-items: center;
+            padding-left: 20px;
+
+            &:hover {
+                span {
+                    color: $base-color;
+                }
+            }
+            span {
+                font-size: 20px;
+            }
+            svg {
+                width: 44px;
+                height: 44px;
+            }
+        }
+    }
+}

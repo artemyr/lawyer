@@ -8,7 +8,9 @@
     @include('blocks.services')
     @include('blocks.examples')
     @include('blocks.advantages')
-    @include('blocks.cities')
+
+    @include('blocks.' . $dynamicBlock)
+
     @include('blocks.ourJurists')
     @include('blocks.guardInterests')
     @include('blocks.recommends')
