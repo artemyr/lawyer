@@ -13,13 +13,25 @@
     <div class="instance">
         <div class="instance__list">
             <div class="instance__item">
-                1
+                <img src="{{ asset('image/small/building.png') }}" alt="">
+                Судебные приставы
             </div>
             <div class="instance__item">
-                1
+                Налоговая инспекция
             </div>
             <div class="instance__item">
-                1
+                <img src="{{ asset('image/small/brief.png') }}" alt="">
+                Прокуратура
+            </div>
+            <div class="instance__item">
+                Полиция
+            </div>
+            <div class="instance__item">
+                ГИБДД
+            </div>
+            <div class="instance__item">
+                <img src="{{ asset('image/small/building.png') }}" alt="">
+                Суды Москвы
             </div>
         </div>
     </div>

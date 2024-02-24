@@ -5,7 +5,7 @@ namespace App\Http\Requests\Category;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class UpdateRequest extends FormRequest
+class CategoryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,21 +27,11 @@ class UpdateRequest extends FormRequest
         return [
             'active' => 'boolean',
             'sort' => 'integer',
-            'parent_id' => [
-                'integer',
-                Rule::exists('categories', 'id')
-            ],
+            'parent_id' => 'integer',
             'name' => 'string',
             'link' => 'string',
-            'city_id' => [
-                'integer',
-                Rule::exists('cities', 'id')
-            ],
-            'icon_id' => [
-                'integer',
-                'nullable',
-                Rule::exists('icons', 'id')
-            ],
+            'city_id' => 'integer',
+            'icon_id' => 'integer|nullable',
         ];
     }
 }
