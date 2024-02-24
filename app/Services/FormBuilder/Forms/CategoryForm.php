@@ -62,6 +62,7 @@ class CategoryForm extends AbstractForm
                     )
                     ->create()
             )
+            ->addGroupField($this->getParentCategoryField())
             ->addGroupField($this->getNameLinkField())
             ->addGroupField($this->getIconField())
             ->addGroupField($this->getCityField())
@@ -106,7 +107,9 @@ class CategoryForm extends AbstractForm
 
     private function getIconField(): GroupField
     {
-        $icons = [];
+        $icons = [
+            new Value(0,'','Без иконки'),
+        ];
 
         foreach (Icon::all() as $icon) {
             $icons[] = new Value($icon->id, $icon->code, $icon->code);
@@ -134,7 +137,9 @@ class CategoryForm extends AbstractForm
 
     private function getCityField(): GroupField
     {
-        $cities = [];
+        $cities = [
+            new Value(0,'','Не выбран')
+        ];
 
         foreach (City::all() as $city) {
             $cities[] = new Value($city->id, $city->link, $city->name);
@@ -155,6 +160,36 @@ class CategoryForm extends AbstractForm
                     ->configureLabel('Город')
                     ->configureValues($cities)
                     ->configureValue($cityId)
+                    ->create()
+            )
+            ->create();
+    }
+
+    private function getParentCategoryField(): GroupField
+    {
+        $categories = [
+            new Value(0,'','Не выбрана')
+        ];
+
+        foreach (Category::where('parent_id', 0)->get() as $category) {
+            $categories[] = new Value($category->id,$category->link, $category->name);
+        }
+
+        $parentCategory = 0;
+        if (!empty($this->category->parent_id)) {
+            $parentCategory = $this->category->parent_id;
+        }
+
+        return GroupFieldBuilder::createInstance()
+            ->configureType(GroupFieldTypeEnum::SELECT_SEARCH)
+            ->addField(
+                FieldBuilder::createInstance()
+                    ->configureType(FieldTypeEnum::SELECT)
+                    ->configureCode('select')
+                    ->configureName('parent_id')
+                    ->configureLabel('Родительская категория')
+                    ->configureValues($categories)
+                    ->configureValue($parentCategory)
                     ->create()
             )
             ->create();

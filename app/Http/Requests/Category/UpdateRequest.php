@@ -27,11 +27,14 @@ class UpdateRequest extends FormRequest
         return [
             'active' => 'boolean',
             'sort' => 'integer',
+            'parent_id' => [
+                'integer',
+                Rule::exists('categories', 'id')
+            ],
             'name' => 'string',
             'link' => 'string',
             'city_id' => [
                 'integer',
-                'nullable',
                 Rule::exists('cities', 'id')
             ],
             'icon_id' => [
