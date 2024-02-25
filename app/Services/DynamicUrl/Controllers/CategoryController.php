@@ -17,7 +17,7 @@ class CategoryController extends Controller implements DynamicUrlControllerInter
         $city = $dynamicUrlHelper->getCity();
 
         if ($city) {
-            $browserTitle = $category->name . ' в ' . $city->name;
+            $browserTitle = $category->name . ' в ' . $city->name_d;
             $dynamicBlock = 'instance';
         } else {
             $browserTitle = $category->name;

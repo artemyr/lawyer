@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
 
             $table->string('name');
-            $table->string('link');
+            $table->string('link')->unique();
             $table->integer('icon_id')->nullable();
             $table->unsignedBigInteger('parent_id')->default(0);
             $table->unsignedBigInteger('city_id')->default(0);

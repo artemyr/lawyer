@@ -19,7 +19,7 @@ class CityController extends Controller implements DynamicUrlControllerInterface
 
         return view('pages.category', [
             'page' => new Page(
-                browserTitle: $city->name,
+                browserTitle: "Юридические услуги в " . $city->name_d,
                 pageTitle: '',
                 headerClass: 'mobile-banner'
             ),
@@ -27,7 +27,7 @@ class CityController extends Controller implements DynamicUrlControllerInterface
                 bigImage: asset('image/bg.jpg'),
                 averageImage: asset('image/bg.png'),
                 smallImage: asset('image/bg-small.png'),
-                title: "Юридические<br>услуги <span>в " . $city->name . "</span>"
+                title: "Юридические<br>услуги <span>в " . $city->name_d . "</span>"
             ),
             'dynamicBlock' => 'instance'
         ]);

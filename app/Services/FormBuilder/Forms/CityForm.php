@@ -16,8 +16,12 @@ class CityForm extends AbstractForm
 
     public function __construct(City $city)
     {
+        $name_d = '';
+
         if ($city->id) {
             $this->city = $city;
+
+            $name_d = $this->city->name_d;
         }
 
         $this->groupFields = FormBuilder::createInstance()
@@ -29,9 +33,10 @@ class CityForm extends AbstractForm
                         FieldBuilder::createInstance()
                             ->configureType(FieldTypeEnum::TEXT)
                             ->configureCode('text')
-                            ->configureName('TEXT')
+                            ->configureName('name_d')
                             ->configureLabel('Город в предложном пажеже')
                             ->configurePlaceholder('Москве')
+                            ->configureValue($name_d)
                             ->create()
                     )
                     ->create()
