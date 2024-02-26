@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->string('link')->unique();
             $table->string('name_d');
+            $table->string('coords');
 
             $table->timestamps();
         });

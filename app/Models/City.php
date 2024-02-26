@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\DTO\Coords;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,5 +14,22 @@ class City extends Model
     public function categories()
     {
         return $this->hasMany(Category::class);
+    }
+
+    public function getCoordsAttribute($value)
+    {
+        $coords = explode(';',$value);
+
+        if (
+            !empty($coords[0])
+            &&
+            !empty($coords[1])
+            &&
+            !empty($coords[2])
+        ) {
+            return new Coords($coords[0],$coords[1],$coords[2]);
+        }
+
+        return new Coords(0,0,0);
     }
 }

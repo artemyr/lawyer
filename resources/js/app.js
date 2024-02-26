@@ -146,7 +146,7 @@ createApp(CitySelectComponent)
                 if (!document.getElementById('map')) return;
                 const myMap = new ymaps.Map('map', {
                     center: this.params.center,
-                    zoom: 10,
+                    zoom: this.params.zoom,
                     controls: ['zoomControl'],
                     behaviors: ['drag'],
                 });

@@ -26,7 +26,8 @@ class CityRequest extends FormRequest
         return [
             'name' => 'string',
             'link' => 'string',
-            'name_d' => 'string'
+            'name_d' => 'string',
+            'coords' => 'string'
         ];
     }
 }

@@ -29,6 +29,7 @@ class CityController extends Controller implements DynamicUrlControllerInterface
                 smallImage: asset('image/bg-small.png'),
                 title: "Юридические<br>услуги <span>в " . $city->name_d . "</span>"
             ),
+            'map' => $city->coords,
             'dynamicBlock' => 'instance'
         ]);
     }

@@ -4,7 +4,8 @@
     <script>
         document.addEventListener('DOMContentLoaded', function(){
             const obj_map = new JCmap({
-                "center": [45.035470, 38.975313],
+                "center": [ {{$map->lon}}, {{$map->lat}}],
+                "zoom": {{ $map->zoom }}
             });
         })
     </script>

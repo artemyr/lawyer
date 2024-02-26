@@ -27,7 +27,6 @@
 </template>
 
 <script lang="ts">
-import {defineComponent} from "vue";
 import {transliterate as tr} from 'transliteration';
 
 export default {

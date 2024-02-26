@@ -17,11 +17,13 @@ class CityForm extends AbstractForm
     public function __construct(City $city)
     {
         $name_d = '';
+        $coords = '';
 
         if ($city->id) {
             $this->city = $city;
 
             $name_d = $this->city->name_d;
+            $coords = $this->city->coords;
         }
 
         $this->groupFields = FormBuilder::createInstance()
@@ -37,6 +39,41 @@ class CityForm extends AbstractForm
                             ->configureLabel('Город в предложном пажеже')
                             ->configurePlaceholder('Москве')
                             ->configureValue($name_d)
+                            ->create()
+                    )
+                    ->create()
+            )
+            ->addGroupField(
+                GroupFieldBuilder::createInstance()
+                    ->configureType(GroupFieldTypeEnum::COORDS)
+                    ->addField(
+                        FieldBuilder::createInstance()
+                            ->configureType(FieldTypeEnum::NUMBER)
+                            ->configureCode('lat')
+                            ->configureName('lat')
+                            ->configureLabel('Широта')
+                            ->configurePlaceholder('39.337618')
+                            ->configureValue($coords->lat)
+                            ->create()
+                    )
+                    ->addField(
+                        FieldBuilder::createInstance()
+                            ->configureType(FieldTypeEnum::NUMBER)
+                            ->configureCode('lon')
+                            ->configureName('lon')
+                            ->configureLabel('Долгота')
+                            ->configurePlaceholder('44.876829')
+                            ->configureValue($coords->lon)
+                            ->create()
+                    )
+                    ->addField(
+                        FieldBuilder::createInstance()
+                            ->configureType(FieldTypeEnum::NUMBER)
+                            ->configureCode('zoom')
+                            ->configureName('zoom')
+                            ->configureLabel('Зум')
+                            ->configurePlaceholder('12')
+                            ->configureValue($coords->zoom)
                             ->create()
                     )
                     ->create()

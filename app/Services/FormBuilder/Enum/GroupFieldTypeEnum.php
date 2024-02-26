@@ -11,4 +11,5 @@ enum GroupFieldTypeEnum: string
     case SELECT = 'EditSelect';
     case SELECT_MULTI = 'EditSelectMulti';
     case SELECT_SEARCH = 'EditSearchSelect';
+    case COORDS = 'EditCoords';
 }
