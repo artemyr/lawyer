@@ -17,28 +17,10 @@
             border-radius: 16px;
             padding: 20px;
 
-            .advantages__image {
-                margin-bottom: 32px;
-                background: white;
-                padding: 8px;
-                border-radius: 4px;
-                display: inline-block;
-
-                @include size1440 {
-                    img {
-                        height: 30px;
-                        width: 30px;
-                    }
-                }
-
-                @include size768 {
-                    margin-bottom: 24px;
-                }
-            }
-
             .advantages__title {
                 font-family: 'Commissioner 500';
                 font-size: 24px;
+                margin-top: 32px;
 
                 @include size768 {
                     font-size: 20px;

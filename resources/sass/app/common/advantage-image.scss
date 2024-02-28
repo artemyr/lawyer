@@ -1,0 +1,17 @@
+.advantages-image {
+    background: white;
+    padding: 8px;
+    border-radius: 4px;
+    display: inline-block;
+
+    img {
+        @include size1440 {
+            height: 30px;
+            width: 30px;
+        }
+    }
+
+    @include size768 {
+        margin-bottom: 24px;
+    }
+}

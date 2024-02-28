@@ -30,6 +30,6 @@ class City extends Model
             return new Coords($coords[0],$coords[1],$coords[2]);
         }
 
-        return new Coords(0,0,0);
+        return new Coords();
     }
 }

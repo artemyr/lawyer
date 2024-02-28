@@ -11,7 +11,7 @@
     <div class="advantages">
         <div class="advantages__wrapper">
             <div class="advantages__item">
-                <div class="advantages__image">
+                <div class="advantages-image">
                     <img src="{{ asset('image/small/building.png') }}" alt="">
                 </div>
                 <div class="advantages__title">
@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div class="advantages__item">
-                <div class="advantages__image">
+                <div class="advantages-image">
                     <img src="{{ asset('image/small/brief.png') }}" alt="">
                 </div>
                 <div class="advantages__title">
@@ -34,7 +34,7 @@
                 </div>
             </div>
             <div class="advantages__item">
-                <div class="advantages__image">
+                <div class="advantages-image">
                     <img src="{{ asset('image/small/lightning.png') }}" alt="">
                 </div>
                 <div class="advantages__title">
@@ -45,7 +45,7 @@
                 </div>
             </div>
             <div class="advantages__item">
-                <div class="advantages__image">
+                <div class="advantages-image">
                     <img src="{{ asset('image/small/building.png') }}" alt="">
                 </div>
                 <div class="advantages__title">
