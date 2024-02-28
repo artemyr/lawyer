@@ -9,6 +9,7 @@ enum GroupFieldTypeEnum: string
     case NAME_LINK = 'EditNameLink';
     case TEXT = 'EditText';
     case SELECT = 'EditSelect';
+    case ICON_SELECT = 'EditIconSelect';
     case SELECT_MULTI = 'EditSelectMulti';
     case SELECT_SEARCH = 'EditSearchSelect';
     case COORDS = 'EditCoords';

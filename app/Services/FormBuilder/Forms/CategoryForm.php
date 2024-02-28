@@ -121,7 +121,7 @@ class CategoryForm extends AbstractForm
         }
 
         return GroupFieldBuilder::createInstance()
-            ->configureType(GroupFieldTypeEnum::SELECT)
+            ->configureType(GroupFieldTypeEnum::ICON_SELECT)
             ->addField(
                 FieldBuilder::createInstance()
                     ->configureCode('select')
