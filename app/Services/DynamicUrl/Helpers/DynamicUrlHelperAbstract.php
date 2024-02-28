@@ -5,6 +5,7 @@ namespace App\Services\DynamicUrl\Helpers;
 use App\Models\Category;
 use App\Models\City;
 use App\Models\DTO\Breadcrumbs;
+use App\Models\Instation;
 use Illuminate\Support\Facades\Cache;
 
 abstract class DynamicUrlHelperAbstract
@@ -15,7 +16,10 @@ abstract class DynamicUrlHelperAbstract
     protected City $city;
     protected string $categorySlug;
     protected Category $category;
-    protected string $gosInstans;
+    protected string $gosInstansSlug;
+    protected Instation $instation;
+
+    public const INSTATIONS_SLUG = 'instation';
 
     /**
      * @param string $url
@@ -38,6 +42,7 @@ abstract class DynamicUrlHelperAbstract
     {
         return Cache::get('instansRouteList');
     }
+
     public function getCity(): ?City
     {
         if (empty($this->citySlug)) {
@@ -58,9 +63,13 @@ abstract class DynamicUrlHelperAbstract
 
         return $this->category;
     }
-    public function getGosInstanse(): string
+    public function getGosInstanse(): Instation
     {
-        return $this->gosInstans;
+        if (empty($this->instation)) {
+            $this->instation = Instation::where('link', $this->gosInstansSlug)->first();
+        }
+
+        return $this->instation;
     }
 
     /**
@@ -89,5 +98,18 @@ abstract class DynamicUrlHelperAbstract
         }
 
         return $crumbs;
+    }
+
+    protected function isCity(string $slug): bool
+    {
+        return in_array($slug, $this->getCities());
+    }
+    protected function isCategory(string $slug): bool
+    {
+        return in_array($slug, $this->getCategories());
+    }
+    protected function isGosInstanse(string $slug): bool
+    {
+        return in_array($slug, $this->getGosInstanses());
     }
 }

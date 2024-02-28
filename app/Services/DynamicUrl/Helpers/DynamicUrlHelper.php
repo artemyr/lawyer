@@ -22,11 +22,11 @@ class DynamicUrlHelper extends DynamicUrlHelperAbstract
                 /**
                  * 1 слаг - либо город | категория
                  */
-                if (in_array($this->slags[0], $this->getCities())) {
+                if ($this->isCity($this->slags[0])) {
                     $this->citySlug = $this->slags[0];
                     return new CityController;
                 } else {
-                    if (in_array($this->slags[0], $this->getCategories())) {
+                    if ($this->isCategory($this->slags[0])) {
                         $this->categorySlug = $this->slags[0];
                         return new CategoryController;
                     }
@@ -36,15 +36,15 @@ class DynamicUrlHelper extends DynamicUrlHelperAbstract
                 /**
                  * 2 слага - категория города | гос инстанции
                  */
-                if (in_array($this->slags[0], $this->getCities())) {
+                if ($this->isCity($this->slags[0])) {
                     $this->citySlug = $this->slags[0];
-                    if (in_array($this->slags[1], $this->getCategories())) {
+                    if ($this->isCategory($this->slags[1])) {
                         $this->categorySlug = $this->slags[1];
                         return new CategoryController;
                     }
-                } elseif (in_array($this->slags[0], $this->getCategories())) {
+                } elseif ($this->isCategory($this->slags[0])) {
                     $this->categorySlug = $this->slags[0];
-                    if ($this->slags[1] === 'instation') {
+                    if ($this->slags[1] === static::INSTATIONS_SLUG) {
                         return new GosInstansController();
                     }
                 }
@@ -53,12 +53,12 @@ class DynamicUrlHelper extends DynamicUrlHelperAbstract
                 /**
                  * 3 слага - гос инстанция детальная
                  */
-                if (in_array($this->slags[0], $this->getCategories())) {
-                    $this->categorySlug = $this->slags[0];
-                    if ($this->slags[1] === 'instation') {
-                        if (in_array($this->slags[2], $this->getGosInstanses())) {
-                            $this->gosInstans = $this->slags[2];
-                            return new GosInstansDetailController();
+                if ($this->isCity($this->slags[0])) {
+                    $this->citySlug = $this->slags[0];
+                    if ($this->slags[1] === static::INSTATIONS_SLUG) {
+                        if ($this->isGosInstanse($this->slags[2])) {
+                            $this->gosInstansSlug = $this->slags[2];
+                            return new GosInstansController();
                         }
                     }
                 }

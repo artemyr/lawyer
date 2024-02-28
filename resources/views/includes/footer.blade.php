@@ -1,5 +1,6 @@
 <div class="footer">
 
+    @if(isset($map))
     <div id="map" style="height: 420px"></div>
     <script>
         document.addEventListener('DOMContentLoaded', function(){
@@ -9,6 +10,7 @@
             });
         })
     </script>
+    @endif
 
     <div class="container">
         <div class="footer_top">

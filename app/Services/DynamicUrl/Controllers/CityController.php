@@ -3,19 +3,19 @@
 namespace App\Services\DynamicUrl\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\City;
 use App\Models\DTO\Banner;
 use App\Models\DTO\Page;
+use App\Models\Instation;
 use App\Services\DynamicUrl\Contracts\DynamicUrlControllerInterface;
 use App\Services\DynamicUrl\Helpers\DynamicUrlHelper;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Http\Request;
+use App\Services\DynamicUrl\Helpers\DynamicUrlHelperAbstract;
 
 class CityController extends Controller implements DynamicUrlControllerInterface
 {
     public function show (DynamicUrlHelper $dynamicUrlHelper)
     {
         $city = $dynamicUrlHelper->getCity();
+        $instations = Instation::all();
 
         return view('pages.category', [
             'page' => new Page(
@@ -30,7 +30,10 @@ class CityController extends Controller implements DynamicUrlControllerInterface
                 title: "Юридические<br>услуги <span>в " . $city->name_d . "</span>"
             ),
             'map' => $city->coords,
-            'dynamicBlock' => 'instance'
+            'dynamicBlock' => 'instance',
+            'instations' => $instations,
+            'citySlug' => $city->link,
+            'instationSlug' => DynamicUrlHelperAbstract::INSTATIONS_SLUG,
         ]);
     }
 }
