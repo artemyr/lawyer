@@ -130,7 +130,7 @@
         }
 
         color: white;
-        font-family: 'Commissioner 600';
+        font-family: $--base-font-family-semi-bold;
         span {
             color: rgba(255, 255, 255, 0.40);
         }
@@ -184,7 +184,7 @@
     padding: 20px;
 
     .form-3__title {
-        font-family: 'Commissioner 500';
+        font-family: $--base-font-family-medium;
         font-size: 24px;
         color: white;
         margin-bottom: 16px;

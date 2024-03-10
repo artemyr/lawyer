@@ -23,7 +23,7 @@
 
             .our-jurists-item__name {
                 font-size: 24px;
-                font-family: 'Commissioner 500';
+                font-family: $--base-font-family-medium;
             }
 
             .our-jurists-item__subtitle, .our-jurists-item__list {
@@ -60,7 +60,7 @@
         align-content: space-between;
 
         .our-jurists-mock-item__text {
-            font-family: 'Commissioner 500';
+            font-family: $--base-font-family-medium;
             font-size: 24px;
         }
     }

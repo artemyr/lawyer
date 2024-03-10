@@ -44,7 +44,7 @@
             grid-auto-flow: row;
             justify-content: space-between;
             .footer__phone-number {
-                font-family: 'Commissioner 500';
+                font-family: $--base-font-family-medium;
                 font-size: 20px;
                 color: $base-color;
 

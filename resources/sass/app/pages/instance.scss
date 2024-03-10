@@ -1,0 +1,38 @@
+.gos-instance {
+    .gos-instance__list{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+}
+
+.gos-instance-item {
+    background: $base-gray;
+    border-radius: 16px;
+    padding: 20px;
+
+    svg {
+        width: 10px;
+        height: 20px;
+        margin-left: 19px;
+    }
+
+    &__image {
+        margin-bottom: 24px;
+    }
+
+    &__link {
+        font-size: 24px;
+        font-family: $--base-font-family-medium;
+    }
+
+    &__props {
+        display: grid;
+        grid-auto-flow: row;
+        gap: 8px;
+
+        span {
+            color: $base-text-gray;
+        }
+    }
+}

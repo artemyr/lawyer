@@ -17,7 +17,7 @@
         }
         .recommends-item__name {
             font-size: 20px;
-            font-family: 'Commissioner 500';
+            font-family: $--base-font-family-medium;
         }
         .recommends-item__text, .recommends-item__date {
             color: $base-text-gray;

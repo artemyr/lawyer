@@ -65,7 +65,7 @@
 
         .examples__form-title {
             padding-bottom: 16px;
-            font-family: 'Commissioner 600';
+            font-family: $--base-font-family-semi-bold;
             font-size: 52px;
 
             @include size768 {

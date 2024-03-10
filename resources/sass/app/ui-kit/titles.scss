@@ -1,5 +1,5 @@
 .page-title {
-    font-family: 'Commissioner 600';
+    font-family: $--base-font-family-semi-bold;
     font-size: 82px;
     margin-bottom: 48px;
 }
@@ -10,7 +10,7 @@
     font-weight: 600;
     line-height: 100%;
     letter-spacing: -2.6px;
-    font-family: 'Commissioner 600', serif;
+    font-family: $--base-font-family-semi-bold, serif;
     margin-bottom: 18px;
 
     @include size1440 {
