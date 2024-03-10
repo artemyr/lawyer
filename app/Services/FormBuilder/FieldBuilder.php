@@ -80,6 +80,11 @@ class FieldBuilder
 
     public function create(): Field
     {
+        $value = $this->value;
+        if ($value instanceof Value) {
+            $value = $value->toArray();
+        }
+
         $field =  new Field(
             code: $this->code,
             type: $this->type,
@@ -88,7 +93,7 @@ class FieldBuilder
             label: $this->label,
             caption: $this->caption,
             values: $this->values,
-            value: $this->value
+            value: $value
         );
 
         $this->flush();

@@ -115,9 +115,13 @@ class CategoryForm extends AbstractForm
             $icons[] = new Value($icon->id, $icon->code, $icon->code);
         }
 
-        $iconId = null;
+        $icon = null;
         if (!empty($this->category->icon->id)){
-            $iconId = $this->category->icon->id;
+            $icon = new Value(
+                $this->category->icon->id,
+                $this->category->icon->code,
+                $this->category->icon->code,
+            );
         }
 
         return GroupFieldBuilder::createInstance()
@@ -129,7 +133,7 @@ class CategoryForm extends AbstractForm
                     ->configureName('icon_id')
                     ->configureLabel('Иконка')
                     ->configureValues($icons)
-                    ->configureValue($iconId)
+                    ->configureValue($icon)
                     ->create()
             )
             ->create();

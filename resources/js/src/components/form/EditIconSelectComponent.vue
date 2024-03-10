@@ -5,20 +5,18 @@
         <div :id="fields.select.name" class="select-icon-wrapper">
 
             <div class="select-icon select-icon_selected" @click="toggle">
-                Без иконки
+                <div class="select-icon select-icon_selected">
+                    <Icon :code="value.code" />
+                    {{ value.label }}
+                </div>
             </div>
 
             <div class="select-icon-list" :class="{active: selectOpen}">
                 <div v-for="value in values">
-                    <template v-if="value.code === ''">
-                        <div class="select-icon" @click="setIcon(null)">Без иконки</div>
-                    </template>
-                    <template v-else>
-                        <div class="select-icon" @click="setIcon(value.id)">
-                            <Icon :code="value.code" />
-                            {{ value.label }}
-                        </div>
-                    </template>
+                    <div class="select-icon" @click="setIcon(value)">
+                        <Icon :code="value.code" />
+                        {{ value.label }}
+                    </div>
                 </div>
             </div>
 
@@ -44,18 +42,23 @@ export default {
     mounted() {
         this.values = this.fields.select.values
         this.value = this.fields.select.value
+        if (!this.value) {
+            this.value = {id: 0,code:'',label:'Без иконки'}
+        }
     },
     methods: {
         getValues() {
             return new Map([
-                [this.fields.select.name, this.value]
+                [this.fields.select.name, this.value.id]
             ])
         },
         check() {
             return true
         },
-        setIcon(id) {
-            alert(id)
+        setIcon(value) {
+            console.log(value)
+            this.value = value
+            this.toggle()
         },
         toggle() {
             this.opened = !this.opened

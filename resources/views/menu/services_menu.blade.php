@@ -4,7 +4,9 @@
         <li class="dropdown-menu__item" js-service-menu="item" data-id="{{ $category->id }}">
 
             <div class="dropdown-menu__item-general-link">
+                @if (!empty($category->icon->code))
                 <svg class="dropdown-menu__icon"><use xlink:href="{{ asset('svg/sprite.svg#').$category->icon->code }}-small"></use></svg>
+                @endif
                 <a class="" href="{{ (isset($userCity) ? "/$userCity->link/" : '/'). $category->link }}">{{ $category->name }}</a>
                 <svg class="dropdown-menu__icon"><use xlink:href="{{ asset('svg/sprite.svg#arrow-2') }}"></use></svg>
             </div>
@@ -26,7 +28,9 @@
         @endisset
 
         <li class="dropdown-menu__item">
+            @if (!empty($category->icon->code))
             <svg class="dropdown-menu__icon"><use xlink:href="{{ asset('svg/sprite.svg#').$category->icon->code }}-small"></use></svg>
+            @endif
             <a class="" href="{{ (isset($userCity) ? "/$userCity->link/" : '/'). $category->link }}">{{ $category->name }}</a>
         </li>
     @endif
