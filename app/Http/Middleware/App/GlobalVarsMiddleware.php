@@ -4,7 +4,7 @@ namespace App\Http\Middleware\App;
 
 use App\Models\Category;
 use App\Models\City;
-use App\Models\Instation;
+use App\Models\InstationType;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -82,7 +82,7 @@ class GlobalVarsMiddleware
     {
         if (!Cache::has('instansRouteList')) {
             $instanciesRouteList = [];
-            foreach (Instation::get() as $instation) {
+            foreach (InstationType::get() as $instation) {
                 $instanciesRouteList[] = $instation->link;
             }
             Cache::put('instansRouteList', $instanciesRouteList, config('app.routeListCacheTtl'));

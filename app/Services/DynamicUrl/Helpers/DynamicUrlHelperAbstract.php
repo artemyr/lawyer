@@ -5,7 +5,7 @@ namespace App\Services\DynamicUrl\Helpers;
 use App\Models\Category;
 use App\Models\City;
 use App\Models\DTO\Breadcrumbs;
-use App\Models\Instation;
+use App\Models\InstationType;
 use Illuminate\Support\Facades\Cache;
 
 abstract class DynamicUrlHelperAbstract
@@ -17,7 +17,7 @@ abstract class DynamicUrlHelperAbstract
     protected string $categorySlug;
     protected Category $category;
     protected string $gosInstansSlug;
-    protected Instation $instation;
+    protected InstationType $instation;
 
     public const INSTATIONS_SLUG = 'instation';
 
@@ -63,10 +63,10 @@ abstract class DynamicUrlHelperAbstract
 
         return $this->category;
     }
-    public function getGosInstanse(): Instation
+    public function getGosInstanse(): InstationType
     {
         if (empty($this->instation)) {
-            $this->instation = Instation::where('link', $this->gosInstansSlug)->first();
+            $this->instation = InstationType::where('link', $this->gosInstansSlug)->first();
         }
 
         return $this->instation;

@@ -5,7 +5,7 @@ namespace App\Services\DynamicUrl\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\DTO\Banner;
 use App\Models\DTO\Page;
-use App\Models\Instation;
+use App\Models\InstationType;
 use App\Services\DynamicUrl\Contracts\DynamicUrlControllerInterface;
 use App\Services\DynamicUrl\Helpers\DynamicUrlHelper;
 use App\Services\DynamicUrl\Helpers\DynamicUrlHelperAbstract;
@@ -15,7 +15,7 @@ class CityController extends Controller implements DynamicUrlControllerInterface
     public function show (DynamicUrlHelper $dynamicUrlHelper)
     {
         $city = $dynamicUrlHelper->getCity();
-        $instations = Instation::all();
+        $instations = InstationType::all();
 
         return view('pages.category', [
             'page' => new Page(
