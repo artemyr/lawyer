@@ -9,4 +9,14 @@ class Instation extends Model
 {
     use HasFactory;
     protected $guarded = false;
+
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+    }
+
+    public function instationType()
+    {
+        return $this->belongsTo(InstationType::class);
+    }
 }

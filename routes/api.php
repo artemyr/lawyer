@@ -2,6 +2,7 @@
 
 use App\Http\Controllers as C;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\InstationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -51,6 +52,18 @@ Route::group([
         Route::get('/controls/{category}', [CategoryController::class, 'controls'])->name('admin.category.controls.update');
 
         Route::get('/{category}', [CategoryController::class, 'show'])->name('admin.categories.show');
+    });
+
+    Route::group(['prefix' => 'instations'], function() {
+        Route::get('/', [InstationController::class, 'index'])->name('admin.instations.index');
+        Route::post('/', [InstationController::class,'store'])->name('admin.instations.store');
+        Route::delete('/{instation}', [InstationController::class, 'destroy'])->name('admin.instations.destroy');
+        Route::patch('/{instation}', [InstationController::class, 'update'])->name('admin.instations.update');
+
+        Route::get('/controls', [InstationController::class, 'controls'])->name('admin.instations.controls.create');
+        Route::get('/controls/{instation}', [InstationController::class, 'controls'])->name('admin.instations.controls.update');
+
+        Route::get('/{instation}', [InstationController::class, 'show'])->name('admin.instations.show');
     });
 });
 

@@ -16,6 +16,11 @@ class City extends Model
         return $this->hasMany(Category::class);
     }
 
+    public function instations()
+    {
+        return $this->hasMany(Instation::class);
+    }
+
     public function getCoordsAttribute($value)
     {
         $coords = explode(';',$value);

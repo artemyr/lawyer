@@ -17,6 +17,10 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->string('link')->unique();
             $table->string('icon')->nullable();
+            $table->unsignedBigInteger('city_id')->default(0);
+            $table->unsignedBigInteger('instation_type_id');
+            $table->integer('sort')->default(500);
+            $table->boolean('active')->default(true);
 
             $table->timestamps();
         });

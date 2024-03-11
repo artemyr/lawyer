@@ -48,7 +48,22 @@ const routes = [
         path: '/admin/article',
         name: 'admin.article',
         component: () => import("../pages/Admin/Article.vue")
-    }
+    },
+    {
+        path: '/admin/instanions',
+        name: 'admin.instation.index',
+        component: () => import("../pages/Admin/Instation/InstationIndex.vue")
+    },
+    {
+        path: '/admin/instanions/:id',
+        name: 'admin.instation.edit',
+        component: () => import("../pages/Admin/Instation/InstationEdit.vue")
+    },
+    {
+        path: '/admin/instanions/create',
+        name: 'admin.instation.create',
+        component: () => import("../pages/Admin/Instation/InstationCreate.vue")
+    },
 ]
 
 export default routes;

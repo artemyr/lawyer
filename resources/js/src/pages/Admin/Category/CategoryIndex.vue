@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Редактировать категории</h1>
+        <h1>Категории</h1>
 
         <router-link :to="{name: 'admin.category.create'}" class="btn btn-success">Create</router-link>
 
