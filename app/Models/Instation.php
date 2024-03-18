@@ -19,4 +19,9 @@ class Instation extends Model
     {
         return $this->belongsTo(InstationType::class);
     }
+
+    public function icon()
+    {
+        return $this->belongsTo(Icon::class);
+    }
 }

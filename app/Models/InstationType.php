@@ -9,4 +9,14 @@ class InstationType extends Model
 {
     use HasFactory;
     protected $guarded = false;
+
+    public function icon()
+    {
+        return $this->belongsTo(Icon::class);
+    }
+
+    public function instations()
+    {
+        return $this->hasMany(Instation::class);
+    }
 }

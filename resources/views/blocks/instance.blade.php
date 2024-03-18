@@ -16,7 +16,7 @@
             @foreach($instations as $instation)
             <a class="instance__item" href="{{ "/$citySlug/$instationSlug/{$instation->link}" }}">
                 <div class="advantages-image">
-                    <img src="{{ asset('image/small/'. $instation->icon .'.png') }}" alt="">
+                    <img src="{{ asset('image/small/'. $instation->icon->code) }}" alt="">
                 </div>
                 {{ $instation->name }}
             </a>

@@ -27,8 +27,10 @@ class InstationRequest extends FormRequest
         return [
             'name' => 'string',
             'link' => 'string',
-            'icon' => 'string',
+            'icon_id' => 'integer|nullable',
             'sort' => 'integer|nullable',
+            'instation_type_id' => 'integer',
+            'city_id' => 'integer',
         ];
     }
 }

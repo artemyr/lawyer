@@ -1,5 +1,5 @@
 <template>
-    <svg v-html="use"></svg>
+    <div v-html="use"></div>
 </template>
 
 <script lang="ts">
@@ -10,7 +10,11 @@ export default {
     ],
     computed: {
         use() {
-            return '<use xlink:href="/svg/sprite.svg#' + this.code + '"></use>';
+            if (this.code && this.code.match(/\.png/)) {
+                return '<img src="/image/small/' + this.code + '">';
+            } else {
+                return '<svg><use xlink:href="/svg/sprite.svg#' + this.code + '"></use></svg>';
+            }
         }
     }
 }

@@ -72,7 +72,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .form-text {
     color: white;
 }
@@ -94,6 +94,9 @@ export default {
 
     .select-icon-list.active {
         display: block;
+    }
+
+    .select-icon {
     }
 
     .select-icon {

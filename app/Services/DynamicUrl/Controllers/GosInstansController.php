@@ -13,6 +13,7 @@ class GosInstansController extends Controller implements DynamicUrlControllerInt
     {
         $city = $dynamicUrlHelper->getCity();
         $instance = $dynamicUrlHelper->getGosInstanse();
+        $instations = $instance->instations;
 
         return view('pages.instation', [
             'page' => new Page(
@@ -21,6 +22,7 @@ class GosInstansController extends Controller implements DynamicUrlControllerInt
                 headerClass: ''
             ),
             'breadcrumbs' => $dynamicUrlHelper->getBreadcrumbs(),
+            'instations' => $instations
         ]);
     }
 }
