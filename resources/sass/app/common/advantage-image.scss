@@ -11,6 +11,11 @@
         }
     }
 
+    svg {
+        height: 40px;
+        width: 40px;
+    }
+
     @include size768 {
         margin-bottom: 24px;
     }

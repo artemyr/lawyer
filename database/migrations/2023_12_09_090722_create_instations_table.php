@@ -22,6 +22,11 @@ return new class extends Migration
             $table->integer('sort')->default(500);
             $table->boolean('active')->default(true);
 
+            $table->string('district')->nullable();
+            $table->string('address')->nullable();
+            $table->string('telephone')->nullable();
+            $table->string('opening_hours')->nullable();
+
             $table->timestamps();
         });
     }

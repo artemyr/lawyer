@@ -91,12 +91,20 @@
             @foreach($instations as $instation)
                 <div class="gos-instance-item">
                     <div class="gos-instance-item__image advantages-image">
-                        <img src="{{ asset('image/small/' . $instation->icon->code) }}" alt="">
+                        @if(!empty($instation->icon->code))
+                            @if($instation->icon->type === 'png')
+                            <img src="{{ asset('image/small/' . $instation->icon->code) }}" alt="">
+                            @elseif($instation->icon->type === 'svg')
+                            <svg>
+                                <use xlink:href="{{ asset('svg/sprite.svg#' . $instation->icon->code) }}"></use>
+                            </svg>
+                            @endif
+                        @endif
                     </div>
                     <div class="gos-instance-item__props">
                         <a href="{{ $instation->link }}" class="gos-instance-item__link">
                             {{ $instation->name }}
-                            <svg>
+                            <svg class="gos-instance-item__arrow">
                                 <use xlink:href="{{ asset('svg/sprite.svg#arrow-8') }}"></use>
                             </svg>
                         </a>
@@ -107,24 +115,6 @@
                     </div>
                 </div>
             @endforeach
-
-            <div class="gos-instance-item">
-                <div class="gos-instance-item__image advantages-image">
-                    <img src="{{ asset('image/small/building.png') }}" alt="">
-                </div>
-                <div class="gos-instance-item__props">
-                    <a href="" class="gos-instance-item__link">
-                        Судебный участок №323
-                        <svg>
-                            <use xlink:href="{{ asset('svg/sprite.svg#arrow-8') }}"></use>
-                        </svg>
-                    </a>
-                    <div class="gos-instance-item__prop"><span>Район ·</span> Поселение Московский</div>
-                    <div class="gos-instance-item__prop"><span>Адрес ·</span> ул. Гольяновская, д. 7А, корп. 4</div>
-                    <div class="gos-instance-item__prop"><span>Телефон ·</span> 8 (900) 227-12-65</div>
-                    <div class="gos-instance-item__prop"><span>Режим работы ·</span> пн-чт с 9-00 до 18-00, пт с 9-00 до 16-45</div>
-                </div>
-            </div>
 
         </div>
     </div>
