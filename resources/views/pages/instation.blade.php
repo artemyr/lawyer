@@ -102,16 +102,16 @@
                         @endif
                     </div>
                     <div class="gos-instance-item__props">
-                        <a href="{{ $instation->link }}" class="gos-instance-item__link">
+                        <a href="{{ "/$citySlug/$instationSlug/{$instationTypeSlug}/{$instation->link}/" }}" class="gos-instance-item__link">
                             {{ $instation->name }}
                             <svg class="gos-instance-item__arrow">
                                 <use xlink:href="{{ asset('svg/sprite.svg#arrow-8') }}"></use>
                             </svg>
                         </a>
-                        <div class="gos-instance-item__prop"><span>Район ·</span> Поселение Московский</div>
-                        <div class="gos-instance-item__prop"><span>Адрес ·</span> ул. Гольяновская, д. 7А, корп. 4</div>
-                        <div class="gos-instance-item__prop"><span>Телефон ·</span> 8 (900) 227-12-65</div>
-                        <div class="gos-instance-item__prop"><span>Режим работы ·</span> пн-чт с 9-00 до 18-00, пт с 9-00 до 16-45</div>
+                        <div class="gos-instance-item__prop"><span>Район ·</span>{{ $instation->district }}</div>
+                        <div class="gos-instance-item__prop"><span>Адрес ·</span> {{ $instation->address }}</div>
+                        <div class="gos-instance-item__prop"><span>Телефон ·</span>{{ $instation->telephone }}</div>
+                        <div class="gos-instance-item__prop"><span>Режим работы ·</span>{{ $instation->opening_hours }}</div>
                     </div>
                 </div>
             @endforeach

@@ -68,6 +68,62 @@ class InstationForm extends AbstractForm
             ->addGroupField($this->getInstationTypeField())
             ->addGroupField($this->getIconField())
             ->addGroupField($this->getCityField())
+            ->addGroupField(
+                GroupFieldBuilder::createInstance()
+                    ->configureType(GroupFieldTypeEnum::TEXT)
+                    ->addField(
+                        FieldBuilder::createInstance()
+                            ->configureType(FieldTypeEnum::TEXT)
+                            ->configureCode('text')
+                            ->configureName('district')
+                            ->configureLabel('Район')
+                            ->configureValue($instation->district)
+                            ->create()
+                    )
+                    ->create()
+            )
+            ->addGroupField(
+                GroupFieldBuilder::createInstance()
+                    ->configureType(GroupFieldTypeEnum::TEXT)
+                    ->addField(
+                        FieldBuilder::createInstance()
+                            ->configureType(FieldTypeEnum::TEXT)
+                            ->configureCode('text')
+                            ->configureName('address')
+                            ->configureLabel('Адрес')
+                            ->configureValue($instation->address)
+                            ->create()
+                    )
+                    ->create()
+            )
+            ->addGroupField(
+                GroupFieldBuilder::createInstance()
+                    ->configureType(GroupFieldTypeEnum::TEXT)
+                    ->addField(
+                        FieldBuilder::createInstance()
+                            ->configureType(FieldTypeEnum::TEXT)
+                            ->configureCode('text')
+                            ->configureName('telephone')
+                            ->configureLabel('Телефон')
+                            ->configureValue($instation->telephone)
+                            ->create()
+                    )
+                    ->create()
+            )
+            ->addGroupField(
+                GroupFieldBuilder::createInstance()
+                    ->configureType(GroupFieldTypeEnum::TEXT)
+                    ->addField(
+                        FieldBuilder::createInstance()
+                            ->configureType(FieldTypeEnum::TEXT)
+                            ->configureCode('text')
+                            ->configureName('opening_hours')
+                            ->configureLabel('Режим работы')
+                            ->configureValue($instation->opening_hours)
+                            ->create()
+                    )
+                    ->create()
+            )
             ->getGroupFields();
     }
 

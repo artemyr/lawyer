@@ -31,6 +31,10 @@ class InstationRequest extends FormRequest
             'sort' => 'integer|nullable',
             'instation_type_id' => 'integer',
             'city_id' => 'integer',
+            'district' => 'string|nullable',
+            'address' => 'string|nullable',
+            'telephone' => 'string|nullable',
+            'opening_hours' => 'string|nullable',
         ];
     }
 }

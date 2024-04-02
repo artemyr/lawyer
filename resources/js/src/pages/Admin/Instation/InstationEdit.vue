@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Редактировать город</h1>
+        <h1>Редактировать инстанцию</h1>
 
         <Edit :entity="'instations'" :entityOne="'instation'" />
     </div>

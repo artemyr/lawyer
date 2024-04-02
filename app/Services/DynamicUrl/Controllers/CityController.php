@@ -15,7 +15,7 @@ class CityController extends Controller implements DynamicUrlControllerInterface
     public function show (DynamicUrlHelper $dynamicUrlHelper)
     {
         $city = $dynamicUrlHelper->getCity();
-        $instations = InstationType::all();
+        $instationTypes = InstationType::all();
 
         return view('pages.category', [
             'page' => new Page(
@@ -31,7 +31,8 @@ class CityController extends Controller implements DynamicUrlControllerInterface
             ),
             'map' => $city->coords,
             'dynamicBlock' => 'instance',
-            'instations' => $instations,
+            'instationTypes' => $instationTypes,
+
             'citySlug' => $city->link,
             'instationSlug' => DynamicUrlHelperAbstract::INSTATIONS_SLUG,
         ]);

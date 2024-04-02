@@ -6,8 +6,8 @@ use App\Services\DynamicUrl\Contracts\DynamicUrlControllerInterface;
 use App\Services\DynamicUrl\Controllers\CategoryController;
 use App\Services\DynamicUrl\Controllers\CityController;
 use App\Services\DynamicUrl\Controllers\DefaultController;
-use App\Services\DynamicUrl\Controllers\GosInstansController;
-use App\Services\DynamicUrl\Controllers\GosInstansDetailController;
+use App\Services\DynamicUrl\Controllers\GosInstationTypeController;
+use App\Services\DynamicUrl\Controllers\GosInstationDetailController;
 use Exception;
 
 class DynamicUrlHelper extends DynamicUrlHelperAbstract
@@ -45,23 +45,41 @@ class DynamicUrlHelper extends DynamicUrlHelperAbstract
                 } elseif ($this->isCategory($this->slags[0])) {
                     $this->categorySlug = $this->slags[0];
                     if ($this->slags[1] === static::INSTATIONS_SLUG) {
-                        return new GosInstansController();
+                        return new GosInstationTypeController();
                     }
                 }
                 break;
             case 3:
                 /**
-                 * 3 слага - гос инстанция детальная
+                 * 3 слага - тип инстанции
                  */
                 if ($this->isCity($this->slags[0])) {
                     $this->citySlug = $this->slags[0];
                     if ($this->slags[1] === static::INSTATIONS_SLUG) {
-                        if ($this->isGosInstanse($this->slags[2])) {
-                            $this->gosInstansSlug = $this->slags[2];
-                            return new GosInstansController();
+                        if ($this->isGosInstanseType($this->slags[2])) {
+                            $this->gosInstansTypeSlug = $this->slags[2];
+                            return new GosInstationTypeController();
                         }
                     }
                 }
+                break;
+            case 4:
+                /**
+                 * 4 слага - гос инстанция детальная
+                 */
+                if ($this->isCity($this->slags[0])) {
+                    $this->citySlug = $this->slags[0];
+                    if ($this->slags[1] === static::INSTATIONS_SLUG) {
+                        if ($this->isGosInstanseType($this->slags[2])) {
+                            $this->gosInstansTypeSlug = $this->slags[2];
+                            if ($this->isGosInstance($this->slags[3])) {
+                                $this->gosInstance = $this->slags[3];
+                                return new GosInstationDetailController();
+                            }
+                        }
+                    }
+                }
+                echo'';
                 break;
             default:
                 throw new Exception("обработчик не найден");

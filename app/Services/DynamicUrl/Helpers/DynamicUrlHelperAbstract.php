@@ -2,6 +2,7 @@
 
 namespace App\Services\DynamicUrl\Helpers;
 
+use App\Http\Middleware\App\GlobalVarsMiddleware;
 use App\Models\Category;
 use App\Models\City;
 use App\Models\DTO\Breadcrumbs;
@@ -16,7 +17,7 @@ abstract class DynamicUrlHelperAbstract
     protected City $city;
     protected string $categorySlug;
     protected Category $category;
-    protected string $gosInstansSlug;
+    protected string $gosInstansTypeSlug;
     protected InstationType $instation;
 
     public const INSTATIONS_SLUG = 'instation';
@@ -28,19 +29,6 @@ abstract class DynamicUrlHelperAbstract
     {
         $this->url = $url;
         $this->slags = explode('/', $url);
-    }
-
-    protected function getCities(): array
-    {
-        return Cache::get('cityRouteList');
-    }
-    protected function getCategories(): array
-    {
-        return Cache::get('categoryRouteList');
-    }
-    protected function getGosInstanses(): array
-    {
-        return Cache::get('instansRouteList');
     }
 
     public function getCity(): ?City
@@ -66,7 +54,7 @@ abstract class DynamicUrlHelperAbstract
     public function getGosInstanse(): InstationType
     {
         if (empty($this->instation)) {
-            $this->instation = InstationType::where('link', $this->gosInstansSlug)->first();
+            $this->instation = InstationType::where('link', $this->gosInstansTypeSlug)->first();
         }
 
         return $this->instation;
@@ -102,14 +90,18 @@ abstract class DynamicUrlHelperAbstract
 
     protected function isCity(string $slug): bool
     {
-        return in_array($slug, $this->getCities());
+        return in_array($slug, GlobalVarsMiddleware::$cityRouteList);
     }
     protected function isCategory(string $slug): bool
     {
-        return in_array($slug, $this->getCategories());
+        return in_array($slug, GlobalVarsMiddleware::$categoryRouteList);
     }
-    protected function isGosInstanse(string $slug): bool
+    protected function isGosInstanseType(string $slug): bool
     {
-        return in_array($slug, $this->getGosInstanses());
+        return in_array($slug, GlobalVarsMiddleware::$instationTypeRouteList);
+    }
+    protected function isGosInstance(string $slug): bool
+    {
+        return in_array($slug, GlobalVarsMiddleware::$instationsRouteList);
     }
 }

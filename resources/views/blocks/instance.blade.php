@@ -6,20 +6,21 @@
             </div>
         </div>
         <div>
-            <p>Все суды, полиция, налоговая и трудовая инспекции,<br> судебные приставы и таможенные органы, это лишь малая<br> часть государственных ведомств, где мы готовы<br> представлять интересы своих клиентов</p>
+            <p>Все суды, полиция, налоговая и трудовая инспекции,<br> судебные приставы и таможенные органы, это лишь
+                малая<br> часть государственных ведомств, где мы готовы<br> представлять интересы своих клиентов</p>
         </div>
     </div>
 
     <div class="instance">
         <div class="instance__list">
 
-            @foreach($instations as $instation)
-            <a class="instance__item" href="{{ "/$citySlug/$instationSlug/{$instation->link}" }}">
-                <div class="advantages-image">
-                    <img src="{{ asset('image/small/'. $instation->icon->code) }}" alt="">
-                </div>
-                {{ $instation->name }}
-            </a>
+            @foreach($instationTypes as $instationType)
+                <a class="instance__item" href="{{ "/$citySlug/$instationSlug/{$instationType->link}/" }}">
+                    <div class="advantages-image">
+                        <img src="{{ asset('image/small/'. $instationType->icon->code) }}" alt="">
+                    </div>
+                    {{ $instationType->name }}
+                </a>
             @endforeach
 
         </div>
