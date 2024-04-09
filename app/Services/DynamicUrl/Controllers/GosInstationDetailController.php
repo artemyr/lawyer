@@ -3,6 +3,7 @@
 namespace App\Services\DynamicUrl\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\DTO\Page;
 use App\Models\Instation;
 use App\Services\DynamicUrl\Contracts\DynamicUrlControllerInterface;
 use App\Services\DynamicUrl\Helpers\DynamicUrlHelper;
@@ -11,13 +12,18 @@ class GosInstationDetailController extends Controller implements DynamicUrlContr
 {
     public function show(DynamicUrlHelper $dynamicUrlHelper)
     {
-        dd('aaa');
-
-        $instation = Instation::where('link', $dynamicUrlHelper->getGosInstanse())->first();
+        $city = $dynamicUrlHelper->getCity();
+        $instationType = $dynamicUrlHelper->getGosInstanseType();
+        $instation = $dynamicUrlHelper->getGosInstation();
 
         return view('pages.instationDetail', [
+            'page' => new Page(
+                browserTitle: "{$instationType->name} {$city->name}",
+                pageTitle: $instation->name,
+                headerClass: ''
+            ),
             'breadcrumbs' => $dynamicUrlHelper->getBreadcrumbs(),
-            'instation' => $instation
+            'instation' => $dynamicUrlHelper->getGosInstation()
         ]);
     }
 }

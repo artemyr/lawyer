@@ -13,7 +13,7 @@ class GosInstationTypeController extends Controller implements DynamicUrlControl
     public function show(DynamicUrlHelper $dynamicUrlHelper)
     {
         $city = $dynamicUrlHelper->getCity();
-        $instationType = $dynamicUrlHelper->getGosInstanse();
+        $instationType = $dynamicUrlHelper->getGosInstanseType();
 
         return view('pages.instation', [
             'page' => new Page(

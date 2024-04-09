@@ -6,7 +6,7 @@
     <div class="article-1">
         <div>
             <div class="title-1">
-                Мировые суды Москвы
+                {{ $page->pageTitle }}
             </div>
         </div>
         <div>

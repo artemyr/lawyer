@@ -6,19 +6,25 @@ use App\Http\Middleware\App\GlobalVarsMiddleware;
 use App\Models\Category;
 use App\Models\City;
 use App\Models\DTO\Breadcrumbs;
+use App\Models\Instation;
 use App\Models\InstationType;
-use Illuminate\Support\Facades\Cache;
 
 abstract class DynamicUrlHelperAbstract
 {
     protected string $url;
     protected array $slags;
+
     protected string $citySlug;
     protected City $city;
+
     protected string $categorySlug;
     protected Category $category;
+
     protected string $gosInstansTypeSlug;
-    protected InstationType $instation;
+    protected InstationType $instationType;
+
+    protected string $gosInstationSlug;
+    protected Instation $gosInstation;
 
     public const INSTATIONS_SLUG = 'instation';
 
@@ -51,13 +57,22 @@ abstract class DynamicUrlHelperAbstract
 
         return $this->category;
     }
-    public function getGosInstanse(): InstationType
+    public function getGosInstanseType(): InstationType
     {
-        if (empty($this->instation)) {
-            $this->instation = InstationType::where('link', $this->gosInstansTypeSlug)->first();
+        if (empty($this->instationType)) {
+            $this->instationType = InstationType::where('link', $this->gosInstansTypeSlug)->first();
         }
 
-        return $this->instation;
+        return $this->instationType;
+    }
+
+    public function getGosInstation(): Instation
+    {
+        if (empty($this->gosInstation)) {
+            $this->gosInstation = Instation::where('link', $this->gosInstationSlug)->first();
+        }
+
+        return $this->gosInstation;
     }
 
     /**

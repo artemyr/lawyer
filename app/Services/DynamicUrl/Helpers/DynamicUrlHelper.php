@@ -73,7 +73,7 @@ class DynamicUrlHelper extends DynamicUrlHelperAbstract
                         if ($this->isGosInstanseType($this->slags[2])) {
                             $this->gosInstansTypeSlug = $this->slags[2];
                             if ($this->isGosInstance($this->slags[3])) {
-                                $this->gosInstance = $this->slags[3];
+                                $this->gosInstationSlug = $this->slags[3];
                                 return new GosInstationDetailController();
                             }
                         }
