@@ -3,6 +3,7 @@
 use App\Http\Controllers as C;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\InstationController;
+use App\Http\Controllers\Admin\InstationTypeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -64,6 +65,18 @@ Route::group([
         Route::get('/controls/{instation}', [InstationController::class, 'controls'])->name('admin.instations.controls.update');
 
         Route::get('/{instation}', [InstationController::class, 'show'])->name('admin.instations.show');
+    });
+
+    Route::group(['prefix' => 'instation-types'], function() {
+        Route::get('/', [InstationTypeController::class, 'index'])->name('admin.instation.types.index');
+        Route::post('/', [InstationTypeController::class,'store'])->name('admin.instation.types.store');
+        Route::delete('/{instation}', [InstationTypeController::class, 'destroy'])->name('admin.instation.types.destroy');
+        Route::patch('/{instation}', [InstationTypeController::class, 'update'])->name('admin.instation.types.update');
+
+        Route::get('/controls', [InstationTypeController::class, 'controls'])->name('admin.instation.types.controls.create');
+        Route::get('/controls/{instation}', [InstationTypeController::class, 'controls'])->name('admin.instation.types.controls.update');
+
+        Route::get('/{instation}', [InstationTypeController::class, 'show'])->name('admin.instation.types.show');
     });
 });
 

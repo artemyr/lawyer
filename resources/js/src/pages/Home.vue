@@ -3,6 +3,7 @@
         <router-link :to="{name: 'admin.city.index'}" class="menu__item">Города</router-link>
         <router-link :to="{name: 'admin.category.index'}" class="menu__item">Категории</router-link>
         <router-link :to="{name: 'admin.article'}" class="menu__item">Статьи</router-link>
+        <router-link :to="{name: 'admin.instation.types.index'}" class="menu__item">Типы инстанций</router-link>
         <router-link :to="{name: 'admin.instation.index'}" class="menu__item">Инстанции</router-link>
     </div>
 </template>

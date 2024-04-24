@@ -64,6 +64,21 @@ const routes = [
         name: 'admin.instation.create',
         component: () => import("../pages/Admin/Instation/InstationCreate.vue")
     },
+    {
+        path: '/admin/instanion/type',
+        name: 'admin.instation.types.index',
+        component: () => import("../pages/Admin/InstationType/InstationTypeIndex.vue")
+    },
+    {
+        path: '/admin/instanion/type/:id',
+        name: 'admin.instation.types.edit',
+        component: () => import("../pages/Admin/InstationType/InstationTypeEdit.vue")
+    },
+    {
+        path: '/admin/instanion/type/create',
+        name: 'admin.instation.types.create',
+        component: () => import("../pages/Admin/InstationType/InstationTypeCreate.vue")
+    },
 ]
 
 export default routes;
