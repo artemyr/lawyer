@@ -19,7 +19,7 @@ import EditNameLink from "../form/EditNameLinkComponent.vue";
 import EditText from "../form/EditTextComponent.vue";
 import EditSelect from "../form/EditSelectComponent.vue";
 import EditSelectMulti from "../form/EditSelectMultiComponent.vue";
-import EditSearchSelect from "../SearchSelectComponent.vue";
+import EditSearchSelect from "../form/SearchSelectComponent.vue";
 import EditCheckbox from "../form/EditCheckboxComponent.vue";
 import EditNumber from "../form/EditNumberComponent.vue";
 

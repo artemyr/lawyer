@@ -1,3 +1,4 @@
+<!-- Используется публичной частью -->
 <template>
     <div class="city-select">
         <div class="city-select__select">

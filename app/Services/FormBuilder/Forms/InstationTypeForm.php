@@ -126,7 +126,7 @@ class InstationTypeForm extends AbstractForm
         }
 
         return GroupFieldBuilder::createInstance()
-            ->configureType(GroupFieldTypeEnum::SELECT_SEARCH)
+            ->configureType(GroupFieldTypeEnum::MULTI_SELECT_SEARCH)
             ->addField(
                 FieldBuilder::createInstance()
                     ->configureCode('select')

@@ -19,7 +19,8 @@ import EditNameLink from "../form/EditNameLinkComponent.vue";
 import EditText from "../form/EditTextComponent.vue";
 import EditSelect from "../form/EditSelectComponent.vue";
 import EditSelectMulti from "../form/EditSelectMultiComponent.vue";
-import EditSearchSelect from "../SearchSelectComponent.vue";
+import EditSearchSelect from "../form/SearchSelectComponent.vue";
+import EditMultiSearchSelect from "../form/SearchMultiSelectComponent.vue";
 import EditCheckbox from "../form/EditCheckboxComponent.vue";
 import EditNumber from "../form/EditNumberComponent.vue";
 import EditCoords from "../form/EditCoordsComponent.vue";
@@ -29,7 +30,7 @@ export default {
     props: ['entity','entityOne'],
     components: {
         EditNameLink, EditText, EditSelect, EditSelectMulti, EditSearchSelect, EditCheckbox, EditNumber, EditCoords,
-        EditIconSelect
+        EditIconSelect, EditMultiSearchSelect
     },
     mounted() {
         this.getForm(`/api/admin/${this.entity}/controls/${this.$route.params.id}`)

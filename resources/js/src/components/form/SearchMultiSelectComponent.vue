@@ -1,42 +1,44 @@
 <template>
     <div class="mb-3">
         <label class="form-label">{{ fields.select.label }}</label>
-        <model-list-select
+        <multi-list-select
             :list="options"
-            v-model="value"
+            :selected-items="value"
             option-value="id"
             option-text="label"
-            id="mySelectId"
-            name="mySelectName"
-            placeholder="select item"
-            @searchchange="printSearchText"
-            @blur="handleBlur"
+            @select="onSelect"
         />
         <div class="form-text">{{ fields.select.caption }}</div>
     </div>
 </template>
 
 <script lang="ts">
-import { ModelListSelect } from "vue-search-select";
+import {ModelListSelect, MultiListSelect} from "vue-search-select";
 import "vue-search-select/dist/VueSearchSelect.css"
 
 export default {
-    components: {ModelListSelect},
+    components: {ModelListSelect, MultiListSelect},
     props: ['fields'],
     mounted() {
         this.options = this.fields.select.values
-        this.value = this.fields.select.value
+        if (this.fields.select.value) {
+            this.value = this.fields.select.value
+        }
     },
     data() {
         return {
-            value: '',
-
+            value: [],
             options: [],
             objectItem: null,
             searchText: "",
+            lastSelectItem: {}
         }
     },
     methods: {
+        onSelect (items, lastSelectItem) {
+            this.value = items
+            this.lastSelectItem = lastSelectItem
+        },
         getValues() {
             return new Map([
                 [this.fields.select.name, this.value]
