@@ -28,7 +28,11 @@ class CategoryController extends Controller
 
     public function update (CategoryRequest $request, Category $category)
     {
-        $category->update($request->validated());
+        $fields = $request->validated();
+        $cityIds = $fields['city_id'];
+        unset($fields['city_id']);
+        $category->update($fields);
+        $category->cities()->sync($cityIds);
         return response(['id' => $category->id]);
     }
 

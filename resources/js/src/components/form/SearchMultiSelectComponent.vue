@@ -22,7 +22,18 @@ export default {
     mounted() {
         this.options = this.fields.select.values
         if (this.fields.select.value) {
-            this.value = this.fields.select.value
+
+            this.fields.select.value.map(function (id) {
+
+                let label = this.options.find(function(el){
+                    return el.id == id
+                }).label
+
+                this.value.push({
+                    id: id,
+                    label: label
+                })
+            }.bind(this))
         }
     },
     data() {
@@ -40,8 +51,13 @@ export default {
             this.lastSelectItem = lastSelectItem
         },
         getValues() {
+            let result = [];
+            this.value.map(function (item) {
+                result.push(item.id)
+            }.bind(this))
+
             return new Map([
-                [this.fields.select.name, this.value]
+                [this.fields.select.name, result]
             ])
         },
         check() {

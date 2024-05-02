@@ -1,4 +1,8 @@
 <template>
+    <div v-if="error" class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+
     <form v-if="this.form.fields">
         <div v-for="groupField in this.form.fields">
             <component
@@ -37,6 +41,7 @@ export default {
     },
     data() {
         return {
+            error: '',
             form: {
                 fields: {},
                 values: {},
@@ -95,7 +100,8 @@ export default {
                     }
                 })
                 .catch(error => {
-                    this.errors = error.response.data.errors
+                    this.error = error.response.data.message
+                    alert(error.response.data.message)
                 })
         }
     },

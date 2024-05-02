@@ -17,10 +17,10 @@ class GlobalVarsMiddleware
 {
     public static Collection $G_cities;
     public static Collection $G_categories;
-    public static array $categoryRouteList;
-    public static array $cityRouteList;
-    public static array $instationTypeRouteList;
-    public static array $instationsRouteList;
+    public static array $categoryRouteList = [];
+    public static array $cityRouteList = [];
+    public static array $instationTypeRouteList = [];
+    public static array $instationsRouteList = [];
 
     /**
      * Handle an incoming request.

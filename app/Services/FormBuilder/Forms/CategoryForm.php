@@ -149,13 +149,14 @@ class CategoryForm extends AbstractForm
             $cities[] = new Value($city->id, $city->link, $city->name);
         }
 
-        $cityId = null;
-        if (!empty($this->category->city->id)) {
-            $cityId = $this->category->city->id;
+        $citiesIds = null;
+        $categoryCities = $this->category->cities()->get();
+        if (!empty($cities)) {
+            $citiesIds = $categoryCities->pluck('id');
         }
 
         return GroupFieldBuilder::createInstance()
-            ->configureType(GroupFieldTypeEnum::SELECT_SEARCH)
+            ->configureType(GroupFieldTypeEnum::MULTI_SELECT_SEARCH)
             ->addField(
                 FieldBuilder::createInstance()
                     ->configureCode('select')
@@ -163,7 +164,7 @@ class CategoryForm extends AbstractForm
                     ->configureName('city_id')
                     ->configureLabel('Город')
                     ->configureValues($cities)
-                    ->configureValue($cityId)
+                    ->configureValue($citiesIds)
                     ->create()
             )
             ->create();

@@ -30,8 +30,9 @@ class CategoryRequest extends FormRequest
             'parent_id' => 'integer',
             'name' => 'string',
             'link' => 'string',
-            'city_id' => 'integer',
-            'icon_id' => 'integer|nullable',
+            'city_id' => 'nullable|array',
+            'city_id.*' => 'integer|min:1',
+            'icon_id' => 'nullable|integer|min:1',
         ];
     }
 }

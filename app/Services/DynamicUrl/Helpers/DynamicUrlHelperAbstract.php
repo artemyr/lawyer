@@ -49,16 +49,24 @@ abstract class DynamicUrlHelperAbstract
 
         return $this->city;
     }
-    public function getCategory(): Category
+    public function getCategory(): ?Category
     {
+        if (empty($this->categorySlug)) {
+            return null;
+        }
+
         if (empty($this->category)) {
             $this->category = Category::where('link', $this->categorySlug)->first();
         }
 
         return $this->category;
     }
-    public function getGosInstanseType(): InstationType
+    public function getGosInstanseType(): ?InstationType
     {
+        if (empty($this->gosInstansTypeSlug)) {
+            return null;
+        }
+
         if (empty($this->instationType)) {
             $this->instationType = InstationType::where('link', $this->gosInstansTypeSlug)->first();
         }
@@ -66,8 +74,12 @@ abstract class DynamicUrlHelperAbstract
         return $this->instationType;
     }
 
-    public function getGosInstation(): Instation
+    public function getGosInstation(): ?Instation
     {
+        if (empty($this->gosInstationSlug)) {
+            return null;
+        }
+
         if (empty($this->gosInstation)) {
             $this->gosInstation = Instation::where('link', $this->gosInstationSlug)->first();
         }
