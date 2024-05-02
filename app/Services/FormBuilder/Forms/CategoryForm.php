@@ -150,9 +150,11 @@ class CategoryForm extends AbstractForm
         }
 
         $citiesIds = null;
-        $categoryCities = $this->category->cities()->get();
-        if (!empty($cities)) {
-            $citiesIds = $categoryCities->pluck('id');
+        if (!empty($this->category)) {
+            $categoryCities = $this->category->cities()->get();
+            if (!empty($categoryCities)) {
+                $citiesIds = $categoryCities->pluck('id');
+            }
         }
 
         return GroupFieldBuilder::createInstance()

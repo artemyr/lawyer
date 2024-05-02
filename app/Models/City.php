@@ -15,6 +15,10 @@ class City extends Model
     {
         return $this->belongsToMany(Category::class);
     }
+    public function instationTypes()
+    {
+        return $this->belongsToMany(InstationType::class);
+    }
 
     public function instations()
     {

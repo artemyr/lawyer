@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\City\CityRequest;
+use App\Http\Requests\City\CityCreateRequest;
+use App\Http\Requests\City\CityUpdateRequest;
 use App\Http\Resources\CityResource;
 use App\Models\City;
 use App\Services\FormBuilder\Enum\TypeEnum;
@@ -20,13 +21,13 @@ class CityController extends Controller
         return new CityResource($city);
     }
 
-    public function store(CityRequest $request)
+    public function store(CityCreateRequest $request)
     {
         $city = City::create($request->validated());
         return response(['id' => $city->id]);
     }
 
-    public function update(CityRequest $request, City $city)
+    public function update(CityUpdateRequest $request, City $city)
     {
         $city->update($request->validated());
         return response(['id' => $city->id]);

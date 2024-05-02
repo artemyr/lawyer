@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Instation\InstationRequest;
+use App\Http\Requests\Instation\InstationCreateRequest;
+use App\Http\Requests\Instation\InstationUpdateRequest;
 use App\Http\Resources\CategoryResource;
 use App\Models\Instation;
 use App\Services\FormBuilder\Enum\TypeEnum;
@@ -20,13 +21,13 @@ class InstationController extends Controller
         return new CategoryResource($instation);
     }
 
-    public function store (InstationRequest $request)
+    public function store (InstationCreateRequest $request)
     {
         $instation = Instation::create($request->validated());
         return response(['id' => $instation->id]);
     }
 
-    public function update (InstationRequest $request, Instation $instation)
+    public function update (InstationUpdateRequest $request, Instation $instation)
     {
         $instation->update($request->validated());
         return response(['id' => $instation->id]);

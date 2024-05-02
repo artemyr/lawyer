@@ -1,4 +1,8 @@
 <template>
+    <div v-if="error" class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+
     <form v-if="this.form.fields">
         <div v-for="groupField in this.form.fields">
             <component
@@ -20,17 +24,24 @@ import EditText from "../form/EditTextComponent.vue";
 import EditSelect from "../form/EditSelectComponent.vue";
 import EditSelectMulti from "../form/EditSelectMultiComponent.vue";
 import EditSearchSelect from "../form/SearchSelectComponent.vue";
+import EditMultiSearchSelect from "../form/SearchMultiSelectComponent.vue";
 import EditCheckbox from "../form/EditCheckboxComponent.vue";
 import EditNumber from "../form/EditNumberComponent.vue";
+import EditCoords from "../form/EditCoordsComponent.vue";
+import EditIconSelect from "../form/EditIconSelectComponent.vue";
 
 export default {
     props:['entity','entityOne'],
-    components: {EditNameLink, EditText, EditSelect, EditSelectMulti, EditSearchSelect, EditCheckbox, EditNumber},
+    components: {
+        EditNameLink, EditText, EditSelect, EditSelectMulti, EditSearchSelect, EditCheckbox, EditNumber, EditCoords,
+        EditIconSelect, EditMultiSearchSelect
+    },
     mounted() {
         this.getForm(`/api/admin/${this.entity}/controls`)
     },
     data() {
         return {
+            error: '',
             form: {
                 fields: {},
                 values: {},
@@ -77,6 +88,7 @@ export default {
 
             let data = this.getFormParameters()
 
+            this.error = ''
             axios.post(`/api/admin/${this.entity}`, data)
                 .then(res => {
                     this.$router.push({
@@ -87,7 +99,8 @@ export default {
                     })
                 })
                 .catch(error => {
-                    this.errors = error.response.data.errors
+                    this.error = error.response.data.message
+                    alert(error.response.data.message)
                 })
         }
     },

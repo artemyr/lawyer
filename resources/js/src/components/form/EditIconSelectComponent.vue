@@ -33,7 +33,7 @@ export default {
     components: {Icon},
     data () {
         return {
-            value: '',
+            value: {},
             values: [],
             opened: false
         }
@@ -48,6 +48,11 @@ export default {
     },
     methods: {
         getValues() {
+            if (this.value.id === 0) {
+                return new Map([
+                    [this.fields.select.name, null]
+                ])
+            }
             return new Map([
                 [this.fields.select.name, this.value.id]
             ])
@@ -56,7 +61,6 @@ export default {
             return true
         },
         setIcon(value) {
-            console.log(value)
             this.value = value
             this.toggle()
         },

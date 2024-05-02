@@ -23,16 +23,6 @@ class InstationTypeForm extends AbstractForm
             $this->instationType = $instationType;
         }
 
-        $active = false;
-        if (!empty($this->instationType->active)) {
-            $active = (bool)$this->instationType->active;
-        }
-
-        $sort = 500;
-        if (!empty($this->instationType->sort)) {
-            $sort = $this->instationType->sort;
-        }
-
         $this->groupFields = FormBuilder::createInstance()
             ->addGroupField($this->getNameLinkField())
             ->addGroupField($this->getIconField())
@@ -120,9 +110,12 @@ class InstationTypeForm extends AbstractForm
             $cities[] = new Value($city->id, $city->link, $city->name);
         }
 
-        $cityId = null;
-        if (!empty($this->instationType->city->id)) {
-            $cityId = $this->instationType->city->id;
+        $citiesIds = null;
+        if (!empty($this->instationType)) {
+            $instationTypeCities = $this->instationType->cities()->get();
+            if (!empty($instationTypeCities)) {
+                $citiesIds = $instationTypeCities->pluck('id');
+            }
         }
 
         return GroupFieldBuilder::createInstance()
@@ -134,7 +127,7 @@ class InstationTypeForm extends AbstractForm
                     ->configureName('city_id')
                     ->configureLabel('Город')
                     ->configureValues($cities)
-                    ->configureValue($cityId)
+                    ->configureValue($citiesIds)
                     ->create()
             )
             ->create();

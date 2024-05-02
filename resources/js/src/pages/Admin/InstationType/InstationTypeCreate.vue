@@ -2,7 +2,7 @@
     <div>
         <h1>Создать новую инстанцию</h1>
 
-        <Create :entity="'instations'" :entityOne="'instation'" />
+        <Create :entity="'instation-types'" :entityOne="'instation.types'" />
     </div>
 </template>
 

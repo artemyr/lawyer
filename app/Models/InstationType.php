@@ -19,4 +19,9 @@ class InstationType extends Model
     {
         return $this->hasMany(Instation::class);
     }
+
+    public function cities()
+    {
+        return $this->belongsToMany(City::class);
+    }
 }

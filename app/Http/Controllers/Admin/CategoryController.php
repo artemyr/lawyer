@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Category\CategoryRequest;
+use App\Http\Requests\Category\CategoryCreateRequest;
+use App\Http\Requests\Category\CategoryUpdateRequest;
 use App\Http\Resources\CategoryResource;
 use App\Models\Category;
 use App\Services\FormBuilder\Enum\TypeEnum;
@@ -20,13 +21,17 @@ class CategoryController extends Controller
         return new CategoryResource($category);
     }
 
-    public function store (CategoryRequest $request)
+    public function store (CategoryCreateRequest $request)
     {
-        $category = Category::create($request->validated());
+        $fields = $request->validated();
+        $cityIds = $fields['city_id'];
+        unset($fields['city_id']);
+        $category = Category::create($fields);
+        $category->cities()->attach($cityIds);
         return response(['id' => $category->id]);
     }
 
-    public function update (CategoryRequest $request, Category $category)
+    public function update (CategoryUpdateRequest $request, Category $category)
     {
         $fields = $request->validated();
         $cityIds = $fields['city_id'];

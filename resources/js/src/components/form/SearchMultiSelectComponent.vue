@@ -53,7 +53,9 @@ export default {
         getValues() {
             let result = [];
             this.value.map(function (item) {
-                result.push(item.id)
+                if (item.id) {
+                    result.push(item.id)
+                }
             }.bind(this))
 
             return new Map([

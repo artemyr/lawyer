@@ -88,6 +88,7 @@ export default {
 
             let data = this.getFormParameters()
 
+            this.error = ''
             axios.patch(`/api/admin/${this.entity}/${this.$route.params.id}`, data)
                 .then(res => {
                     if (toIndex){

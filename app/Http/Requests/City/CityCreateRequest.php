@@ -4,7 +4,7 @@ namespace App\Http\Requests\City;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CityRequest extends FormRequest
+class CityCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,8 @@ class CityRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'string',
-            'link' => 'string',
+            'name' => 'required|string|max:255',
+            'link' => 'required|string|max:255|unique:cities,link',
             'name_d' => 'string',
             'coords' => 'string'
         ];
