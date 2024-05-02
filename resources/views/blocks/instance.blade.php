@@ -16,9 +16,11 @@
 
             @foreach($instationTypes as $instationType)
                 <a class="instance__item" href="{{ "/$citySlug/$instationSlug/{$instationType->link}/" }}">
+                    @if($instationType->icon)
                     <div class="advantages-image">
                         <img src="{{ asset('image/small/'. $instationType->icon->code) }}" alt="">
                     </div>
+                    @endif
                     {{ $instationType->name }}
                 </a>
             @endforeach

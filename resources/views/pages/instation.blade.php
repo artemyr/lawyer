@@ -90,8 +90,8 @@
 
             @foreach($instations as $instation)
                 <div class="gos-instance-item">
-                    <div class="gos-instance-item__image advantages-image">
-                        @if(!empty($instation->icon->code))
+                    @if(!empty($instation->icon->code))
+                        <div class="gos-instance-item__image advantages-image">
                             @if($instation->icon->type === 'png')
                             <img src="{{ asset('image/small/' . $instation->icon->code) }}" alt="">
                             @elseif($instation->icon->type === 'svg')
@@ -99,8 +99,8 @@
                                 <use xlink:href="{{ asset('svg/sprite.svg#' . $instation->icon->code) }}"></use>
                             </svg>
                             @endif
-                        @endif
-                    </div>
+                        </div>
+                    @endif
                     <div class="gos-instance-item__props">
                         <a href="{{ "/$citySlug/$instationSlug/{$instationTypeSlug}/{$instation->link}/" }}" class="gos-instance-item__link">
                             {{ $instation->name }}
