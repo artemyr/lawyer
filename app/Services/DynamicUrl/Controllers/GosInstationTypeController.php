@@ -15,7 +15,7 @@ class GosInstationTypeController extends Controller implements DynamicUrlControl
         $city = $dynamicUrlHelper->getCity();
         $instationType = $dynamicUrlHelper->getGosInstanseType();
 
-        $instations = $city->instations()->where('instation_type_id', $city->id)->get();
+        $instations = $city->instations()->where('instation_type_id', $instationType->id)->get();
 
         return view('pages.instation', [
             'page' => new Page(
