@@ -66,6 +66,7 @@ class InstationForm extends AbstractForm
             )
             ->addGroupField($this->getNameLinkField())
             ->addGroupField($this->getInstationTypeField())
+            ->addGroupField($this->getCityField())
             ->addGroupField($this->getIconField())
             ->addGroupField(
                 GroupFieldBuilder::createInstance()
@@ -221,6 +222,39 @@ class InstationForm extends AbstractForm
                     ->configureLabel('Тип инстанции')
                     ->configureValues($instationTypes)
                     ->configureValue($instationType)
+                    ->create()
+            )
+            ->create();
+    }
+
+    private function getCityField(): GroupField
+    {
+        $cities = [
+            new Value(0,'','Не выбран')
+        ];
+
+        foreach (City::all() as $city) {
+            $cities[] = new Value($city->id, $city->link, $city->name);
+        }
+
+        $citiesIds = null;
+        if (!empty($this->instation)) {
+            $instationTypeCities = $this->instation->cities()->get();
+            if (!empty($instationTypeCities)) {
+                $citiesIds = $instationTypeCities->pluck('id');
+            }
+        }
+
+        return GroupFieldBuilder::createInstance()
+            ->configureType(GroupFieldTypeEnum::MULTI_SELECT_SEARCH)
+            ->addField(
+                FieldBuilder::createInstance()
+                    ->configureCode('select')
+                    ->configureType(FieldTypeEnum::SELECT)
+                    ->configureName('city_id')
+                    ->configureLabel('Город')
+                    ->configureValues($cities)
+                    ->configureValue($citiesIds)
                     ->create()
             )
             ->create();

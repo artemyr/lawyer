@@ -23,13 +23,21 @@ class InstationController extends Controller
 
     public function store (InstationCreateRequest $request)
     {
-        $instation = Instation::create($request->validated());
+        $fields = $request->validated();
+        $cityIds = $fields['city_id'];
+        unset($fields['city_id']);
+        $instation = Instation::create($fields);
+        $instation->cities()->attach($cityIds);
         return response(['id' => $instation->id]);
     }
 
     public function update (InstationUpdateRequest $request, Instation $instation)
     {
-        $instation->update($request->validated());
+        $fields = $request->validated();
+        $cityIds = $fields['city_id'];
+        unset($fields['city_id']);
+        $instation->update($fields);
+        $instation->cities()->sync($cityIds);
         return response(['id' => $instation->id]);
     }
 

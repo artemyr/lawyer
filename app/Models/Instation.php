@@ -10,9 +10,9 @@ class Instation extends Model
     use HasFactory;
     protected $guarded = false;
 
-    public function city()
+    public function cities()
     {
-        return $this->belongsTo(City::class);
+        return $this->belongsToMany(City::class);
     }
 
     public function instationType()

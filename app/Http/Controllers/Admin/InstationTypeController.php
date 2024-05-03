@@ -26,19 +26,19 @@ class InstationTypeController extends Controller
         $fields = $request->validated();
         $cityIds = $fields['city_id'];
         unset($fields['city_id']);
-        $instation = InstationType::create($fields);
-        $instation->cities()->attach($cityIds);
-        return response(['id' => $instation->id]);
+        $instationType = InstationType::create($fields);
+        $instationType->cities()->attach($cityIds);
+        return response(['id' => $instationType->id]);
     }
 
-    public function update (InstationTypeUpdateRequest $request, InstationType $instation)
+    public function update (InstationTypeUpdateRequest $request, InstationType $instationType)
     {
         $fields = $request->validated();
         $cityIds = $fields['city_id'];
         unset($fields['city_id']);
-        $instation->update($fields);
-        $instation->cities()->sync($cityIds);
-        return response(['id' => $instation->id]);
+        $instationType->update($fields);
+        $instationType->cities()->sync($cityIds);
+        return response(['id' => $instationType->id]);
     }
 
     public function destroy (InstationType $instation)

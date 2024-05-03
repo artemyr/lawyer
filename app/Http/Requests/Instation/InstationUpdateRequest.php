@@ -34,6 +34,8 @@ class InstationUpdateRequest extends FormRequest
             'address' => 'nullable|string|max:255',
             'telephone' => 'nullable|string|max:255',
             'opening_hours' => 'nullable|string|max:255',
+            'city_id' => 'required|array',
+            'city_id.*' => 'integer|min:1|exists:cities,id',
         ];
     }
 }

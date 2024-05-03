@@ -22,7 +22,7 @@ class City extends Model
 
     public function instations()
     {
-        return $this->hasMany(Instation::class);
+        return $this->belongsToMany(Instation::class);
     }
 
     public function getCoordsAttribute($value)
