@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('city_instation_type', function (Blueprint $table) {
-            $table->foreignId('city_id')->constrained();
-            $table->foreignId('instation_type_id')->constrained();
+        Schema::table('instations', function (Blueprint $table) {
+            $table->dropColumn('city_id');
         });
     }
 
@@ -22,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('city_instation_type');
+        Schema::table('instations', function (Blueprint $table) {
+            $table->unsignedBigInteger('city_id')->default(0);
+        });
     }
 };

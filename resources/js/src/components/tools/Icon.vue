@@ -21,5 +21,7 @@ export default {
 </script>
 
 <style scoped>
-
+div {
+    display: contents;
+}
 </style>

@@ -75,6 +75,7 @@
     </div>
 </div>
 
+@if (count($instations) > 0)
 <div class="container">
     <div class="article-1">
         <div>
@@ -119,5 +120,6 @@
         </div>
     </div>
 </div>
+@endif
 
 @endsection

@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('category_city', function (Blueprint $table) {
-            $table->unsignedBigInteger('city_id');
-            $table->unsignedBigInteger('category_id');
+            $table->foreignId('city_id')->constrained();
+            $table->foreignId('category_id')->constrained();
         });
     }
 
@@ -22,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('city_categories');
+        Schema::dropIfExists('category_city');
     }
 };
