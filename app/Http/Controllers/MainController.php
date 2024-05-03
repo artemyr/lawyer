@@ -13,7 +13,11 @@ class MainController extends Controller
     public function show()
     {
         return view('main', [
-            'page' => new Page('','mobile-banner'),
+            'page' => new Page(
+                browserTitle: 'Главная',
+                pageTitle: '',
+                headerClass: 'mobile-banner'
+            ),
             'banner' => new Banner(
                 bigImage: asset('image/bg.jpg'),
                 averageImage: asset('image/bg.png'),

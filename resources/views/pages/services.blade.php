@@ -10,6 +10,8 @@
     </div>
 </div>
 
-@include('blocks.form-2')
+<div class="container">
+    @include('blocks.form.bottom-form')
+</div>
 
 @endsection

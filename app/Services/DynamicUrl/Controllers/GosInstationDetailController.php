@@ -4,7 +4,6 @@ namespace App\Services\DynamicUrl\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\DTO\Page;
-use App\Models\Instation;
 use App\Services\DynamicUrl\Contracts\DynamicUrlControllerInterface;
 use App\Services\DynamicUrl\Helpers\DynamicUrlHelper;
 
@@ -23,7 +22,7 @@ class GosInstationDetailController extends Controller implements DynamicUrlContr
                 headerClass: ''
             ),
             'breadcrumbs' => $dynamicUrlHelper->getBreadcrumbs(),
-            'instation' => $dynamicUrlHelper->getGosInstation()
+            'instation' => $instation
         ]);
     }
 }

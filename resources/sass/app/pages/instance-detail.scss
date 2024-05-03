@@ -1,0 +1,40 @@
+.gos-instance-detail {
+    padding: 48px;
+    background-color: $base-gray;
+    border-radius: 16px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+
+    .gos-instance-detail__icon {
+        background-color: white;
+        display: inline-block;
+        border-radius: 4px;
+        padding: 16px;
+    }
+
+    .gos-instance-detail__title {
+        font-family: $--base-font-family-medium;
+        font-size: 24px;
+        margin-bottom: 8px;
+    }
+
+    .gos-instance-detail__right {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .gos-instance-detail__desc-body {
+        color: $base-text-gray;
+    }
+
+    .gos-instance-detail__props-body {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 8px;
+
+        .gos-instance-detail__props-body-item span {
+            color: $base-text-gray;
+        }
+    }
+}

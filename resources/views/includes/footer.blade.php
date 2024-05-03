@@ -1,15 +1,7 @@
 <div class="footer">
 
     @if(isset($map))
-    <div id="map" style="height: 420px"></div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function(){
-            const obj_map = new JCmap({
-                "center": [ {{$map->lon}}, {{$map->lat}}],
-                "zoom": {{ $map->zoom }}
-            });
-        })
-    </script>
+    @include('blocks.map', ['lon' => $map->lon, 'lat' => $map->lat, 'zoom' => $map->zoom])
     @endif
 
     <div class="container">
