@@ -129,12 +129,13 @@ if [ "$1" == "make" ];
 
     if [ "$2" == "dump" ];
         then
+          rm -rf ./data/mysql/dump/
           git clone $DATABASE_REPO ../docker/data/mysql/dump || echo "not clone repo"
           makeDump ../docker/data/mysql/dump/database.sql;
           cd ../docker/data/mysql/dump;
           git add database.sql
           git commit -a -m 'update database'
-          git push origin master
+          git push
           echo "PUSH SUCCESS"
     fi
 fi
