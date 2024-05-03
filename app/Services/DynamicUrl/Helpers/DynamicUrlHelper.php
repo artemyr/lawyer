@@ -9,13 +9,17 @@ use App\Services\DynamicUrl\Controllers\DefaultController;
 use App\Services\DynamicUrl\Controllers\GosInstationTypeController;
 use App\Services\DynamicUrl\Controllers\GosInstationDetailController;
 use Exception;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Foundation\Application as ApplicationAlias;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Redirector;
 
 class DynamicUrlHelper extends DynamicUrlHelperAbstract
 {
     /**
      * @throws Exception
      */
-    public function getHandlerClass(): DynamicUrlControllerInterface
+    public function getHandlerClass(): DynamicUrlControllerInterface|Application|ApplicationAlias|RedirectResponse|Redirector
     {
         switch (count($this->slags)) {
             case 1:
@@ -42,10 +46,8 @@ class DynamicUrlHelper extends DynamicUrlHelperAbstract
                         $this->categorySlug = $this->slags[1];
                         return new CategoryController;
                     }
-                } elseif ($this->isCategory($this->slags[0])) {
-                    $this->categorySlug = $this->slags[0];
                     if ($this->slags[1] === static::INSTATIONS_SLUG) {
-                        return new GosInstationTypeController();
+                        return redirect(route('main'));
                     }
                 }
                 break;
