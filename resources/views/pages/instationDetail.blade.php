@@ -36,12 +36,11 @@
                         Телефоны, график работы, судьи
                     </div>
                     <div class="gos-instance-detail__props-body">
+                        @foreach($instation->props as $prop)
                         <div class="gos-instance-detail__props-body-item">
-                            <span>123:</span> 123
+                            <span>{{ $prop->getLabel() }}:</span> {{ $prop->getValue() }}
                         </div>
-                        <div class="gos-instance-detail__props-body-item">
-                            <span>123:</span> 123
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

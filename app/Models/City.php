@@ -3,42 +3,32 @@
 namespace App\Models;
 
 use App\Models\DTO\Coords;
+use App\Services\CoordsParser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class City extends Model
 {
     use HasFactory;
     protected $guarded = false;
 
-    public function categories()
+    public function categories(): BelongsToMany
     {
         return $this->belongsToMany(Category::class);
     }
-    public function instationTypes()
+    public function instationTypes(): BelongsToMany
     {
         return $this->belongsToMany(InstationType::class);
     }
 
-    public function instations()
+    public function instations(): BelongsToMany
     {
         return $this->belongsToMany(Instation::class);
     }
 
-    public function getCoordsAttribute($value)
+    public function getCoordsAttribute($value): Coords
     {
-        $coords = explode(';',$value);
-
-        if (
-            !empty($coords[0])
-            &&
-            !empty($coords[1])
-            &&
-            !empty($coords[2])
-        ) {
-            return new Coords($coords[0],$coords[1],$coords[2]);
-        }
-
-        return new Coords();
+        return (new CoordsParser())->parse($value);
     }
 }
