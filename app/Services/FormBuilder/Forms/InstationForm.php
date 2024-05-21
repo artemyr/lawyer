@@ -35,6 +35,11 @@ class InstationForm extends AbstractForm
             $sort = $this->instation->sort;
         }
 
+        $props = [];
+        if (!empty($this->instation->props)) {
+            $props = $this->instation->props->toArray();
+        }
+
         $this->groupFields = FormBuilder::createInstance()
             ->addGroupField(
                 GroupFieldBuilder::createInstance()
@@ -120,6 +125,20 @@ class InstationForm extends AbstractForm
                             ->configureName('opening_hours')
                             ->configureLabel('Режим работы')
                             ->configureValue($instation->opening_hours)
+                            ->create()
+                    )
+                    ->create()
+            )
+            ->addGroupField(
+                GroupFieldBuilder::createInstance()
+                    ->configureType(GroupFieldTypeEnum::TEXT_MULTI)
+                    ->addField(
+                        FieldBuilder::createInstance()
+                            ->configureType(FieldTypeEnum::TEXT)
+                            ->configureCode('text')
+                            ->configureName('props')
+                            ->configureLabel('Дополнительные свойства')
+                            ->configureValue($props)
                             ->create()
                     )
                     ->create()

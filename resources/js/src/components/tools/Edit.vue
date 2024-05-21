@@ -29,12 +29,13 @@ import EditCheckbox from "../form/EditCheckboxComponent.vue";
 import EditNumber from "../form/EditNumberComponent.vue";
 import EditCoords from "../form/EditCoordsComponent.vue";
 import EditIconSelect from "../form/EditIconSelectComponent.vue";
+import EditTextMulti from "../form/EditTextMultiComponent.vue";
 
 export default {
     props: ['entity','entityOne'],
     components: {
         EditNameLink, EditText, EditSelect, EditSelectMulti, EditSearchSelect, EditCheckbox, EditNumber, EditCoords,
-        EditIconSelect, EditMultiSearchSelect
+        EditIconSelect, EditMultiSearchSelect, EditTextMulti
     },
     mounted() {
         this.getForm(`/api/admin/${this.entity}/controls/${this.$route.params.id}`)

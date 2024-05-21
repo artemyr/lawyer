@@ -19,9 +19,11 @@ class GosInstationDetailController extends Controller implements DynamicUrlContr
             'page' => new Page(
                 browserTitle: "{$instationType->name} {$city->name}",
                 pageTitle: $instation->name,
-                headerClass: ''
+                headerClass: '',
+                showBottomMap: false
             ),
             'breadcrumbs' => $dynamicUrlHelper->getBreadcrumbs(),
+            'map' => $instation->coords,
             'instation' => $instation
         ]);
     }

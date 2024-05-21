@@ -7,6 +7,8 @@ use Iterator;
 class PropCollection implements Iterator
 {
     private int $position = 0;
+
+    /** @var Prop[]  */
     protected array $props = [];
 
     public function setProp(string $label, string $value): void
@@ -16,7 +18,11 @@ class PropCollection implements Iterator
 
     public function toArray(): array
     {
-        return $this->props;
+        $res = [];
+        foreach ($this->props as $prop) {
+            $res[] = [$prop->getLabel(), $prop->getValue()];
+        }
+        return $res;
     }
 
     public function current(): ?Prop

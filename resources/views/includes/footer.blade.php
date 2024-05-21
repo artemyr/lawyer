@@ -1,6 +1,6 @@
 <div class="footer">
 
-    @if(isset($map))
+    @if($page->showBottomMap && isset($map))
     @include('blocks.map', ['lon' => $map->lon, 'lat' => $map->lat, 'zoom' => $map->zoom])
     @endif
 

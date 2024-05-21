@@ -51,11 +51,13 @@
         @include('blocks.form.instation-form')
     </div>
 
-    @include('blocks.map', ['lon' => 0, 'lat' => 0, 'zoom' => 0])
+    @include('blocks.map', ['lon' => $map->lon, 'lat' => $map->lat, 'zoom' => $map->zoom])
 
     <div class="container">
         @include('blocks.form.bottom-form')
     </div>
+
+    Другие учреждения
 
     @include('blocks.cities')
 

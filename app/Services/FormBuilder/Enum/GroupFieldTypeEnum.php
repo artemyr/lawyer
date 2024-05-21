@@ -8,6 +8,7 @@ enum GroupFieldTypeEnum: string
     case CHECKBOX = 'EditCheckbox';
     case NAME_LINK = 'EditNameLink';
     case TEXT = 'EditText';
+    case TEXT_MULTI = 'EditTextMulti';
     case SELECT = 'EditSelect';
     case ICON_SELECT = 'EditIconSelect';
     case SELECT_MULTI = 'EditSelectMulti';
